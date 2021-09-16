@@ -1,0 +1,14 @@
+---
+namespace: eriol
+name: dotfiles
+version: 0.1.0
+readme: README.md
+authors:
+  - Daniele Tricoli <eriol@mornie.org>
+description: Ansible collection that for my dotfiles.
+license:
+  - BSD-3-Clause
+tags:
+  - linux
+  - dotfiles
+  - collection
