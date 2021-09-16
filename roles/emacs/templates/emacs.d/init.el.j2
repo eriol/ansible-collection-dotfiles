@@ -1,5 +1,8 @@
 ; {{ ansible_managed }}
 
+; Set garbage collection threshold to 100 Mbyte.
+(setq gc-cons-threshold (* 100 1000 1000))
+
 ; Enable package repositories.
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
