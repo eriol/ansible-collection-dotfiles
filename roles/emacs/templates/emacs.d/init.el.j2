@@ -48,6 +48,11 @@
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol))
 
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
 ; (server-start) ; Enable server so other emacsclient connect to this.
 (setq inhibit-startup-message t) ; Disable startup message.
 (menu-bar-mode -1) ; Disable the menu bar.
