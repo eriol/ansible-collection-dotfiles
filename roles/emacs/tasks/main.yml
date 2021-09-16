@@ -6,6 +6,7 @@
       - emacs
       - emacs-gtk
       - libtext-multimarkdown-perl  # For multimarkdown.
+      - build-essential  # For org-roam.
     update_cache: true
     cache_valid_time: 3600
 
@@ -25,6 +26,11 @@
         owner: "{{ emacs_become_user }}"
         group: "{{ emacs_become_user }}"
         mode: 0640
+
+    - name: ensure {{ emacs_org_roam_directory }} exists
+      file:
+        path: "{{ emacs_org_roam_directory }}"
+        state: directory
 
   become: "{{ emacs_become }}"
   become_user: "{{ emacs_become_user }}"
