@@ -1,0 +1,30 @@
+---
+
+- name: install emacs
+  apt:
+    name:
+      - emacs
+      - emacs-gtk
+      - libtext-multimarkdown-perl  # For multimarkdown.
+    update_cache: true
+    cache_valid_time: 3600
+
+  become: "{{ emacs_become_admin }}"
+  become_user: "{{ emacs_become_admin_user }}"
+
+- block:
+    - name: ensure ~/.emacs.d exists
+      file:
+        path: ~/.emacs.d
+        state: directory
+
+    - name: copy init.el into ~/.emacs.d
+      copy:
+        src: emacs.d/init.el
+        dest: ~/.emacs.d/init.el
+        owner: "{{ emacs_become_user }}"
+        group: "{{ emacs_become_user }}"
+        mode: 0640
+
+  become: "{{ emacs_become }}"
+  become_user: "{{ emacs_become_user }}"
