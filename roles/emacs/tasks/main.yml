@@ -19,8 +19,8 @@
         state: directory
 
     - name: copy init.el into ~/.emacs.d
-      copy:
-        src: emacs.d/init.el
+      template:
+        src: emacs.d/init.el.j2
         dest: ~/.emacs.d/init.el
         owner: "{{ emacs_become_user }}"
         group: "{{ emacs_become_user }}"
