@@ -81,8 +81,7 @@
 (setq inhibit-startup-message t) ; Disable startup message.
 (menu-bar-mode -1)   ; Disable the menu bar.
 (tool-bar-mode -1)   ; Disable the toolbar.
-(scroll-bar-mode -1) ; Disable the scrollbar
-(setq visible-bell 1) ; Enable visual bell.
+(scroll-bar-mode -1) ; Disable the scrollbar.
 
 ; Theme
 (use-package doom-themes
@@ -90,7 +89,8 @@
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  (load-theme 'doom-nord t))
+  (load-theme 'doom-nord t)
+  (doom-themes-visual-bell-config))
 
 ; Show the max column indicator in programming modes.
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
