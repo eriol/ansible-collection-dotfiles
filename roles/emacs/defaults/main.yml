@@ -3,4 +3,4 @@ emacs_become_admin: true
 emacs_become_admin_user: root
 emacs_become: true
 
-emacs_org_roam_directory: ~/docs/roam
+emacs_org_roam_directory: ~/docs/org/roam
