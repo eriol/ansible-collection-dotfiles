@@ -14,10 +14,13 @@
   become_user: "{{ emacs_become_admin_user }}"
 
 - block:
-    - name: ensure ~/.emacs.d exists
+    - name: ensure ~/.emacs.d and subfolders exist
       file:
-        path: ~/.emacs.d
+        path: "{{ item }}"
         state: directory
+      with_items:
+        - ~/.emacs.d
+        - "{{ emacs_org_roam_directory }}/daily"
 
     - name: copy init.el into ~/.emacs.d
       template:
