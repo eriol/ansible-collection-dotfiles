@@ -23,6 +23,12 @@
   :config
   (evil-mode 1))
 
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
 ; Markdown
 (use-package markdown-mode
   :ensure t
