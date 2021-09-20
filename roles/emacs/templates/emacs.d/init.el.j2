@@ -27,6 +27,14 @@
 
 (use-package doom-modeline
   :ensure t
+  :init
+  (setq doom-modeline-modal-icon nil)
+  (setq evil-normal-state-tag   (propertize "N"))
+  (setq evil-insert-state-tag   (propertize "I"))
+  (setq evil-visual-state-tag   (propertize "V"))
+  (setq evil-emacs-state-tag    (propertize "E"))
+  (setq evil-motion-state-tag   (propertize "M"))
+  (setq evil-operator-state-tag (propertize "O"))
   :hook (after-init . doom-modeline-mode))
 
 ; Markdown
