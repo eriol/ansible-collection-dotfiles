@@ -63,7 +63,25 @@
          ("C-M-i"   . completion-at-point))
   :config
   (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol))
+  (require 'org-roam-protocol)
+
+  (defun org-agenda-has-todos-files ()
+    "Return a list of note files containing 'has_todos' tag."
+    (seq-uniq
+      (seq-map
+        #'car
+        (org-roam-db-query [
+          :select [nodes:file]
+          :from tags
+          :left-join nodes
+          :on (= tags:node-id nodes:id)
+          :where (like tag (quote "%\"has_todos\"%"))]))))
+
+  (defun org-agenda-files-update (&rest _)
+    "Update the value of `org-agenda-files'."
+    (setq org-agenda-files (org-agenda-has-todos-files)))
+
+  (advice-add 'org-agenda :before #'org-agenda-files-update))
 
 (use-package org-bullets
   :ensure t)
