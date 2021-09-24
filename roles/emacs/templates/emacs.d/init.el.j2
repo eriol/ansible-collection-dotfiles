@@ -23,6 +23,19 @@
   :config
   (evil-mode 1))
 
+(use-package general
+  :ensure t
+  :config
+  (general-evil-setup t)
+
+  (general-create-definer eriol/leader-key-def
+    :prefix ",")
+
+  (eriol/leader-key-def
+    :keymaps 'normal
+    "rf" 'org-roam-node-find
+    "a" 'org-agenda))
+
 (use-package all-the-icons)
 
 (use-package doom-modeline
