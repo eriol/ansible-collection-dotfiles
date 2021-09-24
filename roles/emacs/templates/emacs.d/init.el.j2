@@ -1,7 +1,7 @@
 ; {{ ansible_managed }}
 
 ; Set garbage collection threshold to 100 Mbyte.
-(setq gc-cons-threshold (* 100 1000 1000))
+(setq gc-cons-threshold (* 100 1024 1024))
 
 ; Enable package repositories.
 (require 'package)
