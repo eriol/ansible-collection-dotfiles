@@ -66,6 +66,15 @@
   :custom
   (org-roam-directory (file-truename "{{ emacs_org_roam_directory }}"))
   (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
+     ("p" "projects" plain
+      "%?\n* Tasks\n\n** TODO tasks go here!"
+      :if-new (file+head "projects/${slug}.org" "#+title: ${title}\n#+filetags: :has_todos:project:")
+      :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)

@@ -21,6 +21,7 @@
       with_items:
         - ~/.emacs.d
         - "{{ emacs_org_roam_directory }}/daily"
+        - "{{ emacs_org_roam_directory }}/projects"
 
     - name: copy init.el into ~/.emacs.d
       template:
