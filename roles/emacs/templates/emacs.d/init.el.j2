@@ -121,7 +121,11 @@
                   (org-level-6 . 0.90)
                   (org-level-7 . 0.85)
                   (org-level-8 . 0.80)))
-    (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face))))
+    (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
+
+  (require 'org-indent)
+
+) ; End of use-package org-mode block
 
 (use-package vertico
   :ensure t
