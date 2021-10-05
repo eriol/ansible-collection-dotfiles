@@ -2,5 +2,6 @@
 emacs_become_admin: true
 emacs_become_admin_user: root
 emacs_become: true
+emacs_become_user: "{{ lookup('env', 'USER') }}"
 
 emacs_org_roam_directory: ~/docs/org/roam

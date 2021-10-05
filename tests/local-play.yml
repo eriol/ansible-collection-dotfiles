@@ -2,8 +2,7 @@
 - name: local playbook
   hosts: localhost
   connection: local
-  vars:
-    emacs_become_user: "{{ lookup('env', 'USER') }}"
 
   roles:
     - ../roles/emacs
+    - ../roles/starship
