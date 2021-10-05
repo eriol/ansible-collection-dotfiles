@@ -1,0 +1,3 @@
+---
+starship_become: true
+starship_become_user: "{{ lookup('env', 'USER') }}"

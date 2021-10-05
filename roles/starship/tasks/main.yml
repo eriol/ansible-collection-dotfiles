@@ -1,0 +1,9 @@
+---
+- block:
+  - name: copy starship.toml config file
+    copy:
+      src: config/starship.toml
+      dest: ~/.config/starship.toml
+
+  become: "{{ starship_become }}"
+  become_user: "{{ starship_become_user }}"
