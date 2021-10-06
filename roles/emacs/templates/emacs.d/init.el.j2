@@ -59,6 +59,27 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode)))
 
+(use-package org
+  :ensure t
+  :config
+  (set-face-attribute 'org-document-title nil :font "Fira Code" :weight 'bold :height 1.3)
+  (dolist (face '((org-level-1 . 1.2)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.05)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 0.95)
+                  (org-level-6 . 0.90)
+                  (org-level-7 . 0.85)
+                  (org-level-8 . 0.80)))
+    (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face))))
+
+(use-package org-superstar
+  :ensure t
+  :after org
+  :hook (org-mode . org-superstar-mode)
+  :custom
+  (org-superstar-remove-leading-stars t))
+
 (use-package org-roam
   :ensure t
   :init
@@ -105,27 +126,10 @@
 
   (advice-add 'org-agenda :before #'org-agenda-files-update)
 
-  (use-package org-superstar
-    :ensure t
-    :after org
-    :hook (org-mode . org-superstar-mode)
-    :custom
-    (org-superstar-remove-leading-stars t))
-
-  (set-face-attribute 'org-document-title nil :font "Fira Code" :weight 'bold :height 1.3)
-  (dolist (face '((org-level-1 . 1.2)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.05)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 0.95)
-                  (org-level-6 . 0.90)
-                  (org-level-7 . 0.85)
-                  (org-level-8 . 0.80)))
-    (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
 
   (require 'org-indent)
 
-) ; End of use-package org-mode block
+) ; End of use-package org-roam block
 
 (use-package vertico
   :ensure t
