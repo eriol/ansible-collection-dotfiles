@@ -5,4 +5,5 @@
 
   roles:
     - ../roles/emacs
+    - ../roles/neovim
     - ../roles/starship
