@@ -1,0 +1,48 @@
+---
+
+- name: install neovim
+  ansible.builtin.apt:
+    name:
+      - neovim
+      - python3-pynvim
+      - git
+    update_cache: true
+    cache_valid_time: 3600
+
+  become: "{{ neovim_become_admin }}"
+  become_user: "{{ neovim_become_admin_user }}"
+
+- block:
+    - name: ensure ~/.config/nvim and subfolders exist
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - ~/.config/nvim
+        - ~/.config/nvim/lua
+        - ~/.config/nvim/lua/config
+
+    - name: install packer.nvim from git
+      ansible.builtin.git:
+        repo: https://github.com/wbthomason/packer.nvim
+        dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+        depth: 1
+
+    - name: install init.lua
+      ansible.builtin.copy:
+        src: config/nvim/init.lua
+        dest: ~/.config/nvim/init.lua
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        mode: 0640
+
+    - name: install plugins.lua
+      ansible.builtin.copy:
+        src: config/nvim/lua/config/plugins.lua
+        dest: ~/.config/nvim/lua/config/plugins.lua
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        mode: 0640
+
+  become: "{{ neovim_become }}"
+  become_user: "{{ neovim_become_user }}"

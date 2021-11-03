@@ -1,0 +1,5 @@
+---
+neovim_become_admin: true
+neovim_become_admin_user: root
+neovim_become: true
+neovim_become_user: "{{ lookup('env', 'USER') }}"
