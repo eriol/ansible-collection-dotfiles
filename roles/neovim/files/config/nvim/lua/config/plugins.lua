@@ -7,6 +7,7 @@ return require('packer').startup(function()
     use {'nvim-lualine/lualine.nvim', 
         config = function() require('lualine').setup() end
     }
+    use 'mhinz/vim-startify'
 
     use {
         'dense-analysis/ale',
@@ -26,5 +27,5 @@ return require('packer').startup(function()
         cmd = 'ALEEnable',
         config = 'vim.cmd[[ALEEnable]]'
     }
-    use "lukas-reineke/indent-blankline.nvim"
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
