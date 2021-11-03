@@ -18,8 +18,12 @@ return require('packer').startup(function()
     -- Make packer manage itself.
     use 'wbthomason/packer.nvim'
 
-    use {'nvim-lualine/lualine.nvim', 
+    use {'nvim-lualine/lualine.nvim',
         config = function() require('lualine').setup() end
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
     }
     use 'mhinz/vim-startify'
 
