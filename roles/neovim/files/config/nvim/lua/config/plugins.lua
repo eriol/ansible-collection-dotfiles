@@ -1,5 +1,19 @@
 -- Plugins configuration.
 
+local ft_programming = {
+    'bash',
+    'c',
+    'cmake',
+    'cpp',
+    'html',
+    'markdown',
+    'python',
+    'sh',
+    'tex',
+    'vim',
+    'zsh'
+}
+
 return require('packer').startup(function()
     -- Make packer manage itself.
     use 'wbthomason/packer.nvim'
@@ -11,19 +25,7 @@ return require('packer').startup(function()
 
     use {
         'dense-analysis/ale',
-        ft = {
-            'bash',
-            'c',
-            'cmake',
-            'cpp',
-            'html',
-            'markdown',
-            'py',
-            'sh',
-            'tex',
-            'vim',
-            'zsh'
-        },
+        ft = ft_programming,
         cmd = 'ALEEnable',
         config = 'vim.cmd[[ALEEnable]]'
     }
