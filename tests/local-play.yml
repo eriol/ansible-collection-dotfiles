@@ -6,5 +6,6 @@
   roles:
     - ../roles/alacritty
     - ../roles/emacs
+    - ../roles/fontconfig
     - ../roles/neovim
     - ../roles/starship

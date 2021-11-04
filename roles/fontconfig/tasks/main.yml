@@ -1,0 +1,19 @@
+---
+- block:
+  - name: ensure ~/.config/fontconfig/conf.d exists
+    ansible.builtin.file:
+      path: ~/.config/fontconfig/conf.d
+      state: directory
+
+  - name: copy fonts config file
+    ansible.builtin.copy:
+      src: config/fontconfig/fonts.conf
+      dest: ~/.config/fontconfig/fonts.conf
+
+  - name: rebuild font information cache
+    ansible.builtin.shell:
+      cmd: fc-cache -fr
+
+
+  become: "{{ fontconfig_become }}"
+  become_user: "{{ fontconfig_become_user }}"
