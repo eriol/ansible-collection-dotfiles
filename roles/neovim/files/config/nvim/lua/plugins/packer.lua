@@ -34,4 +34,7 @@ return require('packer').startup(function()
         config = 'vim.cmd[[ALEEnable]]'
     }
     use 'lukas-reineke/indent-blankline.nvim'
+
+    -- Themes
+    use 'NLKNguyen/papercolor-theme'
 end)
