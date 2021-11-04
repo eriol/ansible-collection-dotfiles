@@ -5,3 +5,4 @@ vim.g.mapleader = [[,]]
 vim.g.maplocalleader = [[,]]
 
 require('plugins.packer')
+require('plugins.indent-blankline')

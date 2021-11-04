@@ -44,6 +44,7 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
+        - indent-blankline.lua
         - packer.lua
 
   become: "{{ neovim_become }}"

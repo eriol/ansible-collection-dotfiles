@@ -33,8 +33,5 @@ return require('packer').startup(function()
         cmd = 'ALEEnable',
         config = 'vim.cmd[[ALEEnable]]'
     }
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        ft = ft_programming
-    }
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
