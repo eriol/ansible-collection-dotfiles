@@ -20,7 +20,7 @@
       with_items:
         - ~/.config/nvim
         - ~/.config/nvim/lua
-        - ~/.config/nvim/lua/config
+        - ~/.config/nvim/lua/plugins
 
     - name: install packer.nvim from git
       ansible.builtin.git:
@@ -36,13 +36,15 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
 
-    - name: install plugins.lua
+    - name: install plugins config
       ansible.builtin.copy:
-        src: config/nvim/lua/config/plugins.lua
-        dest: ~/.config/nvim/lua/config/plugins.lua
+        src: "config/nvim/lua/plugins/{{ item }}"
+        dest: "~/.config/nvim/lua/plugins/{{ item }}"
         owner: "{{ neovim_become_user }}"
         group: "{{ neovim_become_user }}"
         mode: 0640
+      with_items:
+        - packer.lua
 
   become: "{{ neovim_become }}"
   become_user: "{{ neovim_become_user }}"
