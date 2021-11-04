@@ -8,6 +8,7 @@
       - git
     update_cache: true
     cache_valid_time: 3600
+  tags: apt
 
   become: "{{ neovim_become_admin }}"
   become_user: "{{ neovim_become_admin_user }}"
