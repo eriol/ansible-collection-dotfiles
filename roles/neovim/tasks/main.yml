@@ -47,5 +47,15 @@
         - indent-blankline.lua
         - packer.lua
 
+    - name: install general settings
+      ansible.builtin.copy:
+        src: "config/nvim/lua/{{ item }}"
+        dest: "~/.config/nvim/lua/{{ item }}"
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        mode: 0640
+      with_items:
+        - settings.lua
+
   become: "{{ neovim_become }}"
   become_user: "{{ neovim_become_user }}"

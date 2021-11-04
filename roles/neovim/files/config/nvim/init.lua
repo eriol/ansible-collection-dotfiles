@@ -1,8 +1,6 @@
 -- Personal neovim init file
 -- Daniele Tricoli <eriol@mornie.org>
 
-vim.g.mapleader = [[,]]
-vim.g.maplocalleader = [[,]]
-
+require('settings')
 require('plugins.packer')
 require('plugins.indent-blankline')
