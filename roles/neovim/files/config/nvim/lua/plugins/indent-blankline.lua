@@ -5,5 +5,6 @@ require('indent_blankline').setup {
         'packer',
         'startify'
     },
+    show_first_indent_level = false,
     show_end_of_line = true
 }
