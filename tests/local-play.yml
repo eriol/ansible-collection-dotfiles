@@ -4,6 +4,7 @@
   connection: local
 
   roles:
+    - ../roles/alacritty
     - ../roles/emacs
     - ../roles/neovim
     - ../roles/starship

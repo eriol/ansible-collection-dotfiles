@@ -1,0 +1,3 @@
+---
+alacritty_become: true
+alacritty_become_user: "{{ lookup('env', 'USER') }}"

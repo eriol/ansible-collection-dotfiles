@@ -1,0 +1,14 @@
+---
+- block:
+  - name: ensure ~/.config/alacritty exists
+    ansible.builtin.file:
+      path: ~/.config/alacritty
+      state: directory
+
+  - name: copy alacritty config file
+    ansible.builtin.copy:
+      src: config/alacritty/alacritty.yml
+      dest: ~/.config/alacritty/alacritty.yml
+
+  become: "{{ alacritty_become }}"
+  become_user: "{{ alacritty_become_user }}"
