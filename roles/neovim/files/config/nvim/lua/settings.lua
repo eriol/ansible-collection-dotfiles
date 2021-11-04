@@ -14,7 +14,7 @@ opt.mouse = 'a'
 opt.colorcolumn = '80'
 opt.list = true
 opt.listchars = { eol = '¬', nbsp='␣', tab = '▸ ', trail = '·' }
-opt.showbreak = '↪'
+opt.showbreak = '↳'
 opt.signcolumn = 'yes'
 
 -- Resize splits on windows size changes
