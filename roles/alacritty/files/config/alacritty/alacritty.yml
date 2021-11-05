@@ -4,11 +4,11 @@ env:
 
 font:
   normal:
-    family: "IBM Plex Mono"
+    family: "BlexMono Nerd Font"
     style: Regular
 
   italic:
-    family: "IBM Plex Mono"
+    family: "BlexMono Nerd Font"
     style: Italic
 
   size: 10.0
