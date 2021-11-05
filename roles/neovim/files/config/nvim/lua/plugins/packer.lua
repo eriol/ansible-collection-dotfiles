@@ -34,6 +34,10 @@ return require('packer').startup(function()
         config = 'vim.cmd[[ALEEnable]]'
     }
     use 'lukas-reineke/indent-blankline.nvim'
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
     -- Themes
     use 'NLKNguyen/papercolor-theme'
