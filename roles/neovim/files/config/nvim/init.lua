@@ -7,3 +7,4 @@ require('plugins.packer')
 
 require('plugins.gitsigns')
 require('plugins.indent-blankline')
+require('plugins.lualine')

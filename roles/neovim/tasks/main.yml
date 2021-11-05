@@ -47,6 +47,7 @@
       with_items:
         - gitsigns.lua
         - indent-blankline.lua
+        - lualine.lua
         - packer.lua
 
     - name: install general settings
