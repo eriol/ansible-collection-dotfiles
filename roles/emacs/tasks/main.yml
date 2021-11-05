@@ -10,6 +10,7 @@
       - fonts-firacode
     update_cache: true
     cache_valid_time: 3600
+  tags: apt
 
   become: "{{ emacs_become_admin }}"
   become_user: "{{ emacs_become_admin_user }}"
