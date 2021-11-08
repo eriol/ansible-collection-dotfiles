@@ -18,6 +18,8 @@ return require('packer').startup(function()
     -- Make packer manage itself.
     use 'wbthomason/packer.nvim'
 
+    use 'lewis6991/impatient.nvim'
+
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
