@@ -32,6 +32,7 @@ return require('packer').startup(function()
     }
     use 'mhinz/vim-startify'
 
+    use 'neovim/nvim-lspconfig'
     use 'lukas-reineke/indent-blankline.nvim'
     use {
       'lewis6991/gitsigns.nvim',

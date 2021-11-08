@@ -51,6 +51,7 @@
         - nvim-tree.lua
         - packer.lua
         - telescope.lua
+        - lspconfig.lua
 
     - name: install general settings
       ansible.builtin.copy:
