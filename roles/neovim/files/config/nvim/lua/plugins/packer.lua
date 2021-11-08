@@ -32,12 +32,6 @@ return require('packer').startup(function()
     }
     use 'mhinz/vim-startify'
 
-    use {
-        'dense-analysis/ale',
-        ft = ft_programming,
-        cmd = 'ALEEnable',
-        config = 'vim.cmd[[ALEEnable]]'
-    }
     use 'lukas-reineke/indent-blankline.nvim'
     use {
       'lewis6991/gitsigns.nvim',
