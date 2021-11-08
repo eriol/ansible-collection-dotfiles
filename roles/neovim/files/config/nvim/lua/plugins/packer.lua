@@ -27,6 +27,11 @@ return require('packer').startup(function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    }
+    use 'folke/lsp-colors.nvim'
+    use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }

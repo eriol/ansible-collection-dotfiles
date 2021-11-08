@@ -47,11 +47,12 @@
       with_items:
         - gitsigns.lua
         - indent-blankline.lua
+        - lspconfig.lua
         - lualine.lua
         - nvim-tree.lua
         - packer.lua
         - telescope.lua
-        - lspconfig.lua
+        - trouble.lua
 
     - name: install general settings
       ansible.builtin.copy:
