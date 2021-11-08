@@ -52,6 +52,7 @@
         - nvim-tree.lua
         - packer.lua
         - telescope.lua
+        - todo-comments.lua
         - trouble.lua
 
     - name: install general settings

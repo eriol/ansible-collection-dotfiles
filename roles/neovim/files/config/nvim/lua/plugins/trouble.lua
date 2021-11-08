@@ -14,7 +14,8 @@ vim.api.nvim_set_keymap(
     {silent = true, noremap = true}
 )
 vim.api.nvim_set_keymap(
-    "n", "<leader>xd",
+    "n",
+    "<leader>xd",
     "<cmd>Trouble lsp_document_diagnostics<cr>",
       {silent = true, noremap = true}
 )

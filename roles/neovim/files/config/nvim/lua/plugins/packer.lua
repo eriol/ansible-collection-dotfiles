@@ -24,11 +24,15 @@ return require('packer').startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = 'nvim-lua/plenary.nvim'
     }
     use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons"
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons'
+    }
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim'
     }
     use 'folke/lsp-colors.nvim'
     use {
@@ -41,7 +45,7 @@ return require('packer').startup(function()
     use 'lukas-reineke/indent-blankline.nvim'
     use {
       'lewis6991/gitsigns.nvim',
-      requires = { { 'nvim-lua/plenary.nvim' } }
+      requires = 'nvim-lua/plenary.nvim'
     }
 
     -- Themes
