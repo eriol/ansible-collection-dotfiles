@@ -50,6 +50,7 @@
         - lualine.lua
         - nvim-tree.lua
         - packer.lua
+        - telescope.lua
 
     - name: install general settings
       ansible.builtin.copy:
