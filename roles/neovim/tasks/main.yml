@@ -48,6 +48,7 @@
         - gitsigns.lua
         - indent-blankline.lua
         - lualine.lua
+        - nvim-tree.lua
         - packer.lua
 
     - name: install general settings
