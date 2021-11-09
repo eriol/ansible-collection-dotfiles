@@ -47,6 +47,7 @@
       with_items:
         - gitsigns.lua
         - indent-blankline.lua
+        - kommentary.lua
         - lspconfig.lua
         - lualine.lua
         - nvim-cmp.lua

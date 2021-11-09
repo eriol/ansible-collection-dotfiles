@@ -14,7 +14,7 @@ local ft_programming = {
     'zsh'
 }
 
-return require('packer').startup(function()
+return require('packer').startup({function()
     -- Make packer manage itself.
     use 'wbthomason/packer.nvim'
 
@@ -62,6 +62,10 @@ return require('packer').startup(function()
             'hrsh7th/cmp-path',
         }
     }
+    use {
+        'b3nj5m1n/kommentary',
+        config = [[require('plugins.kommentary')]],
+    }
 
     use {
         'lukas-reineke/indent-blankline.nvim',
@@ -75,4 +79,7 @@ return require('packer').startup(function()
 
     -- Themes
     use 'NLKNguyen/papercolor-theme'
-end)
+end,
+config = {
+    max_job = 1,
+}})
