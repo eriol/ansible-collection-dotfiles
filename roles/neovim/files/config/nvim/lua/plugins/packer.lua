@@ -44,6 +44,17 @@ return require('packer').startup(function()
     use 'mhinz/vim-startify'
 
     use 'neovim/nvim-lspconfig'
+    use {
+        'hrsh7th/nvim-cmp',
+        config = [[require('plugins.nvim-cmp')]],
+        requires = {
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-path',
+        }
+    }
+
     use 'lukas-reineke/indent-blankline.nvim'
     use {
       'lewis6991/gitsigns.nvim',

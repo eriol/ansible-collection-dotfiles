@@ -49,6 +49,7 @@
         - indent-blankline.lua
         - lspconfig.lua
         - lualine.lua
+        - nvim-cmp.lua
         - nvim-tree.lua
         - packer.lua
         - telescope.lua
