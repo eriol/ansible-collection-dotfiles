@@ -22,28 +22,36 @@ return require('packer').startup(function()
 
     use {
         'nvim-lualine/lualine.nvim',
+        config = [[require('plugins.lualine')]],
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     use {
+        'neovim/nvim-lspconfig',
+        config = [[require('plugins.lspconfig')]],
+    }
+    use {
         'nvim-telescope/telescope.nvim',
+        config = [[require('plugins.telescope')]],
         requires = 'nvim-lua/plenary.nvim'
     }
     use {
         'folke/trouble.nvim',
+        config = [[require('plugins.trouble')]],
         requires = 'kyazdani42/nvim-web-devicons'
     }
     use {
         'folke/todo-comments.nvim',
+        config = [[require('plugins.todo-comments')]],
         requires = 'nvim-lua/plenary.nvim'
     }
     use 'folke/lsp-colors.nvim'
     use {
         'kyazdani42/nvim-tree.lua',
+        config = [[require('plugins.nvim-tree')]],
         requires = 'kyazdani42/nvim-web-devicons'
     }
     use 'mhinz/vim-startify'
 
-    use 'neovim/nvim-lspconfig'
     use {
         'hrsh7th/nvim-cmp',
         config = [[require('plugins.nvim-cmp')]],
@@ -55,10 +63,14 @@ return require('packer').startup(function()
         }
     }
 
-    use 'lukas-reineke/indent-blankline.nvim'
     use {
-      'lewis6991/gitsigns.nvim',
-      requires = 'nvim-lua/plenary.nvim'
+        'lukas-reineke/indent-blankline.nvim',
+        config = [[require('plugins.indent-blankline')]],
+    }
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = [[require('plugins.gitsigns')]],
+        requires = 'nvim-lua/plenary.nvim'
     }
 
     -- Themes

@@ -3,13 +3,5 @@
 
 require('settings')
 
+-- Load plugins.
 require('plugins.packer')
-
-require('plugins.gitsigns')
-require('plugins.indent-blankline')
-require('plugins.lspconfig')
-require('plugins.lualine')
-require('plugins.nvim-tree')
-require('plugins.telescope')
-require('plugins.todo-comments')
-require('plugins.trouble')
