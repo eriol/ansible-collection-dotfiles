@@ -50,6 +50,7 @@
         - kommentary.lua
         - lspconfig.lua
         - lualine.lua
+        - nvim-autopairs.lua
         - nvim-cmp.lua
         - nvim-tree.lua
         - packer.lua

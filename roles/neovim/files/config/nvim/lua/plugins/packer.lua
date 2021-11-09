@@ -63,6 +63,11 @@ return require('packer').startup({function()
         }
     }
     use {
+        'windwp/nvim-autopairs',
+        after = { "nvim-cmp" },
+        config = [[require('plugins.nvim-autopairs')]],
+    }
+    use {
         'b3nj5m1n/kommentary',
         config = [[require('plugins.kommentary')]],
     }
