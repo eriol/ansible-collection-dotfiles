@@ -1,5 +1,5 @@
 -- Redefine sign.
-local signs = { Error = " ", Warning = " ", Hint = " ", Infomation = " " }
+local signs = { Error = ' ', Warning = ' ', Hint = ' ', Infomation = ' ' }
 
 for type, icon in pairs(signs) do
   local hl = 'LspDiagnosticsSign' .. type
