@@ -1,4 +1,6 @@
-require("trouble").setup {}
+require("trouble").setup {
+    use_lsp_diagnostic_signs = true,
+}
 
 
 vim.api.nvim_set_keymap(
