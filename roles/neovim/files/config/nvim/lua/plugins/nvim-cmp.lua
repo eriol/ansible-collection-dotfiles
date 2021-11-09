@@ -2,7 +2,8 @@ local cmp = require('cmp')
 
 cmp.setup({
     completion = {
-        completeopt = 'menu,menuone,noinsert'
+        completeopt = 'menu,menuone,noinsert',
+        keyword_length = 2
     },
     mapping = {
         ['<cr>'] = cmp.mapping.confirm(),
