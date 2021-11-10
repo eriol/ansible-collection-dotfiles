@@ -23,7 +23,7 @@ local common_on_attach = function(client, bufnr)
 end
 
 null_ls.config({
-    debug = true,
+    debug = false,
     sources = {
         -- Python
         null_ls.builtins.formatting.black,
