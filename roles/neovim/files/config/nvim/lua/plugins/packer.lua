@@ -86,6 +86,7 @@ return require('packer').startup({function()
         config = [[require('plugins.gitsigns')]],
         requires = 'nvim-lua/plenary.nvim'
     }
+    use 'editorconfig/editorconfig-vim'
 
     -- Themes
     use 'NLKNguyen/papercolor-theme'
