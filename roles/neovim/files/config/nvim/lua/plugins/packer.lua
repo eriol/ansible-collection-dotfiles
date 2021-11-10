@@ -27,8 +27,13 @@ return require('packer').startup({function()
     }
     use {
         'neovim/nvim-lspconfig',
-        config = [[require('plugins.lspconfig')]],
+        'nvim-lua/lsp-status.nvim'
     }
+    use { "jose-elias-alvarez/null-ls.nvim",
+        config = [[require('plugins.lspconfig')]],
+        requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+    }
+
     use {
         'nvim-telescope/telescope.nvim',
         config = [[require('plugins.telescope')]],
