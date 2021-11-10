@@ -73,8 +73,8 @@ return require('packer').startup({function()
         config = [[require('plugins.nvim-autopairs')]],
     }
     use {
-        'b3nj5m1n/kommentary',
-        config = [[require('plugins.kommentary')]],
+        'numToStr/Comment.nvim',
+        config = [[require('plugins.comment')]],
     }
 
     use {
