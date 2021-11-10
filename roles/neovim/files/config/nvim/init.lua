@@ -5,3 +5,5 @@ require('settings')
 
 -- Load plugins.
 require('plugins.packer')
+
+require('keymaps')

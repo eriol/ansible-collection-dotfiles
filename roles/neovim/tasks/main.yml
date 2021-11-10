@@ -67,6 +67,7 @@
         mode: 0640
       with_items:
         - settings.lua
+        - keymaps.lua
 
   become: "{{ neovim_become }}"
   become_user: "{{ neovim_become_user }}"
