@@ -26,6 +26,11 @@ return require('packer').startup({function()
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     use {
+        'mhinz/vim-sayonara',
+        config = [[require('plugins.sayonara')]],
+    }
+
+    use {
         'neovim/nvim-lspconfig',
         'nvim-lua/lsp-status.nvim'
     }

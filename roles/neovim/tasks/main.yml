@@ -55,6 +55,7 @@
         - nvim-cmp.lua
         - nvim-tree.lua
         - packer.lua
+        - sayonara.lua
         - telescope.lua
         - todo-comments.lua
         - trouble.lua

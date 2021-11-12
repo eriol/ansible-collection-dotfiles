@@ -4,9 +4,6 @@ local opts = { noremap = true, silent = true }
 -- CTRL+l to clear search highlighting.
 map('n', '<C-l>', ':nohlsearch<cr>', opts)
 
--- Open the terminal.
-map('n', '<C-t>', ':Term<cr>', { noremap = true })
-
 -- Move into splits after creation.
 map('n', '<C-w>v', '<C-w>v<C-w>w', opts)
 map('n', '<C-w>s', '<C-w>s<C-w>w', opts)
