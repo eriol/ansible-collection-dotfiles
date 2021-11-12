@@ -58,6 +58,10 @@ return require('packer').startup({function()
     use 'mhinz/vim-startify'
 
     use {
+        'L3MON4D3/LuaSnip',
+        config = [[require('plugins.luasnip')]],
+    }
+    use {
         'hrsh7th/nvim-cmp',
         config = [[require('plugins.nvim-cmp')]],
         requires = {
