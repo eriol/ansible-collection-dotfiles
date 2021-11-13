@@ -22,6 +22,7 @@
         - ~/.config/nvim
         - ~/.config/nvim/lua
         - ~/.config/nvim/lua/plugins
+        - ~/.config/nvim/after/ftplugin
 
     - name: install packer.nvim from git
       ansible.builtin.git:
@@ -70,6 +71,16 @@
       with_items:
         - settings.lua
         - keymaps.lua
+
+    - name: install after/ftplugin settings
+      ansible.builtin.copy:
+        src: "config/nvim/after/ftplugin/{{ item }}"
+        dest: "~/.config/nvim/after/ftplugin/{{ item }}"
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        mode: 0640
+      with_items:
+        - kivy.lua
 
   become: "{{ neovim_become }}"
   become_user: "{{ neovim_become_user }}"
