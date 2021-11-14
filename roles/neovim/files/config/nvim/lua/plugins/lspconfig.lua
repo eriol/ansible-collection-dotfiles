@@ -29,6 +29,9 @@ null_ls.config({
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.diagnostics.flake8,
+        -- Go
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.goimports,
 
     }
 })
@@ -38,12 +41,17 @@ lspconfig["null-ls"].setup({
         -- Format on save.
         if client.resolved_capabilities.document_formatting then
             buf_set_keymap('n', '<A-f>', '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', opts)
-            vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+            vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()'
         end
     end
 })
 
 lspconfig.pyright.setup {
+    capabilities = lsp_status.capabilities,
+    on_attach = common_on_attach
+}
+
+lspconfig.gopls.setup {
     capabilities = lsp_status.capabilities,
     on_attach = common_on_attach
 }
