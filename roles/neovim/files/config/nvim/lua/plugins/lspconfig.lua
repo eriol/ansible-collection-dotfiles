@@ -46,12 +46,19 @@ lspconfig["null-ls"].setup({
     end
 })
 
+-- TODO: use a loop for them.
+
 lspconfig.pyright.setup {
     capabilities = lsp_status.capabilities,
     on_attach = common_on_attach
 }
 
 lspconfig.gopls.setup {
+    capabilities = lsp_status.capabilities,
+    on_attach = common_on_attach
+}
+
+lspconfig.ansiblels.setup {
     capabilities = lsp_status.capabilities,
     on_attach = common_on_attach
 }
