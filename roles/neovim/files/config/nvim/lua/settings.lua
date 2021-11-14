@@ -50,3 +50,10 @@ opt.synmaxcol = 250
 
 opt.termguicolors = true
 cmd [[colorscheme PaperColor]]
+
+--------------------------------------------------------------------------------
+-- Misc
+--------------------------------------------------------------------------------
+
+-- Set filetype ruby for Vagranfile
+cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
