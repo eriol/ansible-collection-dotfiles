@@ -34,7 +34,8 @@ null_ls.config({
         -- Go
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.goimports,
-
+        -- Rust
+        null_ls.builtins.formatting.rustfmt,
     }
 })
 
@@ -43,6 +44,7 @@ local servers = {
     'ansiblels',
     'gopls',
     'pyright',
+    'rust_analyzer',
 }
 
 for _, lsp in ipairs(servers) do
