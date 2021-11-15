@@ -17,7 +17,7 @@ opt.listchars = { eol = '¬', nbsp='␣', tab = '▸ ', trail = '·' }
 opt.showbreak = '↳'
 opt.signcolumn = 'yes'
 
--- Resize splits on windows size changes
+-- Resize splits on windows size changes.
 cmd [[
 augroup ResizeSplits
     autocmd!
@@ -55,5 +55,8 @@ cmd [[colorscheme PaperColor]]
 -- Misc
 --------------------------------------------------------------------------------
 
--- Set filetype ruby for Vagranfile
+-- Set filetype ruby for Vagranfile.
 cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
+
+-- Use italic for comments.
+cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=italic ]]
