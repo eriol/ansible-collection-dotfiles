@@ -43,7 +43,8 @@
     diffFilter = delta --color-only --features=interactive
 
 [delta]
-    features = decorations
+    features = decorations line-numbers navigate
+    syntax-theme = Monokai Extended Origin
 
 [delta "interactive"]
     keep-plus-minus-markers = false
