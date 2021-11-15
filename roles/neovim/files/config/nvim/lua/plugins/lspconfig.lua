@@ -19,6 +19,8 @@ local common_on_attach = function(client, bufnr)
     -- Mappings.
     buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
     lsp_status.on_attach(client)
 end
 
@@ -36,6 +38,19 @@ null_ls.config({
     }
 })
 
+-- Use a loop to call `setup` on multiple servers.
+local servers = {'pyright', 'gopls', 'ansiblels'}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = lsp_status.capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    on_attach = common_on_attach,
+  }
+end
+
 lspconfig["null-ls"].setup({
     on_attach =  function(client, bufnr)
         -- Format on save.
@@ -46,19 +61,3 @@ lspconfig["null-ls"].setup({
     end
 })
 
--- TODO: use a loop for them.
-
-lspconfig.pyright.setup {
-    capabilities = lsp_status.capabilities,
-    on_attach = common_on_attach
-}
-
-lspconfig.gopls.setup {
-    capabilities = lsp_status.capabilities,
-    on_attach = common_on_attach
-}
-
-lspconfig.ansiblels.setup {
-    capabilities = lsp_status.capabilities,
-    on_attach = common_on_attach
-}
