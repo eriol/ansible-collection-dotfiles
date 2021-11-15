@@ -29,6 +29,10 @@ return require('packer').startup({function()
         'mhinz/vim-sayonara',
         config = [[require('plugins.sayonara')]],
     }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        config = [[require('plugins.nvim-treesitter')]],
+    }
 
     use {
         'neovim/nvim-lspconfig',

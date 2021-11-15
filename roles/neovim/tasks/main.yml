@@ -55,6 +55,7 @@
         - nvim-autopairs.lua
         - nvim-cmp.lua
         - nvim-tree.lua
+        - nvim-treesitter.lua
         - packer.lua
         - sayonara.lua
         - telescope.lua
