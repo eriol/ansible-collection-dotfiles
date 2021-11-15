@@ -39,7 +39,11 @@ null_ls.config({
 })
 
 -- Use a loop to call `setup` on multiple servers.
-local servers = {'pyright', 'gopls', 'ansiblels'}
+local servers = {
+    'ansiblels',
+    'gopls',
+    'pyright',
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
