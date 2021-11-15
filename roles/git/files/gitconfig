@@ -1,0 +1,95 @@
+[include]
+    path = .gitconfig.local
+
+[alias]
+    st = status -s
+    ci = commit
+    co = checkout
+    di = diff
+    ls = ls-files
+    out = !git fetch && git log FETCH_HEAD..
+    in = !git fetch && git log ..FETCH_HEAD
+    branches = branch -a
+    tags = tag
+    stashes = stash list
+    remotes = remote -v
+
+    unstage = reset -q HEAD --
+    discard = checkout --
+    uncommit = reset --mixed HEAD~
+    nevermind = !git reset --hard HEAD && git clean -d -f
+
+    last = log -1 HEAD
+    graph = log --graph -10 --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+    glog = log --graph --decorate --abbrev-commit
+    contributors = shortlog -sn
+    unmerged = diff --name-only --diff-filter=U
+    mine = !git log --author="$(git config user.email)"
+    today = diff @{yesterday}.. --stat
+
+    serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+    decorate = short
+
+[commit]
+    verbose = true
+
+[diff]
+    algorithm = patience
+
+[grep]
+    lineNumber = true
+
+[color "grep"]
+    lineNumber = yellow
+
+[log]
+    date = iso
+
+[merge]
+    tool = vimdiff
+
+[push]
+    default = simple
+
+[pull]
+    rebase = false
+
+[init]
+    defaultBranch = main
+
+[cola]
+    spellcheck = false

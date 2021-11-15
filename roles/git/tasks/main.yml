@@ -1,0 +1,25 @@
+---
+- name: install git
+  ansible.builtin.apt:
+    name: git
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ git_become_admin }}"
+  become_user: "{{ git_become_admin_user }}"
+
+- block:
+
+  - name: copy user .gitconfig
+    ansible.builtin.copy:
+      src: gitconfig
+      dest: ~/.gitconfig
+
+  - name: copy user .gitignore
+    ansible.builtin.copy:
+      src: gitignore
+      dest: ~/.gitignore
+
+  become: "{{ git_become }}"
+  become_user: "{{ git_become_user }}"

@@ -7,5 +7,6 @@
     - ../roles/alacritty
     - ../roles/emacs
     - ../roles/fontconfig
+    - ../roles/git
     - ../roles/neovim
     - ../roles/starship
