@@ -1,6 +1,6 @@
 # Ansible collection - eriol.dotfiles
 
-Ansible roles that I wrote for my workstations.
+Ansible roles that I wrote for my configuration files.
 
 ## Installation
 
