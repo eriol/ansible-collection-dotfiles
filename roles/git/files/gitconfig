@@ -35,8 +35,6 @@
 
 [pager]
     diff = delta
-    log = delta
-    reflog = delta
     show = delta
 
 [interactive]
@@ -45,9 +43,11 @@
 [delta]
     features = decorations line-numbers navigate
     syntax-theme = Monokai Extended Origin
+    whitespace-error-style = red reverse
+    keep-plus-minus-markers = true
 
 [delta "interactive"]
-    keep-plus-minus-markers = false
+    keep-plus-minus-markers = true
 
 [delta "decorations"]
     commit-decoration-style = blue ol
@@ -70,6 +70,7 @@
 
 [diff]
     algorithm = patience
+    colorMoved = default
 
 [grep]
     lineNumber = true
