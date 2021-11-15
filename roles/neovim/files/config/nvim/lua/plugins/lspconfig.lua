@@ -45,6 +45,7 @@ local servers = {
     'gopls',
     'pyright',
     'rust_analyzer',
+    'texlab',
 }
 
 for _, lsp in ipairs(servers) do
