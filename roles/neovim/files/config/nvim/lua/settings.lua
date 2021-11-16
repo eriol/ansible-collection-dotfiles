@@ -56,6 +56,10 @@ opt.termguicolors = true
 
 -- Set filetype ruby for Vagranfile.
 cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
-
 -- Use italic for comments.
 cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=italic ]]
+-- Use red background for extra trailing whitespaces.
+cmd [[ highlight ExtraTrailingWhitespace ctermbg=red guibg=red ]]
+-- This autocmd is needed to not make a colorscheme to clear my custom highlight group.
+cmd [[ autocmd ColorScheme * highlight ExtraTrailingWhitespace ctermbg=red guibg=red ]]
+cmd [[ match ExtraTrailingWhitespace /\s\+$/ ]]
