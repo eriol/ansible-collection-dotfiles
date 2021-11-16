@@ -1,3 +1,3 @@
-require('plugins.onedark')
+-- require('plugins.onedark')
 
--- vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme PaperColorSlim]]

@@ -106,10 +106,10 @@ return require('packer').startup({function()
     use 'editorconfig/editorconfig-vim'
 
     -- Themes
-    use 'NLKNguyen/papercolor-theme'
     use 'folke/tokyonight.nvim'
     use 'marko-cerovac/material.nvim'
     use 'monsonjeremy/onedark.nvim'
+    use 'pappasam/papercolor-theme-slim'
 end,
 config = {
     max_job = 1,
