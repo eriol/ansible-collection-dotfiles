@@ -36,6 +36,8 @@ null_ls.config({
         null_ls.builtins.formatting.goimports,
         -- Rust
         null_ls.builtins.formatting.rustfmt,
+        -- Yaml
+        null_ls.builtins.diagnostics.yamllint,
     }
 })
 
