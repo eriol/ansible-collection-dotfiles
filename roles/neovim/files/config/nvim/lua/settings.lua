@@ -68,3 +68,5 @@ cmd [[ autocmd InsertLeave * match ExtraTrailingWhitespace /\s\+$/ ]]
 cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
 -- Set filetype scss for sass files: at least it's not all the same color.
 cmd [[ autocmd BufNewFile,BufRead {*.sass} set filetype=scss ]]
+-- Set filetype yaml for .yamllint.
+cmd [[ autocmd BufNewFile,BufRead \.yamllint set filetype=yaml ]]
