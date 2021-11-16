@@ -1,3 +1,3 @@
-require('plugins.tokyonight')
+require('plugins.onedark')
 
-vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme onedark]]
