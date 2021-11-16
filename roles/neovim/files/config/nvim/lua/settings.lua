@@ -62,4 +62,6 @@ cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=ital
 cmd [[ highlight ExtraTrailingWhitespace ctermbg=red guibg=red ]]
 -- This autocmd is needed to not make a colorscheme to clear my custom highlight group.
 cmd [[ autocmd ColorScheme * highlight ExtraTrailingWhitespace ctermbg=red guibg=red ]]
-cmd [[ match ExtraTrailingWhitespace /\s\+$/ ]]
+-- Match trailing whitespace except when typing at the end of a line.
+cmd [[ autocmd InsertEnter * match ExtraTrailingWhitespace /\s\+\%#\@<!$/ ]]
+cmd [[ autocmd InsertLeave * match ExtraTrailingWhitespace /\s\+$/ ]]
