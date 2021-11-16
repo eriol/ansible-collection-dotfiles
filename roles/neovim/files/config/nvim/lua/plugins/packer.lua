@@ -107,6 +107,7 @@ return require('packer').startup({function()
 
     -- Themes
     use 'NLKNguyen/papercolor-theme'
+    use 'folke/tokyonight.nvim'
     use 'marko-cerovac/material.nvim'
 end,
 config = {

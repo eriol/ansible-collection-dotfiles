@@ -1,3 +1,3 @@
-require('plugins.material-nvim')
+require('plugins.tokyonight')
 
-vim.cmd [[colorscheme material]]
+vim.cmd [[colorscheme tokyonight]]

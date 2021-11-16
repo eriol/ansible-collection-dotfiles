@@ -61,6 +61,7 @@
         - sayonara.lua
         - telescope.lua
         - todo-comments.lua
+        - tokyonight.lua
         - trouble.lua
 
     - name: install general settings
