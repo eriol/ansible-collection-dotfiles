@@ -53,6 +53,7 @@
         - lualine.lua
         - luasnip.lua
         - material-nvim.lua
+        - neon.lua
         - nvim-autopairs.lua
         - nvim-cmp.lua
         - nvim-tree.lua

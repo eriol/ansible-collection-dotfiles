@@ -1,3 +1,3 @@
--- require('plugins.onedark')
+require('plugins.neon')
 
-vim.cmd [[colorscheme PaperColorSlim]]
+vim.cmd [[colorscheme neon]]
