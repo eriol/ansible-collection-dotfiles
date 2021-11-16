@@ -54,8 +54,6 @@ opt.termguicolors = true
 -- Misc
 --------------------------------------------------------------------------------
 
--- Set filetype ruby for Vagranfile.
-cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
 -- Use italic for comments.
 cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=italic ]]
 -- Use red background for extra trailing whitespaces.
@@ -65,3 +63,8 @@ cmd [[ autocmd ColorScheme * highlight ExtraTrailingWhitespace ctermbg=red guibg
 -- Match trailing whitespace except when typing at the end of a line.
 cmd [[ autocmd InsertEnter * match ExtraTrailingWhitespace /\s\+\%#\@<!$/ ]]
 cmd [[ autocmd InsertLeave * match ExtraTrailingWhitespace /\s\+$/ ]]
+
+-- Set filetype ruby for Vagranfile.
+cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
+-- Set filetype scss for sass files: at least it's not all the same color.
+cmd [[ autocmd BufNewFile,BufRead {*.sass} set filetype=scss ]]
