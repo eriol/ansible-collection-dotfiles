@@ -22,6 +22,7 @@
         - ~/.config/nvim
         - ~/.config/nvim/lua
         - ~/.config/nvim/lua/plugins
+        - ~/.config/nvim/lua/colors
         - ~/.config/nvim/after/ftplugin
 
     - name: install packer.nvim from git
@@ -66,6 +67,16 @@
         - tokyonight.lua
         - trouble.lua
 
+    - name: install colorscheme config
+      ansible.builtin.copy:
+        src: "config/nvim/lua/colors/{{ item }}"
+        dest: "~/.config/nvim/lua/colors/{{ item }}"
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        mode: 0640
+      with_items:
+        - moonfly.lua
+
     - name: install general settings
       ansible.builtin.copy:
         src: "config/nvim/lua/{{ item }}"
@@ -74,7 +85,7 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
-        - colors.lua
+        - colorscheme.lua
         - keymaps.lua
         - settings.lua
 
