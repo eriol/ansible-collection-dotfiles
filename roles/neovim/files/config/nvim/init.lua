@@ -8,4 +8,4 @@ require('plugins.packer')
 
 require('keymaps')
 
-require('colors')
+require('colorscheme')
