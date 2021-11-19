@@ -1,3 +1,3 @@
-opt.shiftwidth = 3
-opt.softtabstop = 3
-opt.tabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.softtabstop = 3
+vim.opt.tabstop = 3
