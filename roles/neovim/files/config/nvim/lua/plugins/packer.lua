@@ -106,6 +106,7 @@ return require('packer').startup({function()
     use 'editorconfig/editorconfig-vim'
 
     -- Themes
+    use 'bluz71/vim-moonfly-colors'
     use 'folke/tokyonight.nvim'
     use 'marko-cerovac/material.nvim'
     use 'monsonjeremy/onedark.nvim'
