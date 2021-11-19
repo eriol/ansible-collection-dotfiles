@@ -1,7 +1,7 @@
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'neon',
+        theme = 'moonfly',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = { 'startify' },
