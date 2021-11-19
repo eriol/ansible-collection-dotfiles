@@ -58,6 +58,7 @@ null_ls.config({
 -- Use a loop to call `setup` on multiple servers.
 local servers = {
     'ansiblels',
+    'esbonio',
     'gopls',
     'pyright',
     'rust_analyzer',
