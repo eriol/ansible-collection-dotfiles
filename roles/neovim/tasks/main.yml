@@ -53,18 +53,14 @@
         - lspconfig.lua
         - lualine.lua
         - luasnip.lua
-        - material-nvim.lua
-        - neon.lua
         - nvim-autopairs.lua
         - nvim-cmp.lua
         - nvim-tree.lua
         - nvim-treesitter.lua
-        - onedark.lua
         - packer.lua
         - sayonara.lua
         - telescope.lua
         - todo-comments.lua
-        - tokyonight.lua
         - trouble.lua
 
     - name: install colorscheme config
@@ -75,7 +71,11 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
+        - material-nvim.lua
         - moonfly.lua
+        - neon.lua
+        - onedark.lua
+        - tokyonight.lua
 
     - name: install general settings
       ansible.builtin.copy:
