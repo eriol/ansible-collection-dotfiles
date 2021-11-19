@@ -1,3 +1,3 @@
-require('plugins.neon')
+require('colors.moonfly')
 
-vim.cmd [[colorscheme neon]]
+pcall(vim.cmd, 'colorscheme moonfly')
