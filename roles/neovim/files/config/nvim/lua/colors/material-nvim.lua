@@ -9,3 +9,6 @@ require('material').setup {
 }
 
 vim.g.material_style = 'darker'
+-- On lualine set theme = 'material-nvim'
+
+pcall(vim.cmd, 'colorscheme material')

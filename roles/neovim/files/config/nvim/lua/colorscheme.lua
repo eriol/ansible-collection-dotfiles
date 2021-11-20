@@ -1,1 +1,1 @@
-require('colors.moonfly')
+require('colors.material-nvim')
