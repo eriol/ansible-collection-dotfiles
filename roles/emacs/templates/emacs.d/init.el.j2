@@ -16,6 +16,13 @@
   (package-install 'use-package))
 (require 'use-package)
 
+; keep packages updated automatically
+; (use-package auto-package-update
+;   :config
+;   (setq auto-package-update-delete-old-versions t)
+;   (setq auto-package-update-hide-results t)
+;   (auto-package-update-maybe))
+
 ; Be evil!
 (use-package evil
   :ensure t
