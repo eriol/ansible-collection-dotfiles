@@ -48,7 +48,7 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = "luasnip" },
         { name = 'buffer',
-          opts = {
+          option = {
               -- Use all buffers to complete.
               get_bufnrs = function() return vim.api.nvim_list_bufs() end
           },
