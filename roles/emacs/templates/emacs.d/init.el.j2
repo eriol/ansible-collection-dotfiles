@@ -28,7 +28,8 @@
   :ensure t
   :init
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle))
 
 (use-package general
   :ensure t
