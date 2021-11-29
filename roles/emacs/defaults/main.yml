@@ -4,4 +4,7 @@ emacs_become_admin_user: root
 emacs_become: true
 emacs_become_user: "{{ lookup('env', 'USER') }}"
 
+# Keep them totaly separated because I don't care to have them coupled by a
+# common variable.
+emacs_org_directory: ~/docs/org
 emacs_org_roam_directory: ~/docs/org/roam

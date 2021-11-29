@@ -42,6 +42,7 @@
   (eriol/leader-key-def
     :keymaps 'normal
     "rf" 'org-roam-node-find
+    "oc" 'org-capture
     "a" 'org-agenda))
 
 (use-package all-the-icons)
@@ -70,6 +71,11 @@
 (use-package org
   :ensure t
   :config
+  (setq org-agenda-files
+    '("{{ emacs_org_directory }}/inbox.org"))
+  (setq org-capture-templates
+    '(("d" "Default" entry (file+headline "{{ emacs_org_directory }}/inbox.org" "Inbox")
+      "* TODO %?\n  %i\n  %a")))
   (set-face-attribute 'org-document-title nil :font "Fira Code" :weight 'bold :height 1.3)
   (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
