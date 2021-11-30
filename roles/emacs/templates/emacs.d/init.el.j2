@@ -29,7 +29,8 @@
   :init
   :config
   (evil-mode 1)
-  (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle))
+  (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+  (evil-define-key 'normal 'global (kbd "C-n") #'treemacs))
 
 (use-package general
   :ensure t
@@ -58,6 +59,20 @@
   (setq evil-motion-state-tag   (propertize "M"))
   (setq evil-operator-state-tag (propertize "O"))
   :hook (after-init . doom-modeline-mode))
+
+(use-package treemacs
+  :ensure t
+  :config
+  (progn
+    (setq treemacs-default-visit-action 'treemacs-visit-node-close-treemacs
+      treemacs-show-hidden-files nil)))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t
+  :config
+  ; Remap C-n of global-map to treemacs
+  (global-set-key (kbd "C-n") #'treemacs))
 
 ; Markdown
 (use-package markdown-mode
