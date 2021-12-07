@@ -151,7 +151,7 @@
 
   (defun org-agenda-files-update (&rest _)
     "Update the value of `org-agenda-files'."
-    (setq org-agenda-files (append org-agenda-files (org-agenda-has-todos-files))))
+    (setq org-agenda-files (org-agenda-has-todos-files)))
 
   (advice-add 'org-agenda :before #'org-agenda-files-update)
 
