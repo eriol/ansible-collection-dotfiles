@@ -12,6 +12,8 @@ local null_ls = require("null-ls")
 local lspconfig = require("lspconfig")
 local lsp_status = require('lsp-status')
 
+lsp_status.register_progress()
+
 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 local opts = { noremap=true, silent=true }
 
