@@ -40,7 +40,7 @@ local common_on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
 end
 
-null_ls.config({
+null_ls.setup({
     debug = false,
     sources = {
         -- Python
@@ -54,7 +54,14 @@ null_ls.config({
         null_ls.builtins.formatting.rustfmt,
         -- Yaml
         null_ls.builtins.diagnostics.yamllint,
-    }
+    },
+    on_attach =  function(client, bufnr)
+        -- Format on save.
+        if client.resolved_capabilities.document_formatting then
+            buf_set_keymap('n', '<A-f>', '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', opts)
+            vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()'
+        end
+    end
 })
 
 -- Use a loop to call `setup` on multiple servers.
@@ -76,14 +83,3 @@ for _, lsp in ipairs(servers) do
     on_attach = common_on_attach,
   }
 end
-
-lspconfig["null-ls"].setup({
-    on_attach =  function(client, bufnr)
-        -- Format on save.
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap('n', '<A-f>', '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', opts)
-            vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()'
-        end
-    end
-})
-
