@@ -11,6 +11,7 @@ end
 local null_ls = require("null-ls")
 local lspconfig = require("lspconfig")
 local lsp_status = require('lsp-status')
+require('lsp_signature').setup()
 
 lsp_status.register_progress()
 

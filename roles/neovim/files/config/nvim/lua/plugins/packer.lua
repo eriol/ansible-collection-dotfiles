@@ -64,6 +64,9 @@ return require('packer').startup({function()
         config = [[require('plugins.nvim-tree')]],
         requires = 'kyazdani42/nvim-web-devicons'
     }
+    use {
+        'ray-x/lsp_signature.nvim',
+    }
     use 'mhinz/vim-startify'
 
     use {
