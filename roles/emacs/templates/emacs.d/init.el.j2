@@ -30,7 +30,8 @@
   :config
   (evil-mode 1)
   (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-  (evil-define-key 'normal 'global (kbd "C-n") #'treemacs))
+  (evil-define-key 'normal 'global (kbd "C-n") #'treemacs)
+  (evil-set-undo-system 'undo-fu))
 
 (use-package general
   :ensure t
@@ -45,6 +46,9 @@
     "rf" 'org-roam-node-find
     "oc" 'org-capture
     "a" 'org-agenda))
+
+(use-package undo-fu
+  :ensure t)
 
 (use-package all-the-icons)
 
