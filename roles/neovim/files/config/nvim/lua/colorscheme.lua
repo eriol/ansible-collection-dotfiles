@@ -1,1 +1,1 @@
-require('colors.material-nvim')
+require('colors.kanagawa')

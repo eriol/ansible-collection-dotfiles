@@ -72,6 +72,7 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
+        - kanagawa.lua
         - material-nvim.lua
         - moonfly.lua
         - neon.lua

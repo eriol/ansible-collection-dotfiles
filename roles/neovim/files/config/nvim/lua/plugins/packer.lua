@@ -120,6 +120,7 @@ return require('packer').startup({function()
     use 'monsonjeremy/onedark.nvim'
     use 'pappasam/papercolor-theme-slim'
     use 'rafamadriz/neon'
+    use 'rebelot/kanagawa.nvim'
 end,
 config = {
     max_job = 1,
