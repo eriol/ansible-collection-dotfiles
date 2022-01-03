@@ -123,5 +123,5 @@ return require('packer').startup({function()
     use 'rebelot/kanagawa.nvim'
 end,
 config = {
-    max_job = 1,
+    max_jobs = 10,
 }})
