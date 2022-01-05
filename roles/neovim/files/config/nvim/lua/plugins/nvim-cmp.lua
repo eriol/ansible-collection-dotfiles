@@ -49,6 +49,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = 'buffer',
           option = {
+              keyword_pattern = [[\k\+]],
               -- Use all buffers to complete.
               get_bufnrs = function() return vim.api.nvim_list_bufs() end
           },
