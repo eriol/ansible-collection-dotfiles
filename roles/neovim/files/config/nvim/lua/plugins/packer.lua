@@ -108,11 +108,6 @@ return require('packer').startup({function()
 
     use 'editorconfig/editorconfig-vim'
 
-    use {
-        'nvim-orgmode/orgmode',
-        config = [[require('plugins.orgmode')]]
-    }
-
     -- Themes
     use 'bluz71/vim-moonfly-colors'
     use 'folke/tokyonight.nvim'

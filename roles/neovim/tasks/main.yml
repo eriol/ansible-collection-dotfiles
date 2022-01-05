@@ -57,7 +57,6 @@
         - nvim-cmp.lua
         - nvim-tree.lua
         - nvim-treesitter.lua
-        - orgmode.lua
         - packer.lua
         - sayonara.lua
         - telescope.lua
