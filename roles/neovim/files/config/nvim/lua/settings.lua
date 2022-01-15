@@ -65,6 +65,8 @@ cmd [[ autocmd ColorScheme * highlight ExtraTrailingWhitespace ctermbg=red guibg
 cmd [[ autocmd InsertEnter * match ExtraTrailingWhitespace /\s\+\%#\@<!$/ ]]
 cmd [[ autocmd InsertLeave * match ExtraTrailingWhitespace /\s\+$/ ]]
 
+-- No swap, backup and undo using gopass.
+cmd [[ autocmd BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile ]]
 -- Set filetype ruby for Vagranfile.
 cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
 -- Set filetype scss for sass files: at least it's not all the same color.
