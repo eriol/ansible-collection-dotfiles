@@ -108,6 +108,11 @@ return require('packer').startup({function()
 
     use 'editorconfig/editorconfig-vim'
 
+    use {
+        'lervag/vimtex',
+        config = [[require('plugins.vimtex')]],
+    }
+
     -- Themes
     use 'bluz71/vim-moonfly-colors'
     use 'folke/tokyonight.nvim'

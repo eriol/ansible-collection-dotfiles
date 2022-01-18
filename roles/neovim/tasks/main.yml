@@ -62,6 +62,7 @@
         - telescope.lua
         - todo-comments.lua
         - trouble.lua
+        - vimtex.lua
 
     - name: install colorscheme config
       ansible.builtin.copy:
