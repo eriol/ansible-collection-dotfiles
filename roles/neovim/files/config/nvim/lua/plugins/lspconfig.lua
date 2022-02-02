@@ -55,6 +55,8 @@ null_ls.setup({
         null_ls.builtins.formatting.rustfmt,
         -- Yaml
         null_ls.builtins.diagnostics.yamllint,
+        -- HTML and others
+        null_ls.builtins.formatting.prettier,
     },
     on_attach =  function(client, bufnr)
         -- Format on save.
