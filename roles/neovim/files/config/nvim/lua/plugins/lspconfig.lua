@@ -61,7 +61,7 @@ null_ls.setup({
     on_attach =  function(client, bufnr)
         -- Format on save.
         if client.resolved_capabilities.document_formatting then
-            buf_set_keymap('n', '<A-f>', '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', opts)
+            buf_set_keymap('n', '<A-f>', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>', opts)
             vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()'
         end
     end
