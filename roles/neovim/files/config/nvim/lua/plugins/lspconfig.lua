@@ -57,6 +57,8 @@ null_ls.setup({
         null_ls.builtins.diagnostics.yamllint,
         -- HTML and others
         null_ls.builtins.formatting.prettier,
+        -- Lua
+        null_ls.builtins.formatting.stylua,
     },
     on_attach =  function(client, bufnr)
         -- Format on save.
