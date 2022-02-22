@@ -1,1 +1,1 @@
-pcall(vim.cmd, 'colorscheme kanagawa')
+pcall(vim.cmd, "colorscheme kanagawa")

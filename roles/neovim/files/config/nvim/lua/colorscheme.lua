@@ -1,1 +1,1 @@
-require('colors.kanagawa')
+require "colors.kanagawa"

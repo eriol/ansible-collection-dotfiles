@@ -1,5 +1,4 @@
-require('telescope').setup{}
-
+require("telescope").setup({})
 
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>Telescope<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope git_files<cr>", { noremap = true })

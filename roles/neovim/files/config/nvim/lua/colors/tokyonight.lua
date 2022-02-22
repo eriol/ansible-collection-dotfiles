@@ -1,3 +1,3 @@
-vim.g.tokyonight_style = 'night'
+vim.g.tokyonight_style = "night"
 
-pcall(vim.cmd, 'colorscheme tokyonight')
+pcall(vim.cmd, "colorscheme tokyonight")

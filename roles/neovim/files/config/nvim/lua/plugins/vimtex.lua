@@ -1,1 +1,1 @@
-vim.g.vimtex_compiler_method = 'arara'
+vim.g.vimtex_compiler_method = "arara"

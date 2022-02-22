@@ -1,3 +1,3 @@
-vim.g.neon_style = 'dark'
+vim.g.neon_style = "dark"
 
-pcall(vim.cmd, 'colorscheme neon')
+pcall(vim.cmd, "colorscheme neon")

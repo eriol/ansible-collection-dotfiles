@@ -1,1 +1,1 @@
-require('onedark').setup()
+require("onedark").setup()

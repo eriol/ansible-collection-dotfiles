@@ -2,21 +2,21 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 
-g.mapleader = ','
-g.maplocalleader = ','
+g.mapleader = ","
+g.maplocalleader = ","
 
-opt.mouse = 'a'
-opt.clipboard = 'unnamedplus'
+opt.mouse = "a"
+opt.clipboard = "unnamedplus"
 
 --------------------------------------------------------------------------------
 -- UI
 --------------------------------------------------------------------------------
 
-opt.colorcolumn = '80'
+opt.colorcolumn = "80"
 opt.list = true
-opt.listchars = { eol = '¬', nbsp='␣', tab = '▸ ', trail = '·' }
-opt.showbreak = '↳'
-opt.signcolumn = 'yes'
+opt.listchars = { eol = "¬", nbsp = "␣", tab = "▸ ", trail = "·" }
+opt.showbreak = "↳"
+opt.signcolumn = "yes"
 
 -- Resize splits on windows size changes.
 cmd [[

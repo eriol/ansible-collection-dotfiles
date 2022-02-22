@@ -4,4 +4,4 @@
 -- vim.g.moonflyCursorColor = 1
 vim.g.moonflyNormalFloat = 1
 
-pcall(vim.cmd, 'colorscheme moonfly')
+pcall(vim.cmd, "colorscheme moonfly")
