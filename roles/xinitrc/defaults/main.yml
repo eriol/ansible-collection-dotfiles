@@ -1,0 +1,5 @@
+---
+xinitrc_become_admin: true
+xinitrc_become_admin_user: root
+xinitrc_become: true
+xinitrc_become_user: "{{ lookup('env', 'USER') }}"

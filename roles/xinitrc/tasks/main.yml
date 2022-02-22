@@ -1,0 +1,27 @@
+---
+- name: install x11-xserver-utils
+  ansible.builtin.apt:
+    name: x11-xserver-utils
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ xinitrc_become_admin }}"
+  become_user: "{{ xinitrc_become_admin_user }}"
+
+- block:
+    - name: ensure ~/.xinitrc exists
+      ansible.builtin.file:
+        path: ~/.xinitrc
+        state: touch
+
+    - name: remap caps lock to escape
+      ansible.builtin.blockinfile:
+        path: ~/.xinitrc
+        block: |
+          xmodmap -e "clear lock"
+          xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
+          xmodmap -e "keycode 66 = Escape NoSymbol Escape"
+
+  become: "{{ xinitrc_become }}"
+  become_user: "{{ xinitrc_become_user }}"
