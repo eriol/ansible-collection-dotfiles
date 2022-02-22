@@ -55,6 +55,9 @@ opt.termguicolors = true
 -- Misc
 --------------------------------------------------------------------------------
 
+-- Enable undo persistence.
+opt.undofile = true
+
 -- Use italic for comments.
 cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=italic ]]
 -- Use red background for extra trailing whitespaces.
