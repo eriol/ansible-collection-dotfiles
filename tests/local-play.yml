@@ -10,3 +10,4 @@
     - ../roles/git
     - ../roles/neovim
     - ../roles/starship
+    - ../roles/xinitrc
