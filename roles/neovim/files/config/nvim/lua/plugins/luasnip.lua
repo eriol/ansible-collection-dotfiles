@@ -2,6 +2,7 @@ local ls = require "luasnip"
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
 
 function date_rfc3339()
 	local cmd = assert(io.popen "/usr/bin/date --rfc-3339=seconds")
@@ -15,7 +16,7 @@ ls.snippets = {
 		s({ trig = "zolan", dscr = "Create a new zola entry" }, {
 			t({ "+++", "draft = true" }),
 			t({ "", "date = " }),
-			t(date_rfc3339()),
+			f(date_rfc3339, {}, {}),
 			t({ "", 'title = "' }),
 			i(1),
 			t '"',
