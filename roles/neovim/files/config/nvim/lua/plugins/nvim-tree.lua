@@ -1,10 +1,10 @@
 require("nvim-tree").setup({
-	update_focused_file = {
-		enable = true,
-	},
-	view = {
-		width = 35,
-	},
+    update_focused_file = {
+        enable = true,
+    },
+    view = {
+        width = 35,
+    },
 })
 
 vim.g.nvim_tree_quit_on_open = 1
