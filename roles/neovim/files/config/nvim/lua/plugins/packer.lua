@@ -95,6 +95,7 @@ return require("packer").startup({
 		use({
 			"numToStr/Comment.nvim",
 			config = [[require('plugins.comment')]],
+			tag = "v0.6",
 		})
 
 		use({
