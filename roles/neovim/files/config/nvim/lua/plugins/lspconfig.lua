@@ -15,9 +15,6 @@ require("lsp_signature").setup()
 
 lsp_status.register_progress()
 
-local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-end
 local opts = { noremap = true, silent = true }
 
 -- Enable floating window borders
@@ -30,16 +27,18 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local common_on_attach = function(client, bufnr)
     -- Mappings.
-    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-    buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    buf_set_keymap(
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+    vim.api.nvim_buf_set_keymap(
+        bufnr,
         "n",
         "]d",
         '<cmd>lua vim.diagnostic.goto_next({severity_limit = "Warn", popup_opts = {border = "single"}})<cr>',
         opts
     )
-    buf_set_keymap(
+    vim.api.nvim_buf_set_keymap(
+        bufnr,
         "n",
         "[d",
         '<cmd>lua vim.diagnostic.goto_prev({severity_limit = "Warn", popup_opts = {border = "single"}})<cr>',
@@ -71,7 +70,7 @@ null_ls.setup({
     on_attach = function(client, bufnr)
         -- Format on save.
         if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<A-f>", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>", opts)
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-f>", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>", opts)
             vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()"
         end
     end,
