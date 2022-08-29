@@ -11,7 +11,7 @@ function date_rfc3339()
     return output:gsub("\n", "")
 end
 
-ls.snippets = {
+ls.add_snippets(nil, {
     markdown = {
         s({ trig = "zolan", dscr = "Create a new zola entry" }, {
             t({ "+++", "draft = true" }),
@@ -28,6 +28,6 @@ ls.snippets = {
             i(0),
         }),
     },
-}
+})
 
 require("luasnip.loaders.from_vscode").lazy_load()
