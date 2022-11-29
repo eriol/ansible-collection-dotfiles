@@ -115,6 +115,8 @@ return require("packer").startup({
             config = [[require('plugins.vimtex')]],
         })
 
+        use "NoahTheDuke/vim-just"
+
         -- Themes
         use "bluz71/vim-moonfly-colors"
         use "folke/tokyonight.nvim"
