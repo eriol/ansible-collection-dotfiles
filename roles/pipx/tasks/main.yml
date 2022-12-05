@@ -1,0 +1,12 @@
+---
+
+- name: install pipx
+  apt:
+    name:
+      - pipx
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ pipx_become_admin }}"
+  become_user: "{{ pipx_become_admin_user }}"

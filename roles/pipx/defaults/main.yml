@@ -1,0 +1,5 @@
+---
+pipx_become_admin: true
+pipx_become_admin_user: root
+pipx_become: true
+pipx_become_user: "{{ lookup('env', 'USER') }}"

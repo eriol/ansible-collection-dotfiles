@@ -9,5 +9,6 @@
     - ../roles/fontconfig
     - ../roles/git
     - ../roles/neovim
+    - ../roles/pipx
     - ../roles/starship
     - ../roles/xinitrc
