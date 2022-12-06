@@ -1,0 +1,25 @@
+---
+
+- block:
+
+    - name: ensure packagekit is absent
+      ansible.builtin.apt:
+        name: packagekit
+        state: absent
+
+    - name: ensure systemd.conf.d exists
+      ansible.builtin.file:
+        dest: /etc/systemd/systemd.conf.d/
+        state: directory
+        mode: 0755
+
+    - name: ensure short systemd timeout
+      ansible.builtin.copy:
+        dest: /etc/systemd/systemd.conf.d/timeouts.conf
+        content: |
+          DefaultTimeoutStopSec=15s
+          DefaultTimeoutAbortSec=15s
+        mode: 0644
+
+  become: "{{ apt_become }}"
+  become_user: "{{ apt_become_user }}"

@@ -12,4 +12,5 @@
     - ../roles/neovim
     - ../roles/pipx
     - ../roles/starship
+    - ../roles/system
     - ../roles/xinitrc
