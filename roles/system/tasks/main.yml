@@ -23,5 +23,11 @@
           DefaultTimeoutAbortSec=15s
         mode: 0644
 
+    - name: ensure nano is absent
+      ansible.builtin.apt:
+        name:
+          - nano
+        state: absent
+
   become: "{{ apt_become }}"
   become_user: "{{ apt_become_user }}"
