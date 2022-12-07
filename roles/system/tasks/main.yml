@@ -2,9 +2,11 @@
 
 - block:
 
-    - name: ensure packagekit is absent
+    - name: ensure packagekit and appstream are absent
       ansible.builtin.apt:
-        name: packagekit
+        name:
+          - packagekit
+          - appstream
         state: absent
 
     - name: ensure systemd.conf.d exists
