@@ -4,14 +4,16 @@
   connection: local
 
   roles:
-    - ../roles/alacritty
-    - ../roles/audio
     - ../roles/apt
+    - ../roles/networking
+    - ../roles/audio
+    - ../roles/system
+
+    - ../roles/alacritty
+    - ../roles/neovim
     - ../roles/emacs
     - ../roles/fontconfig
     - ../roles/git
-    - ../roles/neovim
     - ../roles/pipx
     - ../roles/starship
-    - ../roles/system
     - ../roles/xinitrc

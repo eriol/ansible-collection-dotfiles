@@ -1,0 +1,40 @@
+---
+
+- block:
+
+    - name: Networking tools
+      ansible.builtin.apt:
+        name:
+          - curl
+          - iftop
+          - bind9-dnsutils
+          - aria2
+          - finger
+          - mitmproxy
+          - mosquitto-clients
+          - mtr
+          - nextcloud-desktop
+          - nmap
+          - smbclient
+        update_cache: true
+        cache_valid_time: 3600
+      tags: apt
+
+    - name: IM
+      ansible.builtin.apt:
+        name:
+          - quassel-client
+          - telegram-desktop
+        update_cache: true
+        cache_valid_time: 3600
+      tags: apt
+
+    - name: ensure net-tools is absent
+      ansible.builtin.apt:
+        name:
+          - net-tools
+        state: absent
+
+
+  become: "{{ apt_become }}"
+  become_user: "{{ apt_become_user }}"
