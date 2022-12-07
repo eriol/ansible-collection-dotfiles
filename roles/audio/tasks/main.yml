@@ -10,8 +10,6 @@
           - libspa-0.2-bluetooth
           - wireplumber
 
-    # TODO: systemctl --user enable pipewire.service pipewire-pulse.service
-
     - name: ensure pulseaudio is absent
       ansible.builtin.apt:
         name:
