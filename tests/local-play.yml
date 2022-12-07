@@ -5,6 +5,7 @@
 
   roles:
     - ../roles/alacritty
+    - ../roles/audio
     - ../roles/apt
     - ../roles/emacs
     - ../roles/fontconfig

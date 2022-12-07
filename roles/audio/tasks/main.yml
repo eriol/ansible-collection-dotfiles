@@ -1,0 +1,21 @@
+---
+
+- block:
+
+    - name: ensure pipewire is present
+      ansible.builtin.apt:
+        name:
+          - pipewire
+          - pipewire-pulse
+          - libspa-0.2-bluetooth
+
+    - name: ensure pulseaudio is absent
+      ansible.builtin.apt:
+        name:
+          - pulseaudio
+          - pulseaudio-module-bluetooth
+        state: absent
+
+
+  become: "{{ apt_become }}"
+  become_user: "{{ apt_become_user }}"
