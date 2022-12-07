@@ -1,0 +1,13 @@
+---
+
+- block:
+
+    - name: ensure nvidia-driver is present
+      ansible.builtin.apt:
+        name:
+          - nvidia-driver
+          # - nvidia-detect  # Needed only to detect the driver to use.
+
+
+  become: "{{ apt_become }}"
+  become_user: "{{ apt_become_user }}"
