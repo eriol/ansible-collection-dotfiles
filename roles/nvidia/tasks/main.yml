@@ -5,8 +5,10 @@
     - name: ensure nvidia-driver is present
       ansible.builtin.apt:
         name:
-          - nvidia-driver
           # - nvidia-detect  # Needed only to detect the driver to use.
+          - nvidia-driver
+          - nvidia-cuda-dev
+          - nvidia-cuda-toolkit
 
 
   become: "{{ apt_become }}"
