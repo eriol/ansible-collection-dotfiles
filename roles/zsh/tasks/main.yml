@@ -1,0 +1,56 @@
+---
+- name: install zsh
+  ansible.builtin.apt:
+    name: zsh
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ zsh_become_admin }}"
+  become_user: "{{ zsh_become_admin_user }}"
+
+- block:
+
+    - name: ensure zsh conf directory and subfolders exists
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ zsh_become_user }}"
+        group: "{{ zsh_become_user }}"
+        mode: 0750
+      with_items:
+        - ~/.config/zsh/
+        - ~/.cache/zsh/
+        - ~/.cache/zsh/completions/
+        - ~/.local/lib/
+
+    - name: install antidote
+      ansible.builtin.git:
+        repo: https://github.com/mattmc3/antidote.git
+        dest: ~/.local/lib/antidote
+        depth: 1
+
+    - name: install configuration files
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "~/.config/zsh/{{ item }}"
+        owner: "{{ zsh_become_user }}"
+        group: "{{ zsh_become_user }}"
+        mode: 0640
+      with_items:
+        - aliases.zsh
+        - functions.zsh
+        - plugins.txt
+        - variables.zsh
+        - zshrc
+
+    - name: link zshrc to user's home
+      ansible.builtin.file:
+        src: ~/.config/zsh/zshrc
+        dest: ~/.zshrc
+        owner: "{{ zsh_become_user }}"
+        group: "{{ zsh_become_user }}"
+        state: link
+
+  become: "{{ zsh_become }}"
+  become_user: "{{ zsh_become_user }}"

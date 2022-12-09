@@ -1,0 +1,11 @@
+robbyrussell/oh-my-zsh path:lib
+
+robbyrussell/oh-my-zsh path:plugins/emoji
+robbyrussell/oh-my-zsh path:plugins/golang
+robbyrussell/oh-my-zsh path:plugins/rust
+robbyrussell/oh-my-zsh path:plugins/virtualenv
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting

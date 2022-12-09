@@ -1,0 +1,47 @@
+autoload colors && colors
+
+export ZSH_CACHE_DIR=~/.cache/zsh
+export ZSH_CONFIG_DIR=~/.config/zsh
+
+fpath=($ZSH_CACHE_DIR/completions/ $fpath)
+autoload -Uz compinit && compinit -d $ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION
+
+typeset -U path
+# Prepend directories: last one will be the first.
+for dir in \
+    /opt/aseprite \
+    /opt/kotlinc/bin \
+    $JAVA_HOME/bin \
+    ~/.yarn/bin \
+    ~/.go/bin \
+    ~/.cargo/bin \
+    ~/.local/bin \
+    ~/.bin \
+; do
+    if [[ -d $dir ]]; then path[1,0]=$dir; fi
+done
+
+source ~/.local/lib/antidote/antidote.zsh
+bundlefile=~/.config/zsh/plugins.txt
+zstyle ':antidote:bundle' file $bundlefile
+staticfile=~/.config/zsh/plugins.zsh
+zstyle ':antidote:static' file $staticfile
+antidote load
+
+[[ -f $ZSH_CONFIG_DIR/variables.zsh ]] && source $ZSH_CONFIG_DIR/variables.zsh
+[[ -f $ZSH_CONFIG_DIR/aliases.zsh ]] && source $ZSH_CONFIG_DIR/aliases.zsh
+[[ -f $ZSH_CONFIG_DIR/functions.zsh ]] && source $ZSH_CONFIG_DIR/functions.zsh
+# [[ -f $ZSH_CONFIG_DIR/zshrc.local ]] && source $ZSH_CONFIG/zshrc.local
+
+# fzf
+[[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
+[[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# virtualenvwrapper
+[[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval $(ssh-agent) > /dev/null
+
+unsetopt share_history

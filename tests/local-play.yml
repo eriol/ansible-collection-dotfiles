@@ -8,6 +8,7 @@
     - ../roles/networking
     - ../roles/audio
     - ../roles/system
+    - ../roles/zsh
 
     - ../roles/alacritty
     - ../roles/neovim

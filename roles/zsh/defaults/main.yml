@@ -1,0 +1,5 @@
+---
+zsh_become_admin: true
+zsh_become_admin_user: root
+zsh_become: true
+zsh_become_user: "{{ lookup('env', 'USER') }}"
