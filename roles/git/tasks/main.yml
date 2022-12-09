@@ -11,15 +11,15 @@
 
 - block:
 
-  - name: copy user .gitconfig
-    ansible.builtin.copy:
-      src: gitconfig
-      dest: ~/.gitconfig
+    - name: copy user .gitconfig
+      ansible.builtin.copy:
+        src: gitconfig
+        dest: ~/.gitconfig
 
-  - name: copy user .gitignore
-    ansible.builtin.copy:
-      src: gitignore
-      dest: ~/.gitignore
+    - name: copy user .gitignore
+      ansible.builtin.copy:
+        src: gitignore
+        dest: ~/.gitignore
 
   become: "{{ git_become }}"
   become_user: "{{ git_become_user }}"
