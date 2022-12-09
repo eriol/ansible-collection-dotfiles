@@ -29,5 +29,5 @@
           - nano
         state: absent
 
-  become: "{{ apt_become }}"
-  become_user: "{{ apt_become_user }}"
+  become: "{{ system_become }}"
+  become_user: "{{ system_become_user }}"
