@@ -11,7 +11,7 @@
 
 - block:
 
-    - name: ensure zsh conf directory and subfolders exists
+    - name: ensure zsh conf/cache directories and subfolders exists
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
@@ -51,6 +51,17 @@
         owner: "{{ zsh_become_user }}"
         group: "{{ zsh_become_user }}"
         state: link
+
+    - name: ensure directories in zshrc exists
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ zsh_become_user }}"
+        group: "{{ zsh_become_user }}"
+        mode: 0750
+      with_items:
+        - ~/.bin
+        - ~/.go/bin
 
   become: "{{ zsh_become }}"
   become_user: "{{ zsh_become_user }}"
