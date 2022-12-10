@@ -12,6 +12,7 @@ for dir in \
     /opt/aseprite \
     /opt/kotlinc/bin \
     $JAVA_HOME/bin \
+    ~/.nix-profile/bin/ \
     ~/.yarn/bin \
     ~/.go/bin \
     ~/.cargo/bin \
