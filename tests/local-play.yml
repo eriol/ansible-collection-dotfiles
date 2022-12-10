@@ -10,6 +10,7 @@
     - ../roles/system
     - ../roles/zsh
 
+    - ../roles/fonts
     - ../roles/alacritty
     - ../roles/neovim
     - ../roles/emacs

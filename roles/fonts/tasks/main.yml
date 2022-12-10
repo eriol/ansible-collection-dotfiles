@@ -1,0 +1,28 @@
+---
+
+- block:
+
+    - name: ensure fonts directory exists
+      ansible.builtin.file:
+        path: "{{ fonts_dir }}"
+        state: directory
+
+    - name: ensure fonts directory h exists
+      ansible.builtin.file:
+        path: "{{ fonts_dir }}/h"
+        state: directory
+
+    - name: ensure Hack font is installed
+      ansible.builtin.shell: "ls {{ fonts_dir }}/h/Hack*Nerd*Font*Complete*"
+      ignore_errors: true
+      register: hack_exists
+
+    - name: download Hack
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0-RC/Hack.zip
+        dest: "{{ lookup('env', 'HOME') }}/.fonts/h/"
+        remote_src: true
+      when: hack_exists is failed
+
+  become: "{{ fonts_become }}"
+  become_user: "{{ fonts_become_user }}"

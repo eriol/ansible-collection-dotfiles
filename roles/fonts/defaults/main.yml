@@ -1,0 +1,7 @@
+---
+fonts_become_admin: true
+fonts_become_admin_user: root
+fonts_become: true
+fonts_become_user: "{{ lookup('env', 'USER') }}"
+
+fonts_dir: "{{ lookup('env', 'HOME') }}/.fonts"
