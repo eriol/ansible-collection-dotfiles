@@ -8,12 +8,29 @@
       - git
     update_cache: true
     cache_valid_time: 3600
-  tags: apt
+  tags: [never, apt]  # I need nvim > 0.8 that is not in Debian yet.
 
   become: "{{ neovim_become_admin }}"
   become_user: "{{ neovim_become_admin_user }}"
 
 - block:
+
+    - name: install neovim from appimage
+      ansible.builtin.get_url:
+        url: https://github.com/neovim/neovim/releases/download/v0.8.1/nvim.appimage
+        dest: ~/.bin
+        checksum: sha256:25658f3db59fac398bc28b7ff7984ed1becdf9a3e98b3e4e226c236c35107054
+      tags: appimage
+
+    - name: link nvim.appimage to nvim inside ~/.bin user's home
+      ansible.builtin.file:
+        src: ~/.bin/nvim.appimage
+        dest: ~/.bin/nvim
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        state: link
+      tags: appimage
+
     - name: ensure ~/.config/nvim and subfolders exist
       ansible.builtin.file:
         path: "{{ item }}"
