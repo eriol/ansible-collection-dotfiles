@@ -3,3 +3,5 @@ git_become_admin: true
 git_become_admin_user: root
 git_become: true
 git_become_user: "{{ lookup('env', 'USER') }}"
+
+git_config_local: ""

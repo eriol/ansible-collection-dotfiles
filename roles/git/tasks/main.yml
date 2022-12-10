@@ -15,11 +15,19 @@
       ansible.builtin.copy:
         src: gitconfig
         dest: ~/.gitconfig
+        mode: 0640
 
     - name: copy user .gitignore
       ansible.builtin.copy:
         src: gitignore
         dest: ~/.gitignore
+        mode: 0640
+
+    - name: set .gitconfig.local
+      ansible.builtin.copy:
+        content: "{{ git_config_local }}"
+        dest: ~/.gitconfig.local
+        mode: 0640
 
   become: "{{ git_become }}"
   become_user: "{{ git_become_user }}"
