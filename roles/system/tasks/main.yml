@@ -29,5 +29,26 @@
           - nano
         state: absent
 
+    - name: ensure archive tools are present
+      ansible.builtin.apt:
+        name:
+          - zip
+          - gzip
+          - bzip2
+          - lz4
+          - pbzip2
+          - unrar
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure terminal tools are present
+      ansible.builtin.apt:
+        name:
+          - bat
+          - ripgrep
+          - moreutils
+        update_cache: true
+        cache_valid_time: 3600
+
   become: "{{ system_become }}"
   become_user: "{{ system_become_user }}"
