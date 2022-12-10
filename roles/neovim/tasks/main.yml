@@ -22,6 +22,15 @@
         checksum: sha256:25658f3db59fac398bc28b7ff7984ed1becdf9a3e98b3e4e226c236c35107054
       tags: appimage
 
+    - name: make nvim.appimage executable by the user
+      ansible.builtin.file:
+        path: ~/.bin/nvim.appimage
+        owner: "{{ neovim_become_user }}"
+        group: "{{ neovim_become_user }}"
+        state: touch
+        mode: '0750'
+      tags: appimage
+
     - name: link nvim.appimage to nvim inside ~/.bin user's home
       ansible.builtin.file:
         src: ~/.bin/nvim.appimage
