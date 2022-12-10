@@ -24,7 +24,7 @@ return require("packer").startup({
         use({
             "nvim-lualine/lualine.nvim",
             config = [[require('plugins.lualine')]],
-            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+            requires = { "nvim-tree/nvim-web-devicons", opt = true },
         })
         use({
             "mhinz/vim-sayonara",
@@ -53,7 +53,7 @@ return require("packer").startup({
         use({
             "folke/trouble.nvim",
             config = [[require('plugins.trouble')]],
-            requires = "kyazdani42/nvim-web-devicons",
+            requires = "nvim-tree/nvim-web-devicons",
         })
         use({
             "folke/todo-comments.nvim",
@@ -62,9 +62,9 @@ return require("packer").startup({
         })
         use "folke/lsp-colors.nvim"
         use({
-            "kyazdani42/nvim-tree.lua",
+            "nvim-tree/nvim-tree.lua",
             config = [[require('plugins.nvim-tree')]],
-            requires = "kyazdani42/nvim-web-devicons",
+            requires = "nvim-tree/nvim-web-devicons",
         })
         use({
             "ray-x/lsp_signature.nvim",
