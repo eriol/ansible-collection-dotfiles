@@ -1,0 +1,42 @@
+---
+
+- block:
+
+    - name: ensure essential development tools are present
+      ansible.builtin.apt:
+        name:
+          - build-essential
+          - sqlite3
+          - direnv
+          - clang
+          - clang-format
+          - clang-tidy
+          - clangd
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure C and C++ tools are present
+      ansible.builtin.apt:
+        name:
+          - clang
+          - clang-format
+          - clang-tidy
+          - clang-tools
+          - clangd
+          - cmake
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure Python tools are present
+      ansible.builtin.apt:
+        name:
+          - black
+          - cookiecutter
+          - flake8
+          - isort
+          - mypy
+        update_cache: true
+        cache_valid_time: 3600
+
+  become: "{{ devel_become }}"
+  become_user: "{{ devel_become_user }}"
