@@ -38,5 +38,20 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: ensure rust stuff is present
+      ansible.builtin.apt:
+        name:
+          - cargo
+          - rustc
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure go stuff is present
+      ansible.builtin.apt:
+        name:
+          - golang
+        update_cache: true
+        cache_valid_time: 3600
+
   become: "{{ devel_become }}"
   become_user: "{{ devel_become_user }}"
