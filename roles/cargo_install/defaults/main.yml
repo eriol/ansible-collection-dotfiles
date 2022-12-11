@@ -1,0 +1,3 @@
+---
+cargo_install_become: true
+cargo_install_become_user: "{{ lookup('env', 'USER') }}"
