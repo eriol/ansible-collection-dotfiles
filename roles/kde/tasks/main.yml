@@ -3,5 +3,5 @@
 - import_tasks: install.yml
   tags: install
 
-- import_tasks: kwriteconfig5.yml
-  tags: kwriteconfig
+- import_tasks: konsole.yml
+  tags: konsole
