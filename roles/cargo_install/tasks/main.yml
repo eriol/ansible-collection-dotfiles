@@ -7,7 +7,7 @@
     - starship
     - just
     - git-delta
-    - tree-sitter
+    - tree-sitter-cli
     - stylua
     - texlab
 
