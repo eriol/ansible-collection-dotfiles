@@ -47,6 +47,16 @@
           - bat
           - ripgrep
           - moreutils
+          - vimdiff
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure monitoring tools are present
+      ansible.builtin.apt:
+        name:
+          - duf
+          - htop
+          - iftop
         update_cache: true
         cache_valid_time: 3600
 
