@@ -45,9 +45,10 @@
       ansible.builtin.apt:
         name:
           - bat
-          - ripgrep
+          - fzf
           - moreutils
           - neovim
+          - ripgrep
         update_cache: true
         cache_valid_time: 3600
 
