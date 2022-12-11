@@ -1,0 +1,5 @@
+---
+kde_become_admin: true
+kde_become_admin_user: root
+kde_become: true
+kde_become_user: "{{ lookup('env', 'USER') }}"
