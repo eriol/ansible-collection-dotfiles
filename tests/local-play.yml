@@ -9,7 +9,7 @@
     - ../roles/audio
     - ../roles/system
     - ../roles/zsh
-
+    #
     - ../roles/fonts
     - ../roles/alacritty
     - ../roles/neovim
@@ -19,3 +19,4 @@
     - ../roles/pipx
     - ../roles/starship
     - ../roles/xinitrc
+    - ../roles/cargo_install
