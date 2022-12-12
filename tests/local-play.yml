@@ -9,7 +9,7 @@
     - ../roles/audio
     - ../roles/system
     - ../roles/zsh
-    #
+
     - ../roles/fonts
     - ../roles/alacritty
     - ../roles/neovim
@@ -20,3 +20,4 @@
     - ../roles/starship
     - ../roles/xinitrc
     - ../roles/cargo_install
+    - ../roles/kde
