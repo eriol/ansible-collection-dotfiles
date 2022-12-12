@@ -17,7 +17,7 @@
         path: "{{ item }}"
         state: directory
       with_items:
-        - /.config/vdirsyncer
+        - ~/.config/vdirsyncer
         - ~/.cache/vdirsyncer/status
         - ~/.local/share/vdirsyncer/contacts
         - ~/.local/share/vdirsyncer/calendars
