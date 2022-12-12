@@ -48,7 +48,6 @@
           - fzf
           - moreutils
           - neovim
-          - python3-keyring
           - ripgrep
         update_cache: true
         cache_valid_time: 3600
@@ -60,6 +59,16 @@
           - htop
           - iftop
           - lm-sensors
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure security tools are present
+      ansible.builtin.apt:
+        name:
+          - gnupg
+          - pass
+          - pass-extension-tomb
+          - python3-keyring
         update_cache: true
         cache_valid_time: 3600
 
