@@ -72,5 +72,14 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: ensure specific fonts are present
+      ansible.builtin.apt:
+        name:
+          - fonts-hack
+          - fonts-texgyre
+          - fonts-texgyre-math
+        update_cache: true
+        cache_valid_time: 3600
+
   become: "{{ system_become }}"
   become_user: "{{ system_become_user }}"
