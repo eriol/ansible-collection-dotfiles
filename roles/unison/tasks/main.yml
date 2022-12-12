@@ -19,7 +19,7 @@
 
     - name: copy unison profile file
       ansible.builtin.copy:
-        contant: "{{ unison_profile }}"
+        content: "{{ unison_profile }}"
         dest: ~/.unison/default.prf
 
   become: "{{ unison_become }}"
