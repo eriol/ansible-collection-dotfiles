@@ -1,4 +1,15 @@
 ---
+
+- name: install alacritty
+  ansible.builtin.apt:
+    name: alacritty
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ alacritty_become_admin }}"
+  become_user: "{{ alacritty_become_admin_user }}"
+
 - block:
 
     - name: ensure ~/.config/alacritty exists

@@ -1,3 +1,5 @@
 ---
+alacritty_become_admin: true
+alacritty_become_admin_user: root
 alacritty_become: true
 alacritty_become_user: "{{ lookup('env', 'USER') }}"
