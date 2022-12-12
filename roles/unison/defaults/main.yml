@@ -1,0 +1,5 @@
+---
+unison_become_admin: true
+unison_become_admin_user: root
+unison_become: true
+unison_become_user: "{{ lookup('env', 'USER') }}"

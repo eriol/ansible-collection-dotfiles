@@ -1,0 +1,26 @@
+---
+
+- name: install unison
+  ansible.builtin.apt:
+    name: unison
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ unison_become_admin }}"
+  become_user: "{{ unison_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.unison exists
+      ansible.builtin.file:
+        path: ~/.unison
+        state: directory
+
+    - name: copy unison profile file
+      ansible.builtin.copy:
+        contant: "{{ unison_profile }}"
+        dest: ~/.unison/default.prf
+
+  become: "{{ unison_become }}"
+  become_user: "{{ unison_become_user }}"
