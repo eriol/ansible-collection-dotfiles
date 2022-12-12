@@ -2,9 +2,22 @@
 
 - block:
 
+    - name: ensure ~/.local/share/konsole exists
+      ansible.builtin.file:
+        path: ~/.local/share/konsole
+        state: directory
+
+    - name: copy colorschemes and profiles
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "~/.{{ item }}"
+      with_items:
+        - local/share/konsole/Molokai.colorscheme
+        - local/share/konsole/Main.profile
+
     - name: configure konsole
       ansible.builtin.shell:
-        cmd: "kwriteconfig5 --file {{ item.file }} --group {{ item.group }} --key {{ item.key }} {{ item.value }}"
+        cmd: "kwriteconfig5 --file {{ item.file }} --group '{{ item.group }}' --key {{ item.key }} {{ item.value }}"
       with_items:
         - file: konsolerc
           group: MainWindow
@@ -14,5 +27,10 @@
           group: MainWindow
           key: State
           value: AAAA/wAAAAD9AAAAAQAAAAAAAAAAAAAAAPwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAAVgBAAAD+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAAD/////AAAA3wEAAAMAAAP+AAACKgAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAAAAAQv/////AAAAAAAAAAA=
+        - file: konsolerc
+          group: Desktop Entry
+          key: DefaultProfile
+          value: Main.profile
+
   become: "{{ kde_become }}"
   become_user: "{{ kde_become_user }}"
