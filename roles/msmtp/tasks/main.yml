@@ -17,7 +17,7 @@
         path: ~/.config/msmtp
         state: directory
 
-    - name: copy user .msmtprc
+    - name: copy user msmtprc
       ansible.builtin.copy:
         content: "{{ msmtp_config }}"
         dest: ~/.config/msmtp/mstprc
