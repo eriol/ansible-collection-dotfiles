@@ -1,0 +1,29 @@
+---
+
+- name: install msmtp
+  ansible.builtin.apt:
+    name: msmtp
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ msmtp_become_admin }}"
+  become_user: "{{ msmtp_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.config/msmtp exists
+      ansible.builtin.file:
+        path: ~/.config/msmtp
+        state: directory
+
+    - name: copy user .msmtprc
+      ansible.builtin.copy:
+        content: "{{ msmtp_config }}"
+        dest: ~/.config/msmtp/mstprc
+        owner: "{{ msmtp_become_user }}"
+        group: "{{ msmtp_become_user }}"
+        mode: 0640
+
+  become: "{{ msmtp_become }}"
+  become_user: "{{ msmtp_become_user }}"

@@ -1,0 +1,7 @@
+---
+msmtp_become_admin: true
+msmtp_become_admin_user: root
+msmtp_become: true
+msmtp_become_user: "{{ lookup('env', 'USER') }}"
+
+msmtp_config: ""

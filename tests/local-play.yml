@@ -21,3 +21,4 @@
     - ../roles/xinitrc
     - ../roles/cargo_install
     - ../roles/kde
+    - ../roles/msmtp
