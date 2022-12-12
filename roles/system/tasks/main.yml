@@ -59,6 +59,7 @@
           - duf
           - htop
           - iftop
+          - lm-sensors
         update_cache: true
         cache_valid_time: 3600
 
