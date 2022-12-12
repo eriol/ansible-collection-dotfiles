@@ -1,0 +1,26 @@
+---
+
+- name: install khal
+  ansible.builtin.apt:
+    name: khal
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ khal_become_admin }}"
+  become_user: "{{ khal_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.config/khal exists
+      ansible.builtin.file:
+        path: ~/.config/khal
+        state: directory
+
+    - name: copy khal config file
+      ansible.builtin.copy:
+        content: "{{ khal_config }}"
+        dest: ~/.config/khal/config
+
+  become: "{{ khal_become }}"
+  become_user: "{{ khal_become_user }}"

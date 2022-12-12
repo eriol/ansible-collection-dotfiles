@@ -1,0 +1,7 @@
+---
+khal_become_admin: true
+khal_become_admin_user: root
+khal_become: true
+khal_become_user: "{{ lookup('env', 'USER') }}"
+
+khal_config: ""
