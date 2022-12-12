@@ -1,0 +1,10 @@
+---
+
+- name: install stuff with go install
+  ansible.builtin.shell:
+    cmd: "go install {{ item }}"
+  with_items:
+    - github.com/gopasspw/gopass@v1.15.1
+
+  become: "{{ go_install_become }}"
+  become_user: "{{ go_install_become_user }}"

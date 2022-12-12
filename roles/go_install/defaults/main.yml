@@ -1,0 +1,3 @@
+---
+go_install_become: true
+go_install_become_user: "{{ lookup('env', 'USER') }}"

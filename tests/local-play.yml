@@ -17,9 +17,10 @@
     - ../roles/fontconfig
     - ../roles/git
     - ../roles/pipx
+    - ../roles/direnv
     - ../roles/starship
     - ../roles/xinitrc
     - ../roles/cargo_install
-    - ../roles/kde
+    - ../roles/go_install
     - ../roles/msmtp
-    - ../roles/direnv
+    - ../roles/kde
