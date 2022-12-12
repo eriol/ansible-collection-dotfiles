@@ -1,0 +1,31 @@
+---
+
+- name: install vdirsyncer
+  ansible.builtin.apt:
+    name: vdirsyncer
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ vdirsyncer_become_admin }}"
+  become_user: "{{ vdirsyncer_become_admin_user }}"
+
+- block:
+
+    - name: ensure directories for vdirsyncer exists
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - /.config/vdirsyncer
+        - ~/.cache/vdirsyncer/status
+        - ~/.local/share/vdirsyncer/contacts
+        - ~/.local/share/vdirsyncer/calendars
+
+    - name: copy vdirsyncer config file
+      ansible.builtin.copy:
+        content: "{{ vdirsyncer_config }}"
+        dest: ~/.config/vdirsyncer/config
+
+  become: "{{ vdirsyncer_become }}"
+  become_user: "{{ vdirsyncer_become_user }}"
