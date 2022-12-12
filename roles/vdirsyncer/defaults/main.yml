@@ -3,3 +3,5 @@ vdirsyncer_become_admin: true
 vdirsyncer_become_admin_user: root
 vdirsyncer_become: true
 vdirsyncer_become_user: "{{ lookup('env', 'USER') }}"
+
+vdirsyncer_config: ""
