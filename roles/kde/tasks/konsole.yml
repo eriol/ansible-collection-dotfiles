@@ -23,6 +23,7 @@
           group: MainWindow
           key: MenuBar
           value: Disabled
+          # Hide toolbars.
         - file: konsolerc
           group: MainWindow
           key: State
