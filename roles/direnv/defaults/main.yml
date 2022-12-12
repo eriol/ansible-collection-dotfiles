@@ -1,0 +1,5 @@
+---
+direnv_become_admin: true
+direnv_become_admin_user: root
+direnv_become: true
+direnv_become_user: "{{ lookup('env', 'USER') }}"

@@ -1,0 +1,26 @@
+---
+
+- name: install direnv
+  ansible.builtin.apt:
+    name: direnv
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ direnv_become_admin }}"
+  become_user: "{{ direnv_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.config/direnv exists
+      ansible.builtin.file:
+        path: ~/.config/direnv
+        state: directory
+
+    - name: copy direnv config file
+      ansible.builtin.copy:
+        src: config/direnv/direnvrc
+        dest: ~/.config/direnv/direnvrc
+
+  become: "{{ direnv_become }}"
+  become_user: "{{ direnv_become_user }}"

@@ -7,11 +7,6 @@
         name:
           - build-essential
           - sqlite3
-          - direnv
-          - clang
-          - clang-format
-          - clang-tidy
-          - clangd
         update_cache: true
         cache_valid_time: 3600
 

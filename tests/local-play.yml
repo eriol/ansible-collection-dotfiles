@@ -22,3 +22,4 @@
     - ../roles/cargo_install
     - ../roles/kde
     - ../roles/msmtp
+    - ../roles/direnv
