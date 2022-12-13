@@ -21,6 +21,8 @@ return require("packer").startup({
 
         use "lewis6991/impatient.nvim"
 
+        use "nvim-tree/nvim-web-devicons"
+
         use({
             "nvim-lualine/lualine.nvim",
             config = [[require('plugins.lualine')]],
