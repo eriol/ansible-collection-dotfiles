@@ -48,6 +48,7 @@ local common_on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
 end
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     debug = false,
     sources = {
@@ -69,9 +70,15 @@ null_ls.setup({
     },
     on_attach = function(client, bufnr)
         -- Format on save.
-        if client.server_capabilities.document_formatting then
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-f>", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>", opts)
-            vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()"
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                   vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
         end
     end,
 })
