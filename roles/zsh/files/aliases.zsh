@@ -15,4 +15,4 @@ alias g++11='g++ -std=c++11'
 
 # Debian
 
-alias lintian='lintian -EIL +pedantic --show-overrides --color auto'
+alias lintian='lintian -EIL +pedantic --show-overrides --color auto --tag-display-limit 0'
