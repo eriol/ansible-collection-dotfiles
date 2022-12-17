@@ -26,7 +26,6 @@ return require("packer").startup({
         use({
             "nvim-lualine/lualine.nvim",
             config = [[require('plugins.lualine')]],
-            requires = { "nvim-tree/nvim-web-devicons", opt = true },
         })
         use({
             "mhinz/vim-sayonara",
