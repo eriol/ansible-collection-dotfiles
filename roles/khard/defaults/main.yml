@@ -1,0 +1,7 @@
+---
+khard_become_admin: true
+khard_become_admin_user: root
+khard_become: true
+khard_become_user: "{{ lookup('env', 'USER') }}"
+
+khard_config: ""

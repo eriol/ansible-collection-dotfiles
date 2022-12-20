@@ -1,0 +1,26 @@
+---
+
+- name: install khard
+  ansible.builtin.apt:
+    name: khard
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ khard_become_admin }}"
+  become_user: "{{ khard_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.config/khard exists
+      ansible.builtin.file:
+        path: ~/.config/khard
+        state: directory
+
+    - name: copy khard config file
+      ansible.builtin.copy:
+        content: "{{ khard_config }}"
+        dest: ~/.config/khard/khard.conf
+
+  become: "{{ khard_become }}"
+  become_user: "{{ khard_become_user }}"
