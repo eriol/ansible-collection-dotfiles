@@ -1,0 +1,7 @@
+---
+- name: systemctl user daemon-reload
+  systemd:
+    scope: user
+    daemon_reload: true
+  become: "{{ mbsync_become }}"
+  become_user: "{{ mbsync_become_user }}"

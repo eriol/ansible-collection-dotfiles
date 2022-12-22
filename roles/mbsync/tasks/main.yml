@@ -1,0 +1,48 @@
+---
+- name: install isync
+  ansible.builtin.apt:
+    name: isync
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ mbsync_become_admin }}"
+  become_user: "{{ mbsync_become_admin_user }}"
+
+- block:
+
+    # Only the future 1.5 release will follow XDG Base Directory Specifications
+    # https://sourceforge.net/p/isync/feature-requests/14/
+    - name: copy mbsync config file
+      ansible.builtin.copy:
+        content: "{{ mbsync_config }}"
+        dest: ~/.mbsyncrc
+
+    - name: ensure ~/.config/systemd/user exists
+      ansible.builtin.file:
+        path: ~/.config/systemd/user
+        state: directory
+
+    - name: install isync systemd user unit file
+      ansible.builtin.copy:
+        src: config/systemd/user/mbsync.service
+        dest: ~/.config/systemd/user/mbsync.service
+      notify:
+        - systemctl user daemon-reload
+
+    - name: install isync systemd user timer file
+      ansible.builtin.copy:
+        src: config/systemd/user/mbsync.timer
+        dest: ~/.config/systemd/user/mbsync.timer
+      notify:
+        - systemctl user daemon-reload
+
+    - name: systemctl user start and enable isync timer
+      systemd:
+        scope: user
+        name: mbsync.timer
+        enabled: true
+        state: started
+
+  become: "{{ mbsync_become }}"
+  become_user: "{{ mbsync_become_user }}"

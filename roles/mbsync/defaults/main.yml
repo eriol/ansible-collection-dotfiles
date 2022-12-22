@@ -1,0 +1,7 @@
+---
+mbsync_become_admin: true
+mbsync_become_admin_user: root
+mbsync_become: true
+mbsync_become_user: "{{ lookup('env', 'USER') }}"
+
+mbsync_config: ""
