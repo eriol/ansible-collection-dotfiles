@@ -14,9 +14,14 @@
     # Only the future 1.5 release will follow XDG Base Directory Specifications
     # https://sourceforge.net/p/isync/feature-requests/14/
     - name: copy mbsync config file
-      ansible.builtin.copy:
-        content: "{{ mbsync_config }}"
+      ansible.builtin.templates:
+        src: mbsyncrc.j2
         dest: ~/.mbsyncrc
+
+    - name: ensure ~/.mail/{{ mbsync_imap_account }}/ exists
+      ansible.builtin.file:
+        path: "~/.mail/{{ mbsync_imap_account }}/"
+        state: directory
 
     - name: ensure ~/.config/systemd/user exists
       ansible.builtin.file:

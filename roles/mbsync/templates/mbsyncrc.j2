@@ -1,0 +1,24 @@
+# {{ ansible_managed }}
+
+IMAPAccount {{ mbsync_imap_account }}
+Host {{ mbsync_host }}
+User {{ mbsync_user }}
+PassCmd "{{ mbsync_passcmd }}"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore {{ mbsync_imap_account }}-remote
+Account {{ mbsync_imap_account }}
+
+MaildirStore {{ mbsync_imap_account }}-local
+Path ~/.mail/{{ mbsync_imap_account }}/
+Inbox ~/.mail/{{ mbsync_imap_account }}/Inbox
+SubFolders Verbatim
+
+Channel {{ mbsync_imap_account }}
+Far :{{ mbsync_imap_account }}-remote:
+Near :{{ mbsync_imap_account }}-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *

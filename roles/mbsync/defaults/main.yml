@@ -4,4 +4,7 @@ mbsync_become_admin_user: root
 mbsync_become: true
 mbsync_become_user: "{{ lookup('env', 'USER') }}"
 
-mbsync_config: ""
+mbsync_imap_account: "user@example.org"
+mbsync_host: "mail.example.org"
+mbsync_user: "user"
+mbsync_passcmd: "echo secret"
