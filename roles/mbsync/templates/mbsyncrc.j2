@@ -11,9 +11,9 @@ IMAPStore {{ mbsync_imap_account }}-remote
 Account {{ mbsync_imap_account }}
 
 MaildirStore {{ mbsync_imap_account }}-local
+SubFolders Verbatim
 Path ~/.mail/{{ mbsync_imap_account }}/
 Inbox ~/.mail/{{ mbsync_imap_account }}/Inbox
-SubFolders Verbatim
 
 Channel {{ mbsync_imap_account }}
 Far :{{ mbsync_imap_account }}-remote:
