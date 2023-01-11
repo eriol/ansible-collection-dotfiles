@@ -11,13 +11,13 @@
 
     - name: ensure systemd.conf.d exists
       ansible.builtin.file:
-        dest: /etc/systemd/systemd.conf.d/
+        dest: /etc/systemd/system.conf.d/
         state: directory
         mode: 0755
 
     - name: ensure short systemd timeout
       ansible.builtin.copy:
-        dest: /etc/systemd/systemd.conf.d/timeouts.conf
+        dest: /etc/systemd/system.conf.d/timeouts.conf
         content: |
           DefaultTimeoutStopSec=15s
           DefaultTimeoutAbortSec=15s
