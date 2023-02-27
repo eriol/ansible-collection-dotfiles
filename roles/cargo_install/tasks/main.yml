@@ -10,6 +10,8 @@
     - tree-sitter-cli
     - stylua
     - texlab
+    - cargo-watch
+    - cargo-tarpaulin
 
   become: "{{ cargo_install_become }}"
   become_user: "{{ cargo_install_become_user }}"
