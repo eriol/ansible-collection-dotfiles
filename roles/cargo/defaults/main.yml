@@ -1,0 +1,5 @@
+---
+cargo_become_admin: true
+cargo_become_admin_user: root
+cargo_become: true
+cargo_become_user: "{{ lookup('env', 'USER') }}"

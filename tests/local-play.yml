@@ -20,6 +20,7 @@
     - ../roles/direnv
     - ../roles/starship
     - ../roles/xinitrc
+    - ../roles/cargo
     - ../roles/cargo_install
     - ../roles/go_install
     - ../roles/msmtp

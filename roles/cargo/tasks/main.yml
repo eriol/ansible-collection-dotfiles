@@ -1,0 +1,32 @@
+---
+
+- name: install dependencies
+  ansible.builtin.apt:
+    name:
+      - clang
+      - lld
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ cargo_become_admin }}"
+  become_user: "{{ cargo_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.cargo/config.toml exist
+      ansible.builtin.file:
+        path: ~/.cargo/config.toml
+        owner: "{{ cargo_become_user }}"
+        mode: '0640'
+        state: touch
+
+    - name: Use ldd linker
+      ansible.builtin.blockinfile:
+        path: ~/.cargo/config.toml
+        block: |
+          [target.x86_64-unknown-linux-gnu]
+          rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=lld"]
+
+  become: "{{ cargo_become }}"
+  become_user: "{{ cargo_become_user }}"
