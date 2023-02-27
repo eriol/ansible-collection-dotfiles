@@ -1,3 +1,5 @@
 ---
 cargo_install_become: true
 cargo_install_become_user: "{{ lookup('env', 'USER') }}"
+
+cargo_install_cargo_binary: ~/.cargo/bin/cargo

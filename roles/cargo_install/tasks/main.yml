@@ -1,9 +1,9 @@
 ---
 
 - name: install stuff with cargo
-  ansible.builtin.shell:
-    cmd: "cargo install {{ item }}"
-  with_items:
+  ansible.builtin.command:
+    cmd: "{{ cargo_install_cargo_binary }} install {{ item }}"
+  loop:
     - starship
     - just
     - git-delta
