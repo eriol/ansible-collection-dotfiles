@@ -229,3 +229,9 @@
 
 ; expandtab
 (setq-default indent-tabs-mode nil)
+
+; Enable world wrap and disable truncate lines.
+(set-default 'word-wrap t)
+(set-default 'truncate-lines nil)
+(setq helm-buffers-truncate-lines nil)
+(setq org-startup-truncated nil)
