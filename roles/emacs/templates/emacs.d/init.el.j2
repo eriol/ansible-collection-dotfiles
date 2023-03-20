@@ -153,6 +153,15 @@
   (require 'org-roam-protocol)
   (require 'org-roam-dailies)
 
+  ; Set org-roam buffer display to the right.
+  (add-to-list 'display-buffer-alist
+    '("\\*org-roam\\*"
+      (display-buffer-in-direction)
+      (direction . right)
+      (window-width . 0.33)
+      (window-parameters . ((no-other-window . t)
+                            (no-delete-other-windows . t)))))
+
   (defun org-agenda-has-todos-files ()
     "Return a list of note files containing 'has_todos' tag."
     (seq-uniq
@@ -170,7 +179,6 @@
     (setq org-agenda-files (org-agenda-has-todos-files)))
 
   (advice-add 'org-agenda :before #'org-agenda-files-update)
-
 
   (require 'org-indent)
 
