@@ -122,6 +122,7 @@
   :ensure t
   :init
   (setq org-roam-v2-ack t)
+  (setq org-roam-dailies-directory "journal/")
   :custom
   (org-roam-directory (file-truename "{{ emacs_org_roam_directory }}"))
   (org-roam-completion-everywhere t)
@@ -139,12 +140,17 @@
          ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
-         ("C-c n j" . org-roam-dailies-capture-today)
          :map org-mode-map
-         ("C-M-i"   . completion-at-point))
+         ("C-M-i"   . completion-at-point)
+         :map org-roam-dailies-map
+         ("Y" . org-roam-dailies-capture-yesterday)
+         ("T" . org-roam-dailies-capture-tomorrow))
+  :bind-keymap
+  ("C-c n d" . org-roam-dailies-map)
   :config
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
+  (require 'org-roam-dailies)
 
   (defun org-agenda-has-todos-files ()
     "Return a list of note files containing 'has_todos' tag."
