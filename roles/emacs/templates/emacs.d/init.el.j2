@@ -124,6 +124,7 @@
   :init
   (setq org-roam-v2-ack t)
   (setq org-roam-dailies-directory "journal/")
+  (setq org-link-frame-setup '((file . find-file)))
   :custom
   (org-roam-directory (file-truename "{{ emacs_org_roam_directory }}"))
   (org-roam-completion-everywhere t)
