@@ -25,6 +25,17 @@
 ;   (setq auto-package-update-hide-results t)
 ;   (auto-package-update-maybe))
 
+; Theme
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-nord t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
+
 ; Be evil!
 (use-package evil
   :ensure t
@@ -241,17 +252,6 @@
 (scroll-bar-mode -1) ; Disable the scrollbar.
 (blink-cursor-mode -1)
 (column-number-mode t)
-
-; Theme
-(use-package doom-themes
-  :ensure t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-nord t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-treemacs-config)
-  (doom-themes-org-config))
 
 ; Show the max column indicator in programming modes.
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
