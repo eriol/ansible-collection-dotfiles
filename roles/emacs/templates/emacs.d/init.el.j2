@@ -129,6 +129,12 @@
     (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
 
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  (add-hook 'org-mode-hook (lambda ()
+    (setq-local time-stamp-active t
+                time-stamp-start "#\\+last_modified:[ \t]*"
+                time-stamp-end "$"
+                time-stamp-format "\[%Y-%02m-%02d %3a %02H:%02M\]")
+    (add-hook 'before-save-hook 'time-stamp nil 'local)))
   ; Tweak looks
   (setq org-hide-emphasis-markers t
         org-pretty-entities t
@@ -169,12 +175,12 @@
    '(("d" "default" plain
       "%?"
       :if-new (file+head "${slug}.org"
-                         "#+title: ${title}\n#+date: %u\n#+lastmod: \n\n")
+                         "#+title: ${title}\n#+date: %u\n#+last_modified: %u\n\n\n")
       :unnarrowed t)
      ("p" "projects" plain
       "%?\n* Tasks\n\n** TODO tasks go here!"
       :if-new (file+head "projects/${slug}.org"
-                         "#+title: ${title}\n#+filetags: :has_todos:project:\n#+date: %u\n#+lastmod: \n\n")
+                         "#+title: ${title}\n#+filetags: :has_todos:project:\n#+date: %u\n#+last_modified: %u\n\n\n")
       :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
