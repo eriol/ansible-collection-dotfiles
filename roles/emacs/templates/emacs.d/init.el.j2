@@ -263,11 +263,8 @@
 ; expandtab
 (setq-default indent-tabs-mode nil)
 
-; Enable world wrap and disable truncate lines.
-(set-default 'word-wrap t)
-(set-default 'truncate-lines nil)
-(setq helm-buffers-truncate-lines nil)
-(setq org-startup-truncated nil)
+; Enable world wrap for all the things!
+(global-visual-line-mode t)
 
 ; Increase size of LaTeX fragment previews
 (plist-put org-format-latex-options :scale 2)
