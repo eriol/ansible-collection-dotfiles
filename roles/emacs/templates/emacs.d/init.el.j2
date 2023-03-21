@@ -113,8 +113,12 @@
                   (org-level-8 . 0.80)))
     (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
-  ; Hide emphasis markup.
-  (setq org-hide-emphasis-markers t)
+  ; Tweak looks
+  (setq org-hide-emphasis-markers t
+        org-pretty-entities t
+        org-startup-indented t
+        org-startup-with-inline-images t
+        org-image-actual-width '(640))
 
   (setq org-babel-python-command "python3")
   (setq org-confirm-babel-evaluate nil)
