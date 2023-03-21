@@ -3,6 +3,8 @@
 ; Set garbage collection threshold to 100 Mbyte.
 (setq gc-cons-threshold (* 100 1024 1024))
 
+(set-frame-font "Hack Nerd Font 11" nil t)
+
 ; Enable package repositories.
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
