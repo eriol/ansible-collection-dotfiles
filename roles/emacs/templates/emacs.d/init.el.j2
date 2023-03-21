@@ -116,6 +116,13 @@
   ; Hide emphasis markup.
   (setq org-hide-emphasis-markers t)
 
+  (setq org-babel-python-command "python3")
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+     '((python . t)
+       (shell  . t)))
+
 ) ; End of use-package org block
 
 (use-package org-superstar
