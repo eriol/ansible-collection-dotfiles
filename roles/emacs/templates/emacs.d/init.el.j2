@@ -110,7 +110,11 @@
                   (org-level-7 . 0.85)
                   (org-level-8 . 0.80)))
     (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
-  (add-hook 'org-capture-mode-hook 'evil-insert-state))
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  ; Hide emphasis markup.
+  (setq org-hide-emphasis-markers t)
+
+) ; End of use-package org block
 
 (use-package org-superstar
   :ensure t
