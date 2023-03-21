@@ -249,7 +249,9 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
   (load-theme 'doom-nord t)
-  (doom-themes-visual-bell-config))
+  (doom-themes-visual-bell-config)
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
 
 ; Show the max column indicator in programming modes.
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
