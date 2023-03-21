@@ -151,6 +151,10 @@
   :custom
   (org-superstar-remove-leading-stars t))
 
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode))
+
 (use-package org-roam
   :ensure t
   :init
