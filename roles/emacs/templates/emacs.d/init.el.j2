@@ -44,6 +44,7 @@
   (evil-mode 1)
   (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
   (evil-define-key 'normal 'global (kbd "C-n") #'treemacs)
+  (evil-define-key 'normal 'global (kbd "gz") #'kill-this-buffer)
   (evil-set-undo-system 'undo-fu))
 
 (use-package general
