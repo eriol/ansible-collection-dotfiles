@@ -93,6 +93,7 @@
 (use-package org
   :ensure t
   :config
+  (require 'org-faces)
   (setq org-agenda-files
     '("{{ emacs_org_directory }}/inbox.org"))
   (setq org-capture-templates
@@ -102,6 +103,8 @@
     '((sequence "TODO(t)" "STARTED(s!)" "NEXT(n)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")
       (sequence "TOREAD" "STARTED(s!)" "|" "FINISHED(f!)")))
   (setq org-log-done 'time)
+
+  ; Resize headings
   (set-face-attribute 'org-document-title nil :font "Fira Code" :weight 'bold :height 1.3)
   (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
@@ -112,6 +115,7 @@
                   (org-level-7 . 0.85)
                   (org-level-8 . 0.80)))
     (set-face-attribute (car face) nil :font "Fira Code" :weight 'medium :height (cdr face)))
+
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
   ; Tweak looks
   (setq org-hide-emphasis-markers t
