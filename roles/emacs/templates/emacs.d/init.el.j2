@@ -168,11 +168,13 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :if-new (file+head "${slug}.org"
+                         "#+title: ${title}\n#+date: %u\n#+lastmod: \n\n")
       :unnarrowed t)
      ("p" "projects" plain
       "%?\n* Tasks\n\n** TODO tasks go here!"
-      :if-new (file+head "projects/${slug}.org" "#+title: ${title}\n#+filetags: :has_todos:project:")
+      :if-new (file+head "projects/${slug}.org"
+                         "#+title: ${title}\n#+filetags: :has_todos:project:\n#+date: %u\n#+lastmod: \n\n")
       :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
