@@ -57,6 +57,9 @@ opt.termguicolors = true
 
 -- Enable undo persistence.
 opt.undofile = true
+-- Enable modeline, since it uses an allowlist approach since neovim >= 0.5:
+-- https://github.com/neovim/neovim/issues/2865
+opt.modeline = true
 
 -- Use italic for comments.
 cmd [[ autocmd Colorscheme * highlight Comment cterm=italic term=italic gui=italic ]]
