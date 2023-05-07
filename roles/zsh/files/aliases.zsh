@@ -6,6 +6,7 @@ alias l='ls'
 alias mutt='neomutt'
 alias piken='noglob piken'
 alias wget='wget -c'
+alias ip='ip --color=auto'
 
 # gcc
 alias gcc99='gcc -O -Wall -Wextra -pedantic -ansi -std=c99'
