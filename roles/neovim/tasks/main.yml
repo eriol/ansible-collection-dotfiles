@@ -81,6 +81,7 @@
         - luasnip.lua
         - nvim-autopairs.lua
         - nvim-cmp.lua
+        - nvim-surround.lua
         - nvim-tree.lua
         - nvim-treesitter.lua
         - packer.lua

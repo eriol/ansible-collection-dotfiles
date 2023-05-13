@@ -93,6 +93,12 @@ return require("packer").startup({
             after = { "nvim-cmp" },
             config = [[require('plugins.nvim-autopairs')]],
         })
+
+        use({
+            "kylechui/nvim-surround",
+            config = [[require('plugins.nvim-surround')]],
+        })
+
         use({
             "numToStr/Comment.nvim",
             config = [[require('plugins.comment')]],
