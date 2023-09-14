@@ -13,13 +13,13 @@
         state: directory
 
     - name: ensure Hack font is installed
-      ansible.builtin.shell: "ls {{ fonts_dir }}/h/Hack*Nerd*Font*Complete*"
+      ansible.builtin.shell: "ls {{ fonts_dir }}/h/HackNerdFont*"
       ignore_errors: true
       register: hack_exists
 
     - name: download Hack
       ansible.builtin.unarchive:
-        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Hack.zip
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
         dest: "{{ lookup('env', 'HOME') }}/.fonts/h/"
         remote_src: true
       when: hack_exists is failed
