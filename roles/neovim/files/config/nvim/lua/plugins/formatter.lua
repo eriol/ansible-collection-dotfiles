@@ -5,7 +5,7 @@ require("formatter").setup({
             require("formatter.filetypes.go").gofmt,
             require("formatter.filetypes.go").goimports,
 
-        }
+        },
 
         lua = {
             require("formatter.filetypes.lua").stylua,
@@ -15,7 +15,7 @@ require("formatter").setup({
             require("formatter.filetypes.python").black,
             require("formatter.filetypes.python").isort,
 
-        }
+        },
 
         rust = {
             require("formatter.filetypes.rust").rustfmt,
