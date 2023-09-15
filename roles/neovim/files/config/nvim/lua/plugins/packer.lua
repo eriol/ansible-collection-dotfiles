@@ -1,19 +1,5 @@
 -- Plugins configuration.
 
-local ft_programming = {
-    "bash",
-    "c",
-    "cmake",
-    "cpp",
-    "html",
-    "markdown",
-    "python",
-    "sh",
-    "tex",
-    "vim",
-    "zsh",
-}
-
 return require("packer").startup({
     function()
         -- Make packer manage itself.
