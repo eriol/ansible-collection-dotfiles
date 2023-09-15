@@ -78,6 +78,7 @@
         - gitsigns.lua
         - indent-blankline.lua
         - lint.lua
+        - lsp-status.lua
         - lspconfig.lua
         - lualine.lua
         - luasnip.lua

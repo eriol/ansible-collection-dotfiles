@@ -1,33 +1,50 @@
-local cmp = require "cmp"
-local luasnip = require "luasnip"
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+local lspconfig = require "lspconfig"
+
+-- Enable language servers with the additional completion capabilities
+-- offered by nvim-cmp
+local servers = {
+    "ansiblels",
+    "esbonio",
+    "gopls",
+    "pyright",
+    "rust_analyzer",
+    "texlab",
+}
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup({
+        -- on_attach = my_custom_on_attach,
+        capabilities = capabilities,
+    })
 end
 
+-- luasnip setup
+local luasnip = require "luasnip"
+
+-- nvim-cmp setup
+local cmp = require "cmp"
 cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
-
-    completion = {
-        completeopt = "menu,menuone,noinsert",
-        keyword_length = 2,
-    },
-
-    mapping = {
-        ["<cr>"] = cmp.mapping.confirm(),
+    mapping = cmp.mapping.preset.insert({
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+        ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+        -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
             else
                 fallback()
             end
@@ -41,8 +58,7 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
-    },
-
+    }),
     sources = {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },

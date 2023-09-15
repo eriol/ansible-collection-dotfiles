@@ -8,61 +8,45 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local lspconfig = require "lspconfig"
-local lsp_status = require "lsp-status"
-require("lsp_signature").setup()
+-- NOTE: server setup is done in nvim-cmp config.
+-- local lspconfig = require "lspconfig"
+-- lspconfig.pyright.setup({})
+-- lspconfig.rust_analyzer.setup({})
 
-lsp_status.register_progress()
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
-local opts = { noremap = true, silent = true }
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
--- Enable floating window borders
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "single",
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+        vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set("n", "<space>wl", function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<space>f", function()
+            vim.lsp.buf.format({ async = true })
+        end, opts)
+    end,
 })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-    border = "single",
-})
-
-local common_on_attach = function(client, bufnr)
-    -- Mappings.
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "]d",
-        '<cmd>lua vim.diagnostic.goto_next({severity_limit = "Warn", popup_opts = {border = "single"}})<cr>',
-        opts
-    )
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "[d",
-        '<cmd>lua vim.diagnostic.goto_prev({severity_limit = "Warn", popup_opts = {border = "single"}})<cr>',
-        opts
-    )
-
-    lsp_status.on_attach(client)
-end
-
--- Use a loop to call `setup` on multiple servers.
-local servers = {
-    "ansiblels",
-    "esbonio",
-    "gopls",
-    "pyright",
-    "rust_analyzer",
-    "texlab",
-}
-
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-        capabilities = lsp_status.capabilities,
-        flags = {
-            debounce_text_changes = 150,
-        },
-        on_attach = common_on_attach,
-    })
-end
