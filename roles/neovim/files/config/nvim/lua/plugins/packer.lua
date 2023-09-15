@@ -26,11 +26,11 @@ return require("packer").startup({
             "neovim/nvim-lspconfig",
             "nvim-lua/lsp-status.nvim",
         })
-        use ({
+        use({
             "mhartington/formatter.nvim",
             config = [[require('plugins.formatter')]],
         })
-        use "mfussenegger/nvim-lint"
+        use({ "mfussenegger/nvim-lint", config = [[require('plugins.lint')]] })
 
         use({
             "nvim-telescope/telescope.nvim",
