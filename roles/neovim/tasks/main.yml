@@ -74,6 +74,7 @@
         mode: 0640
       with_items:
         - comment.lua
+        - formatter.lua
         - gitsigns.lua
         - indent-blankline.lua
         - lspconfig.lua
