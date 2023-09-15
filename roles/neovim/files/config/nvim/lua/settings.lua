@@ -57,7 +57,7 @@ opt.termguicolors = true
 
 -- Enable undo persistence.
 opt.undofile = true
--- Enable modeline, since it uses an allowlist approach since neovim >= 0.5:
+-- Enable modeline, it uses an allowlist approach since neovim >= 0.5:
 -- https://github.com/neovim/neovim/issues/2865
 opt.modeline = true
 
