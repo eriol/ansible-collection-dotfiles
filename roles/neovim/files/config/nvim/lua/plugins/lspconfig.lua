@@ -1,4 +1,4 @@
--- Configuration for null-ls, nvim-lspconfig and lsp-status.
+-- Configuration for nvim-lspconfig and lsp-status.
 
 -- Redefine sign.
 local signs = { Error = "", Warn = "", Hint = "", Info = " " }
@@ -8,7 +8,6 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local null_ls = require "null-ls"
 local lspconfig = require "lspconfig"
 local lsp_status = require "lsp-status"
 require("lsp_signature").setup()
@@ -47,41 +46,6 @@ local common_on_attach = function(client, bufnr)
 
     lsp_status.on_attach(client)
 end
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
-    debug = false,
-    sources = {
-        -- Python
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.diagnostics.flake8,
-        -- Go
-        null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.formatting.goimports,
-        -- Rust
-        null_ls.builtins.formatting.rustfmt,
-        -- Yaml
-        null_ls.builtins.diagnostics.yamllint,
-        -- HTML and others
-        null_ls.builtins.formatting.prettier,
-        -- Lua
-        null_ls.builtins.formatting.stylua,
-    },
-    on_attach = function(client, bufnr)
-        -- Format on save.
-        if client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
-    end,
-})
 
 -- Use a loop to call `setup` on multiple servers.
 local servers = {

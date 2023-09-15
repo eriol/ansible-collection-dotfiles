@@ -17,20 +17,17 @@ return require("packer").startup({
             "mhinz/vim-sayonara",
             config = [[require('plugins.sayonara')]],
         })
+
         use({
             "nvim-treesitter/nvim-treesitter",
             config = [[require('plugins.nvim-treesitter')]],
         })
-
         use({
             "neovim/nvim-lspconfig",
             "nvim-lua/lsp-status.nvim",
         })
-        use({
-            "jose-elias-alvarez/null-ls.nvim",
-            config = [[require('plugins.lspconfig')]],
-            requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        })
+        use "mhartington/formatter.nvim"
+        use "mfussenegger/nvim-lint"
 
         use({
             "nvim-telescope/telescope.nvim",
