@@ -1,4 +1,4 @@
-require("indent_blankline").setup({
+require("ibl").setup({
     buftype_exclude = { "terminal" },
     filetype_exclude = {
         "help",
