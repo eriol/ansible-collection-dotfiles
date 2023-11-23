@@ -1,0 +1,15 @@
+---
+
+- block:
+
+    - name: download firmware from linux repository
+      ansible.builtin.command:
+        # See https://community.frame.work/t/resolved-amd-7640u-debian-12-external-monitor-no-longer-working/40526/5
+        cmd: wget -l 1 -np --no-directories --content-disposition --restrict-file-names=nocontrol -e robots=off -A .bin -r https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/amdgpu -P /lib/firmware/updates/amdgpu/
+
+    - name: update initramfs
+      ansible.builtin.command:
+        cmd: update-initramfs -kall -u
+
+  become: "{{ firmware_amdgpu_become }}"
+  become_user: "{{ firmware_amdgpu_become_user }}"

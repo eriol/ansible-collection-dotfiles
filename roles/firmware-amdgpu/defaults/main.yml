@@ -1,0 +1,3 @@
+---
+firmware_amdgpu_become: true
+firmware_amdgpu_become_user: root
