@@ -15,5 +15,5 @@
     enabled: false
     state: stopped
 
-  become: "{{ cups_become_admin }}"
-  become_user: "{{ cups_become_admin_user }}"
+become: "{{ cups_become_admin }}"
+become_user: "{{ cups_become_admin_user }}"
