@@ -4,7 +4,7 @@
   ansible.builtin.shell:
     cmd: "go install {{ item }}"
   with_items:
-    - github.com/gopasspw/gopass@v1.15.1
+    - github.com/gopasspw/gopass@v1.15.9
     - code.gitea.io/tea@v0.9.2
 
   become: "{{ go_install_become }}"
