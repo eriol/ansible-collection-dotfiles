@@ -1,0 +1,5 @@
+---
+cups_become_admin: true
+cups_become_admin_user: root
+cups_become: true
+cups_become_user: "{{ lookup('env', 'USER') }}"

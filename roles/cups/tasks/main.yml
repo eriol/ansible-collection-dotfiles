@@ -1,0 +1,19 @@
+---
+
+- name: install dependencies
+  ansible.builtin.apt:
+    name:
+      - cups
+      - printer-driver-escpr
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+- name: ensure cups is stopped and disabled
+  systemd:
+    name: cups
+    enabled: false
+    state: stopped
+
+  become: "{{ cups_become_admin }}"
+  become_user: "{{ cups_become_admin_user }}"
