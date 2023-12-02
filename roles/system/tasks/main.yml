@@ -69,6 +69,7 @@
           - pass
           - pass-extension-tomb
           - python3-keyring
+          - pinentry-qt
         update_cache: true
         cache_valid_time: 3600
 
