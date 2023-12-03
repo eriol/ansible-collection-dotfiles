@@ -49,5 +49,13 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: ensure yaml stuff is present
+      ansible.builtin.apt:
+        name:
+          - yamllint
+          - ansible-lint
+        update_cache: true
+        cache_valid_time: 3600
+
   become: "{{ devel_become }}"
   become_user: "{{ devel_become_user }}"
