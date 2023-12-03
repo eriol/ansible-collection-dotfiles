@@ -1,0 +1,18 @@
+---
+
+- block:
+
+  - name: install flatpak
+    ansible.builtin.apt:
+      name:
+        - flatpak
+      update_cache: true
+      cache_valid_time: 3600
+    tags: apt
+
+  - name: add flathub repository
+    ansible.builtin.command:
+      cmd: flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+  become: "{{ flatpak_become }}"
+  become_user: "{{ flatpak_become_user }}"
