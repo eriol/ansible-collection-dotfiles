@@ -1,0 +1,16 @@
+---
+
+- block:
+
+    - name: ensure TeX is installed
+      ansible.builtin.apt:
+        name:
+          - texlive-base
+          - texlive-lang-greek
+          - texlive-lang-italian
+          - texlive-luatex
+        update_cache: true
+        cache_valid_time: 3600
+
+  become: "{{ tex_become }}"
+  become_user: "{{ tex_become_user }}"
