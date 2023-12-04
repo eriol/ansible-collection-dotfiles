@@ -12,10 +12,16 @@
     tags: apt
 
   - name: ensure cups is stopped and disabled
-    systemd:
+    ansible.builtin.systemd:
       name: cups
       enabled: false
       state: stopped
+
+  - name: Add {{ cups_become_admin_user }} to lp and lpadmin groups
+    ansible.builtin.user:
+      name: "{{ cups_become_user }}"
+      groups: lp,lpadmin
+      append: true
 
   become: "{{ cups_become_admin }}"
   become_user: "{{ cups_become_admin_user }}"
