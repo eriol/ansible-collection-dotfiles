@@ -6,9 +6,18 @@
       ansible.builtin.apt:
         name:
           - texlive-base
+          - texlive-extra-utils
+          - texlive-games
+          - texlive-humanities
           - texlive-lang-greek
           - texlive-lang-italian
+          - texlive-latex-base
+          - texlive-latex-extra
           - texlive-luatex
+          - texlive-pictures
+          - texlive-plain-generic
+          - texlive-pstricks
+          - texlive-science
         update_cache: true
         cache_valid_time: 3600
 
