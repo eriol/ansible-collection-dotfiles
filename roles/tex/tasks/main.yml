@@ -2,7 +2,7 @@
 
 - block:
 
-    - name: ensure TeX is installed
+    - name: ensure TeX stuff is installed
       ansible.builtin.apt:
         name:
           - texlive-base
