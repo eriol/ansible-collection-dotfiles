@@ -7,6 +7,7 @@
         name:
           - texlive-base
           - texlive-extra-utils
+          - texlive-font-extra
           - texlive-games
           - texlive-humanities
           - texlive-lang-greek
