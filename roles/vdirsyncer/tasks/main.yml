@@ -12,20 +12,20 @@
 
 - block:
 
-    - name: ensure directories for vdirsyncer exists
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: directory
-      with_items:
-        - ~/.config/vdirsyncer
-        - ~/.cache/vdirsyncer/status
-        - ~/.local/share/vdirsyncer/contacts
-        - ~/.local/share/vdirsyncer/calendars
+  - name: ensure directories for vdirsyncer exists
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: directory
+    loop:
+      - ~/.config/vdirsyncer
+      - ~/.cache/vdirsyncer/status
+      - ~/.local/share/vdirsyncer/contacts
+      - ~/.local/share/vdirsyncer/calendars
 
-    - name: copy vdirsyncer config file
-      ansible.builtin.copy:
-        content: "{{ vdirsyncer_config }}"
-        dest: ~/.config/vdirsyncer/config
+  - name: copy vdirsyncer config file
+    ansible.builtin.copy:
+      content: "{{ vdirsyncer_config }}"
+      dest: ~/.config/vdirsyncer/config
 
   become: "{{ vdirsyncer_become }}"
   become_user: "{{ vdirsyncer_become_user }}"
