@@ -27,5 +27,31 @@
       content: "{{ vdirsyncer_config }}"
       dest: ~/.config/vdirsyncer/config
 
+  - name: ensure ~/.config/systemd/user exists
+    ansible.builtin.file:
+      path: ~/.config/systemd/user
+      state: directory
+
+  - name: install vdirsyncer systemd user unit file
+    ansible.builtin.copy:
+      src: config/systemd/user/vdirsyncer.service
+      dest: ~/.config/systemd/user/vdirsyncer.service
+    notify:
+      - systemctl user daemon-reload
+
+  - name: install vdirsyncer systemd user timer file
+    ansible.builtin.copy:
+      src: config/systemd/user/vdirsyncer.timer
+      dest: ~/.config/systemd/user/vdirsyncer.timer
+    notify:
+      - systemctl user daemon-reload
+
+  - name: systemctl user start and enable vdirsyncer timer
+    systemd:
+      scope: user
+      name: vdirsyncer.timer
+      enabled: true
+      state: started
+
   become: "{{ vdirsyncer_become }}"
   become_user: "{{ vdirsyncer_become_user }}"

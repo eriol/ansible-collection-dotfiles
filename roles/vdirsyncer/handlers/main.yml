@@ -1,0 +1,7 @@
+---
+- name: systemctl user daemon-reload
+  systemd:
+    scope: user
+    daemon_reload: true
+  become: "{{ vdirsyncer_become }}"
+  become_user: "{{ vdirsyncer_become_user }}"

@@ -1,0 +1,9 @@
+[Unit]
+Description=Calendars and contacts synchronization service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/vdirsyncer sync
+
+[Install]
+WantedBy=default.target
