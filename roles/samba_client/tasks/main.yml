@@ -1,0 +1,28 @@
+---
+
+- name: install samba client stuff
+  ansible.builtin.apt:
+    name:
+      - cifs-utils
+      - smbclient
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ samba_client_become_admin }}"
+  become_user: "{{ samba_client_become_admin_user }}"
+
+- block:
+
+    - name: ensure ~/.bin exists
+      ansible.builtin.file:
+        path: ~/.bin
+        state: directory
+
+    - name: copy samba_client cli tool
+      ansible.builtin.copy:
+        content: "{{ samba_client_cli_tool }}"
+        dest: "~/.bin/{{ samba_client_cli_tool_name }}"
+
+  become: "{{ samba_client_become }}"
+  become_user: "{{ samba_client_become_user }}"

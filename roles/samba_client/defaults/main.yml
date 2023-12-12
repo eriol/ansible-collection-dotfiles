@@ -1,0 +1,8 @@
+---
+samba_client_become_admin: true
+samba_client_become_admin_user: root
+samba_client_become: true
+samba_client_become_user: "{{ lookup('env', 'USER') }}"
+
+samba_client_cli_tool: ""
+samba_client_cli_tool_name: scc
