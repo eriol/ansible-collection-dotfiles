@@ -24,5 +24,10 @@
         content: "{{ samba_client_cli_tool }}"
         dest: "~/.bin/{{ samba_client_cli_tool_name }}"
 
+    - name: make the samba_client cli tool executable
+      ansible.builtin.copy:
+        path: "~/.bin/{{ samba_client_cli_tool_name }}"
+        mode: "0750"
+
   become: "{{ samba_client_become }}"
   become_user: "{{ samba_client_become_user }}"
