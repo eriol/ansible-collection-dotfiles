@@ -82,5 +82,12 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: ensure sync tools are present
+      ansible.builtin.apt:
+        name:
+          - git-annex
+        update_cache: true
+        cache_valid_time: 3600
+
   become: "{{ system_become }}"
   become_user: "{{ system_become_user }}"
