@@ -98,3 +98,15 @@
 
 [cola]
     spellcheck = false
+
+[annex]
+    genmetadata = true
+
+[transfer]
+    fsckObjects = true
+
+[fetch]
+    fsckObjects = true
+
+[receive]
+    fsckObjects = true
