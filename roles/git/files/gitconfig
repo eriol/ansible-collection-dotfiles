@@ -67,6 +67,10 @@
     status = auto
     decorate = short
 
+[color "grep"]
+    lineNumber = yellow
+
+
 [commit]
     verbose = true
 
@@ -76,9 +80,6 @@
 
 [grep]
     lineNumber = true
-
-[color "grep"]
-    lineNumber = yellow
 
 [log]
     date = iso
