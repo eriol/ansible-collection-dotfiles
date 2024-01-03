@@ -113,6 +113,11 @@ return require("packer").startup({
         })
 
         use "NoahTheDuke/vim-just"
+        use({
+            "salkin-mada/openscad.nvim",
+            config = [[require('plugins.openscad')]],
+            requires = "L3MON4D3/LuaSnip",
+        })
 
         -- Themes
         use "bluz71/vim-moonfly-colors"

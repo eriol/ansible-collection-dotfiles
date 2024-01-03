@@ -87,6 +87,7 @@
         - nvim-surround.lua
         - nvim-tree.lua
         - nvim-treesitter.lua
+        - openscad.lua
         - packer.lua
         - sayonara.lua
         - telescope.lua
