@@ -1,3 +1,5 @@
 ---
+fontconfig_become_admin: true
+fontconfig_become_admin_user: root
 fontconfig_become: true
 fontconfig_become_user: "{{ lookup('env', 'USER') }}"

@@ -1,4 +1,13 @@
 ---
+
+- name: ensure 70-no-bitmaps.conf is disabled
+  ansible.builtin.file:
+    path: /etc/fonts/conf.d/70-no-bitmaps.conf
+    state: absent
+
+  become: "{{ fontconfig_become_admin }}"
+  become_user: "{{ fontconfig_become_admin_user }}"
+
 - block:
   - name: ensure ~/.config/fontconfig exists
     ansible.builtin.file:
