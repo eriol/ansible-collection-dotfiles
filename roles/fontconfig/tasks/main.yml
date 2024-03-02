@@ -11,8 +11,7 @@
       dest: ~/.config/fontconfig/fonts.conf
 
   - name: rebuild font information cache
-    ansible.builtin.shell:
-      cmd: fc-cache -fr
+    ansible.builtin.command: fc-cache -fr
 
 
   become: "{{ fontconfig_become }}"
