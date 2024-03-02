@@ -1,8 +1,8 @@
 ---
 - block:
-  - name: ensure ~/.config/fontconfig/conf.d exists
+  - name: ensure ~/.config/fontconfig exists
     ansible.builtin.file:
-      path: ~/.config/fontconfig/conf.d
+      path: ~/.config/fontconfig
       state: directory
 
   - name: copy fonts config file
