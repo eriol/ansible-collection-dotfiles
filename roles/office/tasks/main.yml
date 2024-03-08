@@ -1,0 +1,30 @@
+---
+
+- block:
+
+    - name: ensure libreoffice programs are present
+      ansible.builtin.apt:
+        name:
+          - libreoffice-calc
+          - libreoffice-draw
+          - libreoffice-impress
+          - libreoffice-l10n-it
+          - libreoffice-math
+          - libreoffice-plasma
+          - libreoffice-style-breeze
+          - libreoffice-writer
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure PDF stuff is present
+      ansible.builtin.apt:
+        name:
+          - xournalapp
+          - evince
+          - pdftk-java
+        update_cache: true
+        cache_valid_time: 3600
+
+
+  become: "{{ office_become }}"
+  become_user: "{{ office_become_user }}"
