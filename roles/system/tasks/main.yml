@@ -45,6 +45,7 @@
       ansible.builtin.apt:
         name:
           - bat
+          - fd-find
           - fzf
           - moreutils
           - neovim
