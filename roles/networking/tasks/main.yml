@@ -5,11 +5,12 @@
     - name: Networking tools
       ansible.builtin.apt:
         name:
-          - curl
-          - iftop
-          - bind9-dnsutils
           - aria2
+          - bind9-dnsutils
+          - curl
           - finger
+          - iftop
+          - iperf3
           - mitmproxy
           - mosquitto-clients
           - mtr
@@ -17,7 +18,6 @@
           - nmap
           - smbclient
           - unison
-          - iperf3
         update_cache: true
         cache_valid_time: 3600
       tags: apt
