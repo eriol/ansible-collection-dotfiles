@@ -1,0 +1,27 @@
+---
+
+- block:
+
+    - name: ensure Debian devel stuff is present
+      ansible.builtin.apt:
+        name:
+          - debootstrap
+          - devscripts
+          - eatmydata
+          - git-buildpackage
+          - pbuilder
+        update_cache: true
+        cache_valid_time: 3600
+
+  become: "{{ debian_become }}"
+  become_user: "{{ debian_become_user }}"
+
+- block:
+
+    - name: copy git-buildpackage config file
+      ansible.builtin.copy:
+        src: config/git-buildpackage/gbp.conf
+        dest: ~/.gbp.conf
+
+  become: "{{ debian_become }}"
+  become_user: "{{ debian_become_user }}"
