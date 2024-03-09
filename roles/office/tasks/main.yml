@@ -19,7 +19,7 @@
     - name: ensure PDF stuff is present
       ansible.builtin.apt:
         name:
-          - xournalapp
+          - xournalpp
           - evince
           - pdftk-java
         update_cache: true
