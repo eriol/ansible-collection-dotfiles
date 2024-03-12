@@ -7,6 +7,7 @@
         name:
           - debootstrap
           - devscripts
+          - dh-python
           - eatmydata
           - git-buildpackage
           - pbuilder
