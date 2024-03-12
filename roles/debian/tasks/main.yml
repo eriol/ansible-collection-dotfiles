@@ -14,7 +14,7 @@
         cache_valid_time: 3600
 
   become: "{{ debian_become }}"
-  become_user: "{{ debian_become_user }}"
+  become_user: "{{ debian_become_admin_user }}"
 
 - block:
 

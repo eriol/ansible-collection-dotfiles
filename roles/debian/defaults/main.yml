@@ -1,3 +1,4 @@
 ---
 debian_become: true
-debian_become_user: root
+debian_become_admin_user: root
+debian_become_user: "{{ lookup('env', 'USER') }}"
