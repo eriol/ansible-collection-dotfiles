@@ -5,6 +5,7 @@
     - name: ensure Debian devel stuff is present
       ansible.builtin.apt:
         name:
+          - cowbuilder
           - debootstrap
           - devscripts
           - dh-python
