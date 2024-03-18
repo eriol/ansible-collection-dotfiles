@@ -1,5 +1,20 @@
+-- Format using dprint project.
+local function dprint()
+    return {
+        exe = "dprint",
+        args = {
+            "fmt",
+        },
+        stdin = false,
+    }
+end
+
 require("formatter").setup({
     filetype = {
+
+        css = { dprint },
+
+        html = { dprint },
 
         go = {
             require("formatter.filetypes.go").gofmt,
@@ -17,19 +32,6 @@ require("formatter").setup({
 
         rust = {
             require("formatter.filetypes.rust").rustfmt,
-        },
-
-        html = {
-            function()
-                local util = require "formatter.util"
-                return {
-                    exe = "dprint",
-                    args = {
-                        "fmt",
-                    },
-                    stdin = false,
-                }
-            end,
         },
 
         ["*"] = {
