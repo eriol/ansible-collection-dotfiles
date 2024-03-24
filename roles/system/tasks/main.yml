@@ -94,5 +94,17 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: ensure 3D tools are present
+      ansible.builtin.apt:
+        name:
+          - mesa-utils
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure radeontop is present in AMD machines
+      ansible.builtin.apt:
+        name: radeontop
+      when: "'AuthenticAMD' in ansible_facts.processor"
+
   become: "{{ system_become }}"
   become_user: "{{ system_become_user }}"
