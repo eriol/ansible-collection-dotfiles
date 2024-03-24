@@ -19,6 +19,7 @@
       ansible.builtin.copy:
         dest: /etc/systemd/system.conf.d/timeouts.conf
         content: |
+          [Manager]
           DefaultTimeoutStopSec=15s
           DefaultTimeoutAbortSec=15s
         mode: 0644
