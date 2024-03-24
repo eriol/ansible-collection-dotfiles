@@ -57,6 +57,7 @@
     - name: ensure monitoring tools are present
       ansible.builtin.apt:
         name:
+          - acpi
           - duf
           - htop
           - iftop
