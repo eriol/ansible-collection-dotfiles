@@ -24,10 +24,11 @@
           DefaultTimeoutAbortSec=15s
         mode: 0644
 
-    - name: ensure nano is absent
+    - name: ensure nano and rpcbind are absent
       ansible.builtin.apt:
         name:
           - nano
+          - rpcbind
         state: absent
 
     - name: ensure archive tools are present
