@@ -31,6 +31,14 @@
           - rpcbind
         state: absent
 
+    - name: ensure fwupd is present
+      ansible.builtin.apt:
+        name:
+          - fwupd
+          - fwupd-amd64-signed
+        update_cache: true
+        cache_valid_time: 3600
+
     - name: ensure archive tools are present
       ansible.builtin.apt:
         name:
