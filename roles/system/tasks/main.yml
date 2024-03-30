@@ -50,6 +50,7 @@
           - fd-find
           - fzf
           - moreutils
+          - neofetch
           - neovim
           - pv
           - ripgrep
