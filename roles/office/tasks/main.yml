@@ -5,6 +5,7 @@
     - name: ensure libreoffice programs are present
       ansible.builtin.apt:
         name:
+          - hunspell-it
           - libreoffice-calc
           - libreoffice-draw
           - libreoffice-impress
