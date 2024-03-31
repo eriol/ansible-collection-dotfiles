@@ -1,0 +1,14 @@
+---
+
+- block:
+
+    - name: ensure containers stuff is installed
+      ansible.builtin.apt:
+        name:
+          - distrobox
+          - podman
+        update_cache: true
+        cache_valid_time: 3600
+
+  become: "{{ containers_become }}"
+  become_user: "{{ containers_become_user }}"
