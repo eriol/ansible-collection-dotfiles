@@ -14,7 +14,7 @@
           - mitmproxy
           - mosquitto-clients
           - mtr
-          - nextcloud-desktop
+          # - nextcloud-desktop
           - nmap
           - smbclient
           - unison
