@@ -1,0 +1,17 @@
+---
+
+- block:
+
+    - name: ensure graphics stuff is installed
+      ansible.builtin.apt:
+        name:
+          - darktable
+          - gimp
+          - inkscape
+          - inkscape-open-symbols
+          - openscad
+        update_cache: true
+        cache_valid_time: 3600
+
+  become: "{{ graphics_become }}"
+  become_user: "{{ graphics_become_user }}"
