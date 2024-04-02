@@ -14,12 +14,12 @@ require("formatter").setup({
 
         css = { dprint },
 
-        html = { dprint },
-
         go = {
             require("formatter.filetypes.go").gofmt,
             require("formatter.filetypes.go").goimports,
         },
+
+        html = { dprint },
 
         lua = {
             require("formatter.filetypes.lua").stylua,
