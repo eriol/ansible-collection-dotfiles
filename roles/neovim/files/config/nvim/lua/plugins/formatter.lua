@@ -21,6 +21,8 @@ require("formatter").setup({
 
         html = { dprint },
 
+        javascript = { dprint },
+
         lua = {
             require("formatter.filetypes.lua").stylua,
         },
