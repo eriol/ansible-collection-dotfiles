@@ -12,6 +12,10 @@ end
 require("formatter").setup({
     filetype = {
 
+        cpp = {
+            require("formatter.filetypes.cpp").clangformat,
+        },
+
         css = { dprint },
 
         go = {
