@@ -1,3 +1,3 @@
 ---
-apt_become: true
-apt_become_user: root
+audio_become: true
+audio_become_user: root
