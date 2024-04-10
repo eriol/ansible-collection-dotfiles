@@ -3,7 +3,7 @@
 - name: install stuff with go install
   ansible.builtin.shell:
     cmd: "go install {{ item }}"
-  with_items:
+  loop:
     - code.gitea.io/tea@v0.9.2
     - github.com/gopasspw/gopass-jsonapi@v1.15.12
     - github.com/gopasspw/gopass@v1.15.12
