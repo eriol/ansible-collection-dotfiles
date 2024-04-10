@@ -1,0 +1,14 @@
+---
+
+- block:
+
+    - name: ensure video stuff is present
+      ansible.builtin.apt:
+        name:
+          - dragonplayer
+          # - obs-studio
+          - v4l2loopback-dkms
+          - vlc
+
+  become: "{{ video_become }}"
+  become_user: "{{ video_become_user }}"
