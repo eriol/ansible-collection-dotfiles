@@ -3,11 +3,11 @@
 - name: install kde stuff
   ansible.builtin.apt:
     name:
+      - gwenview
       - kde-plasma-desktop
+      - kde-spectacle
       - okular
       - okular-extra-backends
-      - kde-spectacle
-      - gwenview
     update_cache: true
     cache_valid_time: 3600
   tags: apt
