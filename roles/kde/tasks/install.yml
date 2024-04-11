@@ -4,6 +4,9 @@
   ansible.builtin.apt:
     name:
       - gwenview
+      - kde-config-flatpak
+      - kde-config-gtk-style
+      - kde-config-gtk-style-preview
       - kde-plasma-desktop
       - kde-spectacle
       - okular
