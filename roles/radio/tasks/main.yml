@@ -1,0 +1,11 @@
+---
+
+- block:
+
+    - name: ensure radio stuff is present
+      ansible.builtin.apt:
+        name:
+          - gnuradio
+
+  become: "{{ radio_become }}"
+  become_user: "{{ radio_become_user }}"
