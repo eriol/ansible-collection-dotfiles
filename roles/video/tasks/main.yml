@@ -10,6 +10,7 @@
           # - obs-studio
           - v4l2loopback-dkms
           - vlc
+          - yt-dlp
 
   become: "{{ video_become }}"
   become_user: "{{ video_become_user }}"
