@@ -14,6 +14,7 @@
       - texlab
       - cargo-audit
       - cargo-watch
+      - urdf-viz
       # - cargo-tarpaulin
       # Fails to build on x86 See:
       # https://github.com/xd009642/tarpaulin/issues/1468
