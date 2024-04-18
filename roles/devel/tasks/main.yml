@@ -54,6 +54,7 @@
         name:
           - yamllint
           - ansible-lint
+          - yq
         update_cache: true
         cache_valid_time: 3600
 
