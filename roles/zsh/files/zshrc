@@ -23,22 +23,22 @@ for dir in \
 done
 
 # History stuff
-HISTFILE="~/.zsh_history"
+HISTFILE=~/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTORY_IGNORE="(cd|exit|ls|pwd)*"
 
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_VERIFY
 setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 source ~/.local/lib/antidote/antidote.zsh
 bundlefile=~/.config/zsh/plugins.txt
