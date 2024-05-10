@@ -105,8 +105,6 @@ return require("packer").startup({
         })
         use "tpope/vim-fugitive"
 
-        use "editorconfig/editorconfig-vim"
-
         use({
             "lervag/vimtex",
             config = [[require('plugins.vimtex')]],
