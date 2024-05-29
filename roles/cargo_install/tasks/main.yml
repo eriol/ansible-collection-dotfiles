@@ -26,6 +26,7 @@
     loop:
       - dprint
       - evcxr_repl
+      - typst-cli
 
   become: "{{ cargo_install_become }}"
   become_user: "{{ cargo_install_become_user }}"
