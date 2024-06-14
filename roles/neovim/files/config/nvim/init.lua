@@ -6,5 +6,3 @@ require "settings"
 require "lazy-bootstrap"
 
 require "keymaps"
-
-require "colorscheme"
