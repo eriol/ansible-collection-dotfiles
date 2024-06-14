@@ -3,8 +3,7 @@
 
 require "settings"
 
--- Load plugins.
-require "plugins.packer"
+require "lazy-bootstrap"
 
 require "keymaps"
 
