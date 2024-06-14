@@ -44,6 +44,7 @@ opt.hidden = true
 opt.history = 100
 opt.lazyredraw = true
 opt.synmaxcol = 250
+vim.loader.enable()
 
 --------------------------------------------------------------------------------
 -- Colorscheme
