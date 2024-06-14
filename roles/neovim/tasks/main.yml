@@ -75,11 +75,13 @@
       with_items:
         - comment.lua
         - formatter.lua
+        - fugitive.lua
         - gitsigns.lua
         - indent-blankline.lua
+        - kanagawa.lua
         - lint.lua
-        - lsp-status.lua
         - lspconfig.lua
+        - lsp_signature.lua
         - lualine.lua
         - luasnip.lua
         - nvim-autopairs.lua
@@ -88,8 +90,8 @@
         - nvim-tree.lua
         - nvim-treesitter.lua
         - openscad.lua
-        - packer.lua
         - sayonara.lua
+        - startify.lua
         - telescope.lua
         - todo-comments.lua
         - trouble.lua
@@ -103,8 +105,8 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
-        - colorscheme.lua
         - keymaps.lua
+        - lazy-bootstrap.lua
         - settings.lua
 
     - name: install after/ftplugin settings
