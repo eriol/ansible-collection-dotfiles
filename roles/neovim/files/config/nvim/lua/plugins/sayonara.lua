@@ -1,4 +1,7 @@
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
-map("n", "gz", ":Sayonara!<cr>", opts)
+return {
+    "mhinz/vim-sayonara",
+    config = function()
+        local opts = { noremap = true, silent = true }
+        vim.api.nvim_set_keymap("n", "gz", ":Sayonara!<cr>", opts)
+    end,
+}

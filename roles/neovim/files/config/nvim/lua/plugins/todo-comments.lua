@@ -1,3 +1,8 @@
-require("todo-comments").setup({})
-
-vim.api.nvim_set_keymap("n", "<leader>xt", "<cmd>TodoTelescope<cr>", { silent = true, noremap = true })
+return {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+    keys = {
+        { "<leader>xt", "<cmd>TodoTelescope<cr>" },
+    },
+}

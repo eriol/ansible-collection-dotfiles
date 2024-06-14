@@ -1,4 +1,4 @@
--- Configuration for nvim-lspconfig and lsp-status.
+-- Configuration for nvim-lspconfig.
 
 -- Redefine sign.
 local signs = { Error = "", Warn = "", Hint = "", Info = " " }
@@ -50,3 +50,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, opts)
     end,
 })
+
+return {
+    "neovim/nvim-lspconfig",
+    config = true,
+}

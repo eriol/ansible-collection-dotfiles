@@ -1,8 +1,15 @@
-require("telescope").setup({})
+return {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        require("telescope").setup({})
 
-vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>Telescope<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope git_files<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>Telescope live_grep<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", ";", "<cmd>Telescope buffers<cr>", { noremap = true })
+        local map = vim.api.nvim_set_keymap
 
-vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { noremap = true })
+        map("n", "<C-k>", "<cmd>Telescope<cr>", { noremap = true })
+        map("n", "<C-p>", "<cmd>Telescope git_files<cr>", { noremap = true })
+        map("n", "<C-s>", "<cmd>Telescope live_grep<cr>", { noremap = true })
+        map("n", ";", "<cmd>Telescope buffers<cr>", { noremap = true })
+        map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { noremap = true })
+    end,
+}

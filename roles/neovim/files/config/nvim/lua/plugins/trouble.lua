@@ -1,20 +1,40 @@
-require("trouble").setup({
-    use_diagnostic_signs = true,
-})
-
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>xw",
-    "<cmd>Trouble lsp_workspace_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>xd",
-    "<cmd>Trouble lsp_document_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+return {
+    "folke/trouble.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+        {
+            "<leader>xx",
+            "<cmd>Trouble diagnostics toggle<cr>",
+            desc = "Diagnostics (Trouble)",
+        },
+        {
+            "<leader>xX",
+            "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+            desc = "Buffer Diagnostics (Trouble)",
+        },
+        {
+            "<leader>cs",
+            "<cmd>Trouble symbols toggle focus=false<cr>",
+            desc = "Symbols (Trouble)",
+        },
+        {
+            "<leader>cl",
+            "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+            desc = "LSP Definitions / references / ... (Trouble)",
+        },
+        {
+            "<leader>xL",
+            "<cmd>Trouble loclist toggle<cr>",
+            desc = "Location List (Trouble)",
+        },
+        {
+            "<leader>xQ",
+            "<cmd>Trouble qflist toggle<cr>",
+            desc = "Quickfix List (Trouble)",
+        },
+    },
+}
