@@ -95,21 +95,6 @@
         - trouble.lua
         - vimtex.lua
 
-    - name: install colorscheme config
-      ansible.builtin.copy:
-        src: "config/nvim/lua/colors/{{ item }}"
-        dest: "~/.config/nvim/lua/colors/{{ item }}"
-        owner: "{{ neovim_become_user }}"
-        group: "{{ neovim_become_user }}"
-        mode: 0640
-      with_items:
-        - kanagawa.lua
-        - material-nvim.lua
-        - moonfly.lua
-        - neon.lua
-        - onedark.lua
-        - tokyonight.lua
-
     - name: install general settings
       ansible.builtin.copy:
         src: "config/nvim/lua/{{ item }}"
