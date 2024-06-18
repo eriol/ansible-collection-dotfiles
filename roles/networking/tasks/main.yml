@@ -14,10 +14,11 @@
           - mitmproxy
           - mosquitto-clients
           - mtr
-          # - nextcloud-desktop
+          - nextcloud-desktop
           - nmap
           - smbclient
           - tcpdump
+          - whois
         update_cache: true
         cache_valid_time: 3600
       tags: apt
@@ -31,7 +32,7 @@
         cache_valid_time: 3600
       tags: apt
 
-    - name: ensure net-tools is absent
+    - name: Ensure net-tools is absent
       ansible.builtin.apt:
         name:
           - net-tools
