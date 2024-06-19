@@ -1,6 +1,6 @@
 ---
 
-- name: install alacritty
+- name: Install alacritty
   ansible.builtin.apt:
     name: alacritty
     update_cache: true
@@ -12,15 +12,15 @@
 
 - block:
 
-    - name: ensure ~/.config/alacritty exists
+    - name: Ensure ~/.config/alacritty exists
       ansible.builtin.file:
         path: ~/.config/alacritty
         state: directory
 
-    - name: copy alacritty config file
+    - name: Copy alacritty config file
       ansible.builtin.copy:
-        src: config/alacritty/alacritty.yml
-        dest: ~/.config/alacritty/alacritty.yml
+        src: config/alacritty/alacritty.toml
+        dest: ~/.config/alacritty/alacritty.toml
 
   become: "{{ alacritty_become }}"
   become_user: "{{ alacritty_become_user }}"
