@@ -77,7 +77,7 @@ return {
                 {
                     name = "buffer",
                     option = {
-                        keyword_pattern = [[\k\+]],
+                        -- keyword_pattern = [[\k\+]], -- To use iskeyword.
                         -- Use all buffers to complete.
                         get_bufnrs = function()
                             return vim.api.nvim_list_bufs()
