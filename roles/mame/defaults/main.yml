@@ -1,0 +1,4 @@
+---
+mame_become: true
+mame_become_admin_user: root
+mame_become_user: "{{ lookup('env', 'USER') }}"

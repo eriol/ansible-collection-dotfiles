@@ -1,0 +1,26 @@
+---
+
+- name: Install mame
+  ansible.builtin.apt:
+    name: mame
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ mame_become }}"
+  become_user: "{{ mame_become_admin_user }}"
+
+- block:
+
+    - name: Ensure ~/.mame exists
+      ansible.builtin.file:
+        path: ~/.mame/
+        state: directory
+
+    - name: Copy mame config file
+      ansible.builtin.copy:
+        src: config/mame/mame.ini
+        dest: ~/.mame/mame.ini
+
+  become: "{{ mame_become }}"
+  become_user: "{{ mame_become_user }}"
