@@ -1,0 +1,36 @@
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+    chain input {
+        type filter hook input priority 0; policy drop;
+
+        # accept any localhost traffic
+        iifname lo accept
+
+        # accept traffic originated from us
+        ct state established,related accept
+
+        # activate the following line to accept common local services
+        #tcp dport { 22, 80, 443 } ct state new accept
+
+        # ICMP and ICMPv6 rules
+        icmp type { echo-request, destination-unreachable, time-exceeded, parameter-problem } accept
+        icmpv6 type { echo-request, destination-unreachable, time-exceeded, parameter-problem, packet-too-big, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert } accept
+
+        # Accept IGMP
+        ip protocol igmp accept
+
+        # Log dropped packets
+        log prefix "nftables dropped: " counter
+    }
+
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+    }
+
+    chain output {
+        type filter hook output priority 0; policy accept;
+    }
+}

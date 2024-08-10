@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: Install nftables
+    ansible.builtin.apt:
+      name: nftables
+      state: present
+      update_cache: true
+      cache_valid_time: 3600
+
+  - name: Install workstation.nft
+    ansible.builtin.copy:
+      src: etc/workstation.nft
+      dest: /etc/nftables.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify: systemctl restart nftables
+
+  become: "{{ nftables_become }}"
+  become_user: "{{ nftables_become_user }}"
