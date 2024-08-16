@@ -17,5 +17,11 @@
       mode: 0644
     notify: systemctl restart nftables
 
+  - name: Ensure nftables is enabled
+    systemd:
+      name: nftables.service
+      enabled: true
+      state: started
+
   become: "{{ nftables_become }}"
   become_user: "{{ nftables_become_user }}"
