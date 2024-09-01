@@ -24,15 +24,16 @@
       # Fails to build on x86 See:
       # https://github.com/xd009642/tarpaulin/issues/1468
 
-  - name: install stuff with cargo install --locked
+  - name: Install stuff with cargo install --locked.
     ansible.builtin.command:
       cmd: "{{ cargo_install_cargo_binary }} install --locked {{ item }}"
     loop:
       - dprint
       - evcxr_repl
+      - rbw
       - typst-cli
 
-  - name: install stuff with cargo install --git
+  - name: Install stuff with cargo install --git.
     ansible.builtin.command:
       cmd: "{{ cargo_install_cargo_binary }} install --git {{ item }}"
     loop:
