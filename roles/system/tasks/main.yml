@@ -1,21 +1,23 @@
 ---
+- name: Install system stuff.
+  become: "{{ system_become }}"
+  become_user: "{{ system_become_user }}"
+  block:
 
-- block:
-
-    - name: ensure packagekit and appstream are absent
+    - name: Ensure packagekit and appstream are absent
       ansible.builtin.apt:
         name:
           - packagekit
           - appstream
         state: absent
 
-    - name: ensure systemd.conf.d exists
+    - name: Ensure systemd.conf.d exists
       ansible.builtin.file:
         dest: /etc/systemd/system.conf.d/
         state: directory
         mode: 0755
 
-    - name: ensure short systemd timeout
+    - name: Ensure short systemd timeout
       ansible.builtin.copy:
         dest: /etc/systemd/system.conf.d/timeouts.conf
         content: |
@@ -24,14 +26,14 @@
           DefaultTimeoutAbortSec=15s
         mode: 0644
 
-    - name: ensure nano and rpcbind are absent
+    - name: Ensure nano and rpcbind are absent
       ansible.builtin.apt:
         name:
           - nano
           - rpcbind
         state: absent
 
-    - name: ensure fwupd is present
+    - name: Ensure fwupd is present
       ansible.builtin.apt:
         name:
           - fwupd
@@ -39,7 +41,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure archive tools are present
+    - name: Ensure archive tools are present
       ansible.builtin.apt:
         name:
           - zip
@@ -51,7 +53,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure terminal tools are present
+    - name: Ensure terminal tools are present
       ansible.builtin.apt:
         name:
           - bat
@@ -65,7 +67,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure monitoring tools are present
+    - name: Ensure monitoring tools are present
       ansible.builtin.apt:
         name:
           - acpi
@@ -78,7 +80,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure security tools are present
+    - name: Ensure security tools are present
       ansible.builtin.apt:
         name:
           - apache2-utils
@@ -91,7 +93,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure specific fonts are present
+    - name: Ensure specific fonts are present
       ansible.builtin.apt:
         name:
           - fonts-hack
@@ -100,24 +102,21 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure sync tools are present
+    - name: Ensure sync tools are present
       ansible.builtin.apt:
         name:
           - git-annex
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure 3D tools are present
+    - name: Ensure 3D tools are present
       ansible.builtin.apt:
         name:
           - mesa-utils
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure radeontop is present in AMD machines
+    - name: Ensure radeontop is present in AMD machines
       ansible.builtin.apt:
         name: radeontop
       when: "'AuthenticAMD' in ansible_facts.processor"
-
-  become: "{{ system_become }}"
-  become_user: "{{ system_become_user }}"
