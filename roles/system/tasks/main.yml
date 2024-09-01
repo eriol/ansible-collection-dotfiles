@@ -83,10 +83,11 @@
         name:
           - apache2-utils
           - gnupg
+          - minisign
           - pass
           - pass-extension-tomb
-          - python3-keyring
           - pinentry-qt
+          - python3-keyring
         update_cache: true
         cache_valid_time: 3600
 
