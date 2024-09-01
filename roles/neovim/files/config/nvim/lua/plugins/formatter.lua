@@ -43,6 +43,8 @@ return {
                     require("formatter.filetypes.rust").rustfmt,
                 },
 
+                yaml = { dprint },
+
                 ["*"] = {
                     require("formatter.filetypes.any").remove_trailing_whitespace,
                 },
