@@ -81,6 +81,7 @@
     - name: ensure security tools are present
       ansible.builtin.apt:
         name:
+          - apache2-utils
           - gnupg
           - pass
           - pass-extension-tomb
