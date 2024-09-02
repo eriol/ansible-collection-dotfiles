@@ -113,6 +113,7 @@
       ansible.builtin.apt:
         name:
           - mesa-utils
+          - vainfo
         update_cache: true
         cache_valid_time: 3600
 
