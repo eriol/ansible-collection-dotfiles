@@ -13,6 +13,7 @@ for dir in \
     /opt/kotlinc/bin \
     $JAVA_HOME/bin \
     ~/.nix-profile/bin/ \
+    ~/.juliaup/bin/ \
     ~/.yarn/bin \
     ~/.go/bin \
     ~/.cargo/bin \
