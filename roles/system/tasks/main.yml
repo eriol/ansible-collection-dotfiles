@@ -75,6 +75,7 @@
           - htop
           - iftop
           - lm-sensors
+          - powertop
           - time
           # - libbpf-tools
         update_cache: true
