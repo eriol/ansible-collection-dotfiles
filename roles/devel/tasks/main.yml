@@ -1,8 +1,11 @@
 ---
 
-- block:
+- name: Development stuff
+  become: "{{ devel_become }}"
+  become_user: "{{ devel_become_user }}"
+  block:
 
-    - name: ensure essential development tools are present
+    - name: Ensure essential development tools are present
       ansible.builtin.apt:
         name:
           - build-essential
@@ -11,7 +14,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure C and C++ tools are present
+    - name: Ensure C and C++ tools are present
       ansible.builtin.apt:
         name:
           - clang
@@ -23,7 +26,14 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure Python tools are present
+    - name: Ensure C and C++ libraries are present
+      ansible.builtin.apt:
+        name:
+          - libeigen3-dev
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Ensure Python tools are present
       ansible.builtin.apt:
         name:
           - black
@@ -34,7 +44,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure rust stuff is present
+    - name: Ensure rust stuff is present
       ansible.builtin.apt:
         name:
           - cargo
@@ -42,7 +52,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure go stuff is present
+    - name: Ensure go stuff is present
       ansible.builtin.apt:
         name:
           - golang
@@ -50,7 +60,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure yaml stuff is present
+    - name: Ensure yaml stuff is present
       ansible.builtin.apt:
         name:
           - yamllint
@@ -58,12 +68,9 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure markdown stuff is present
+    - name: Ensure markdown stuff is present
       ansible.builtin.apt:
         name:
           - mdformat
         update_cache: true
         cache_valid_time: 3600
-
-  become: "{{ devel_become }}"
-  become_user: "{{ devel_become_user }}"
