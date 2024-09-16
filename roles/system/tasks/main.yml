@@ -118,6 +118,14 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: Bluethoot stack is present
+      ansible.builtin.apt:
+        name:
+          - bluez
+          - bluez-tools
+        update_cache: true
+        cache_valid_time: 3600
+
     - name: Ensure radeontop is present in AMD machines
       ansible.builtin.apt:
         name: radeontop
