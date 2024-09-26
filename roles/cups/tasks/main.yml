@@ -1,8 +1,10 @@
 ---
+- name: Install cups (I should really don't use this...)
+  become: "{{ cups_become_admin }}"
+  become_user: "{{ cups_become_admin_user }}"
+  block:
 
-- block:
-
-  - name: install dependencies
+  - name: Install dependencies.
     ansible.builtin.apt:
       name:
         - cups
@@ -11,7 +13,13 @@
       cache_valid_time: 3600
     tags: apt
 
-  - name: ensure cups is stopped and disabled
+  - name: Ensure cups-browsed is not installed.
+    ansible.builtin.apt:
+      name:
+        - cups-browsed
+      state: absent
+
+  - name: Ensure cups is stopped and disabled
     ansible.builtin.systemd:
       name: cups
       enabled: false
@@ -22,6 +30,3 @@
       name: "{{ cups_become_user }}"
       groups: lp,lpadmin
       append: true
-
-  become: "{{ cups_become_admin }}"
-  become_user: "{{ cups_become_admin_user }}"
