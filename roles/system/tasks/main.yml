@@ -4,12 +4,14 @@
   become_user: "{{ system_become_user }}"
   block:
 
-    - name: Ensure packagekit and appstream are absent
+    - name: Ensure stuff I don't want is absent
       ansible.builtin.apt:
         name:
+          - nano
           - packagekit
-          - appstream
+          - rpcbind
         state: absent
+
 
     - name: Ensure systemd.conf.d exists
       ansible.builtin.file:
@@ -25,13 +27,6 @@
           DefaultTimeoutStopSec=15s
           DefaultTimeoutAbortSec=15s
         mode: 0644
-
-    - name: Ensure nano and rpcbind are absent
-      ansible.builtin.apt:
-        name:
-          - nano
-          - rpcbind
-        state: absent
 
     - name: Ensure fwupd is present
       ansible.builtin.apt:
