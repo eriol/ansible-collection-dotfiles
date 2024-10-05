@@ -1,0 +1,24 @@
+---
+- name: Install tmux
+  ansible.builtin.apt:
+    name: tmux
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ tmux_become }}"
+  become_user: "{{ tmux_become_admin_user }}"
+
+- block:
+    - name: Ensure ~/.config/tmux exists
+      ansible.builtin.file:
+        path: ~/.config/tmux
+        state: directory
+
+    - name: Copy tmux config file
+      ansible.builtin.copy:
+        src: config/tmux/tmux.conf
+        dest: ~/.config/tmux/tmux.conf
+
+  become: "{{ tmux_become }}"
+  become_user: "{{ tmux_become_user }}"

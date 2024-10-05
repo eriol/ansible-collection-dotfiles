@@ -1,0 +1,4 @@
+---
+tmux_become_admin_user: root
+tmux_become: true
+tmux_become_user: "{{ lookup('env', 'USER') }}"
