@@ -1,7 +1,9 @@
 ---
 - name: Install tmux
   ansible.builtin.apt:
-    name: tmux
+    name:
+      - tmux
+      - tmux-plugin-manager
     update_cache: true
     cache_valid_time: 3600
   tags: apt
