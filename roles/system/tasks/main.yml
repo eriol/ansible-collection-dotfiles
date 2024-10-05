@@ -12,7 +12,6 @@
           - rpcbind
         state: absent
 
-
     - name: Ensure systemd.conf.d exists
       ansible.builtin.file:
         dest: /etc/systemd/system.conf.d/
