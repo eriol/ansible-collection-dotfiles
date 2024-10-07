@@ -1,17 +1,17 @@
 ---
+- name: Setup virtualization stuff.
+  become: "{{ kvm_become }}"
+  become_user: "{{ kvm_become_user }}"
+  block:
 
-- block:
-
-    - name: ensure KVM and libvirt related stuff are present
+    - name: Ensure KVM and libvirt related stuff are present
       ansible.builtin.apt:
         name:
           - libvirt-daemon-system
           - qemu-system
+          - vagrant
+          - vagrant-libvirt
           - virt-manager
           - virtiofsd
         update_cache: true
         cache_valid_time: 3600
-
-
-  become: "{{ kvm_become }}"
-  become_user: "{{ kvm_become_user }}"
