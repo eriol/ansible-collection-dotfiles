@@ -1,0 +1,27 @@
+---
+- name: tests for all the roles
+  hosts: all
+
+  roles:
+    # - ../roles/apt
+    # - ../roles/networking
+    # - ../roles/audio
+    # - ../roles/system
+    # - ../roles/zsh
+
+    # - ../roles/fonts
+    # - ../roles/alacritty
+    # - ../roles/neovim
+    # - ../roles/emacs
+    # - ../roles/fontconfig
+    # - ../roles/git
+    # - ../roles/pipx
+    # - ../roles/direnv
+    # - ../roles/starship
+    # - ../roles/xinitrc
+    # - ../roles/cargo
+    # - ../roles/cargo_install
+    # - ../roles/go_install
+    # - ../roles/msmtp
+    # - ../roles/kde
+    - ../roles/kvm
