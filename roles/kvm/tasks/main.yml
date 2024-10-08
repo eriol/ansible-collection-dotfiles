@@ -15,3 +15,9 @@
           - virtiofsd
         update_cache: true
         cache_valid_time: 3600
+
+    - name: Use nftables in libvirt network.conf
+      ansible.builtin.lineinfile:
+        path: /etc/libvirt/network.conf
+        regexp: "^#?firewall_backend"
+        line: 'firewall_backend = "nftables"'
