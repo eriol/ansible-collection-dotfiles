@@ -22,12 +22,16 @@ table inet filter {
         # Accept IGMP
         ip protocol igmp accept
 
+        iifname virbr1 udp dport {53, 67, 68} accept
+
         # Log dropped packets
         log prefix "nftables dropped: " counter
     }
 
     chain forward {
         type filter hook forward priority 0; policy drop;
+
+        iifname virbr1 udp dport {53, 67, 68} accept
     }
 
     chain output {
