@@ -4,7 +4,7 @@
   become_user: "{{ cargo_install_become_user }}"
   block:
 
-  - name: install stuff with cargo
+  - name: Install stuff with cargo
     ansible.builtin.command:
       cmd: "{{ cargo_install_cargo_binary }} install {{ item }}"
     loop:
@@ -37,4 +37,5 @@
     ansible.builtin.command:
       cmd: "{{ cargo_install_cargo_binary }} install --git {{ item }}"
     loop:
+      - https://github.com/FrameworkComputer/framework-system framework_tool
       - https://github.com/Thumuss/utpm
