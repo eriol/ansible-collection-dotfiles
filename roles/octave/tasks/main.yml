@@ -1,0 +1,12 @@
+---
+- name: Install Octave and related packages.
+  become: "{{ octave_become }}"
+  become_user: "{{ octave_become_user }}"
+  block:
+    - name: Ensure octave stuff is present
+      ansible.builtin.apt:
+        name:
+          - octave
+          - octave-control
+          - octave-signal
+          - octave-symbolic
