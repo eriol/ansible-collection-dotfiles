@@ -29,6 +29,7 @@
     - name: Ensure C and C++ libraries are present
       ansible.builtin.apt:
         name:
+          - libbluetooth-dev
           - libeigen3-dev
         update_cache: true
         cache_valid_time: 3600
