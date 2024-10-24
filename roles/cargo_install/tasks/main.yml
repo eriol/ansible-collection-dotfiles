@@ -10,6 +10,7 @@
     loop:
       - bandwhich
       - cargo-audit
+      - cargo-tarpaulin
       - cargo-watch
       - git-delta
       - just
@@ -20,9 +21,6 @@
       - tokei
       - tree-sitter-cli
       - urdf-viz
-      # - cargo-tarpaulin
-      # Fails to build on x86 See:
-      # https://github.com/xd009642/tarpaulin/issues/1468
 
   - name: Install stuff with cargo install --locked.
     ansible.builtin.command:
