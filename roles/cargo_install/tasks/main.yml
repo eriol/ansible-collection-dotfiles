@@ -39,4 +39,4 @@
     loop:
       - https://github.com/FrameworkComputer/framework-system framework_tool
       - https://github.com/Thumuss/utpm
-      - https://github.com/crabdancing/phomemo-d30 cli
+      - https://github.com/crabdancing/phomemo-d30 d30-cli
