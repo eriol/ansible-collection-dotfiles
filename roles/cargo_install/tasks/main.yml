@@ -15,6 +15,7 @@
       - git-delta
       - just
       - kondo
+      - ripdrag
       - starship
       - stylua
       - texlab
