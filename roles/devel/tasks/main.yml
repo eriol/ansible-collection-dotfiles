@@ -23,6 +23,7 @@
           - clang-tools
           - clangd
           - cmake
+          - cpplint
         update_cache: true
         cache_valid_time: 3600
 
