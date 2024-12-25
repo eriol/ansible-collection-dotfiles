@@ -17,7 +17,7 @@
 
     - name: install neovim from appimage
       ansible.builtin.get_url:
-        url: https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage
+        url: https://github.com/neovim/neovim/releases/download/v0.10.3/nvim.appimage
         dest: ~/.bin
         checksum: sha256:970113b5279718126b82adddf3fbed1741db7afabf8a4134635a0d75c9f2c5d8
       tags: appimage
@@ -50,12 +50,6 @@
         - ~/.config/nvim/lua/plugins
         - ~/.config/nvim/lua/colors
         - ~/.config/nvim/after/ftplugin
-
-    - name: install packer.nvim from git
-      ansible.builtin.git:
-        repo: https://github.com/wbthomason/packer.nvim
-        dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-        depth: 1
 
     - name: install init.lua
       ansible.builtin.copy:
