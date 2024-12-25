@@ -1,6 +1,6 @@
 ---
 
-- name: install neovim
+- name: Install neovim
   ansible.builtin.apt:
     name:
       - neovim
@@ -15,14 +15,14 @@
 
 - block:
 
-    - name: install neovim from appimage
+    - name: Install neovim from appimage
       ansible.builtin.get_url:
         url: https://github.com/neovim/neovim/releases/download/v0.10.3/nvim.appimage
         dest: ~/.bin
         checksum: sha256:ce5f6462d4fa7150cc90c593955f66f7707ab5edc1d18f87413ea482e096c24e
       tags: appimage
 
-    - name: make nvim.appimage executable by the user
+    - name: Make nvim.appimage executable by the user
       ansible.builtin.file:
         path: ~/.bin/nvim.appimage
         owner: "{{ neovim_become_user }}"
@@ -31,7 +31,7 @@
         mode: '0750'
       tags: appimage
 
-    - name: link nvim.appimage to nvim inside ~/.bin user's home
+    - name: Link nvim.appimage to nvim inside ~/.bin user's home
       ansible.builtin.file:
         src: ~/.bin/nvim.appimage
         dest: ~/.bin/nvim
@@ -40,7 +40,7 @@
         state: link
       tags: appimage
 
-    - name: ensure ~/.config/nvim and subfolders exist
+    - name: Ensure ~/.config/nvim and subfolders exist
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
@@ -51,7 +51,7 @@
         - ~/.config/nvim/lua/colors
         - ~/.config/nvim/after/ftplugin
 
-    - name: install init.lua
+    - name: Install init.lua
       ansible.builtin.copy:
         src: config/nvim/init.lua
         dest: ~/.config/nvim/init.lua
@@ -59,7 +59,7 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
 
-    - name: install plugins config
+    - name: Install plugins config
       ansible.builtin.copy:
         src: "config/nvim/lua/plugins/{{ item }}"
         dest: "~/.config/nvim/lua/plugins/{{ item }}"
@@ -91,7 +91,7 @@
         - trouble.lua
         - vimtex.lua
 
-    - name: install general settings
+    - name: Install general settings
       ansible.builtin.copy:
         src: "config/nvim/lua/{{ item }}"
         dest: "~/.config/nvim/lua/{{ item }}"
@@ -103,7 +103,7 @@
         - lazy-bootstrap.lua
         - settings.lua
 
-    - name: install after/ftplugin settings
+    - name: Install after/ftplugin settings
       ansible.builtin.copy:
         src: "config/nvim/after/ftplugin/{{ item }}"
         dest: "~/.config/nvim/after/ftplugin/{{ item }}"
