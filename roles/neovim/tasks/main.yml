@@ -68,7 +68,7 @@
         mode: 0640
       with_items:
         - comment.lua
-        - formatter.lua
+        - conform.lua
         - fugitive.lua
         - gitsigns.lua
         - indent-blankline.lua
