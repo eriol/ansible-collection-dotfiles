@@ -1,6 +1,8 @@
 ---
-
-- block:
+- name: Install networking stuff.
+  become: "{{ apt_become }}"
+  become_user: "{{ apt_become_user }}"
+  block:
 
     - name: Networking tools
       ansible.builtin.apt:
@@ -17,6 +19,8 @@
           - nextcloud-desktop
           - nmap
           - smbclient
+          - syncthing
+          - syncthingtray-kde-plasma
           - tcpdump
           - whois
         update_cache: true
@@ -36,7 +40,3 @@
         name:
           - net-tools
         state: absent
-
-
-  become: "{{ apt_become }}"
-  become_user: "{{ apt_become_user }}"
