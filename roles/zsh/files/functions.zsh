@@ -6,6 +6,13 @@ gi ()
 i ()
 {
     nohup alacritty  -t nvim -e nvim "$@"  >/dev/null 2>&1 &!
+
+    current_layout=$(qdbus6 org.kde.keyboard /Layouts getLayout)
+    english_layout=1
+    echo "Current layout $current_layout"
+    if [ $current_layout -ne $english_layout ]; then
+        echo key super+space | dotool
+    fi
 }
 
 cdgopath ()
