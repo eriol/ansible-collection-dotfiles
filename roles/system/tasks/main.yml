@@ -105,6 +105,13 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: Ensure automation tools are present
+      ansible.builtin.apt:
+        name:
+          - ydotool
+        update_cache: true
+        cache_valid_time: 3600
+
     - name: Bluethoot stack is present
       ansible.builtin.apt:
         name:
