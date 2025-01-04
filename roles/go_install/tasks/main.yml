@@ -5,6 +5,7 @@
     cmd: "go install {{ item }}"
   loop:
     - code.gitea.io/tea@v0.9.2
+    - git.sr.ht/~geb/dotool@latest
     - github.com/charmbracelet/glow@latest
     - github.com/gopasspw/gopass-jsonapi@v1.15.15
     - github.com/gopasspw/gopass@v1.15.15
