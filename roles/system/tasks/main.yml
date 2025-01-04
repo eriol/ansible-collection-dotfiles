@@ -97,13 +97,6 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Ensure sync tools are present
-      ansible.builtin.apt:
-        name:
-          - git-annex
-        update_cache: true
-        cache_valid_time: 3600
-
     - name: Ensure 3D tools are present
       ansible.builtin.apt:
         name:

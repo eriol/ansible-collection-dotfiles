@@ -16,16 +16,23 @@
           - mitmproxy
           - mosquitto-clients
           - mtr
-          - nextcloud-desktop
           - nmap
           - smbclient
-          - syncthing
-          - syncthingtray-kde-plasma
           - tcpdump
           - whois
         update_cache: true
         cache_valid_time: 3600
       tags: apt
+
+    - name: Ensure sync tools are present
+      ansible.builtin.apt:
+        name:
+          - git-annex
+          - nextcloud-desktop
+          - syncthing
+          - syncthingtray-kde-plasma
+        update_cache: true
+        cache_valid_time: 3600
 
     - name: IM
       ansible.builtin.apt:
