@@ -13,6 +13,7 @@
           - finger
           - iftop
           - iperf3
+          - minicom
           - mitmproxy
           - mosquitto-clients
           - mtr
