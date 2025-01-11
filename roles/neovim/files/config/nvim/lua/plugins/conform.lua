@@ -25,6 +25,11 @@ return {
             tex = { "latexindent" },
             yaml = { "dprint" },
         },
+        formatters = {
+            latexindent = {
+                prepend_args = { "-l" },
+            },
+        },
         default_format_opts = {
             lsp_format = "fallback",
         },
