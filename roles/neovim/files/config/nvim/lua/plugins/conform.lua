@@ -22,6 +22,7 @@ return {
             lua = { "stylua" },
             python = { "isort", "black" },
             rust = { "rustfmt", lsp_format = "fallback" },
+            tex = { "latexindent" },
             yaml = { "dprint" },
         },
         default_format_opts = {
