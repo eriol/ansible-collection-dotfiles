@@ -16,7 +16,6 @@
       - just
       - kondo
       - ripdrag
-      - starship
       - stylua
       - texlab
       - tokei
@@ -30,6 +29,7 @@
       - dprint
       - evcxr_repl
       - rbw
+      - starship
       - typst-cli
 
   - name: Install stuff with cargo install --git.
