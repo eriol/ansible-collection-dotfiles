@@ -65,6 +65,7 @@
       ansible.builtin.apt:
         name:
           - acpi
+          - btop
           - duf
           - htop
           - iftop
