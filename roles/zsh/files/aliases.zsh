@@ -17,3 +17,8 @@ alias g++11='g++ -std=c++11'
 # Debian
 
 alias lintian='lintian -EIL +pedantic --show-overrides --color auto --tag-display-limit 0'
+
+# ROS 1
+
+alias noetic='distrobox enter noetic'
+alias melodic='distrobox enter melodic'
