@@ -17,14 +17,14 @@
 
     - name: Install neovim from appimage
       ansible.builtin.get_url:
-        url: https://github.com/neovim/neovim/releases/download/v0.10.3/nvim.appimage
+        url: https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage
         dest: ~/.bin
-        checksum: sha256:ce5f6462d4fa7150cc90c593955f66f7707ab5edc1d18f87413ea482e096c24e
+        checksum: sha256:d1b1488ef6a970dc3a2826b788d31d81b2f308ad42ef70ed62d35d0bf6189336
       tags: appimage
 
     - name: Make nvim.appimage executable by the user
       ansible.builtin.file:
-        path: ~/.bin/nvim.appimage
+        path: ~/.bin/nvim-linux-x86_64.appimage
         owner: "{{ neovim_become_user }}"
         group: "{{ neovim_become_user }}"
         state: touch
@@ -33,7 +33,7 @@
 
     - name: Link nvim.appimage to nvim inside ~/.bin user's home
       ansible.builtin.file:
-        src: ~/.bin/nvim.appimage
+        src: ~/.bin/nvim-linux-x86_64.appimage
         dest: ~/.bin/nvim
         owner: "{{ neovim_become_user }}"
         group: "{{ neovim_become_user }}"
