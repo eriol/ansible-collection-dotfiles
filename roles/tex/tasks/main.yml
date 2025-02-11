@@ -5,6 +5,8 @@
     - name: ensure TeX stuff is installed
       ansible.builtin.apt:
         name:
+          - dot2tex
+          - latexmk
           - texlive-base
           - texlive-extra-utils
           - texlive-fonts-extra
