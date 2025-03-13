@@ -53,10 +53,11 @@
           - bat
           - fd-find
           - fzf
-          - moreutils
           - hyfetch
+          - moreutils
           - neovim
           - pv
+          - qalc
           - ripgrep
         update_cache: true
         cache_valid_time: 3600
