@@ -115,7 +115,10 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Ensure radeontop is present in AMD machines
+    - name: Ensure radeontop and rocm stuff are present in AMD machines
       ansible.builtin.apt:
-        name: radeontop
+        name:
+          - radeontop
+          - rocm-smi
+          - rocminfo
       when: "'AuthenticAMD' in ansible_facts.processor"
