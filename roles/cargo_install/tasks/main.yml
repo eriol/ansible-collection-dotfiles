@@ -12,6 +12,7 @@
       - cargo-audit
       - cargo-tarpaulin
       - cargo-watch
+      - git-absorb
       - git-delta
       - just
       - kondo
