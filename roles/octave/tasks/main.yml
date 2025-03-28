@@ -9,4 +9,5 @@
           - octave
           - octave-control
           - octave-signal
+          - octave-statistics
           - octave-symbolic
