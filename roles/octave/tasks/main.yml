@@ -12,7 +12,8 @@
           - octave-statistics
           - octave-symbolic
 
-    - name: copy .octaverc config file
-      copy:
+    - name: Copy .octaverc config file
+      ansible.builtin.copy:
         src: octaverc
         dest: ~/.octaverc
+        mode: '0640'
