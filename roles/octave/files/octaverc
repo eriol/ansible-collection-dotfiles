@@ -1,0 +1,4 @@
+edit mode async
+more off
+history_control("ignoredups");
+PS1 (">> ");

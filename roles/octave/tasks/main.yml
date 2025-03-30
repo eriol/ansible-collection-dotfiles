@@ -11,3 +11,8 @@
           - octave-signal
           - octave-statistics
           - octave-symbolic
+
+    - name: copy .octaverc config file
+      copy:
+        src: octaverc
+        dest: ~/.octaverc
