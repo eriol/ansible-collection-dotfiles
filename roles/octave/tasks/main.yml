@@ -1,7 +1,7 @@
 ---
 - name: Install Octave and related packages.
   become: "{{ octave_become }}"
-  become_user: "{{ octave_become_user }}"
+  become_user: "{{ octave_become_admin_user }}"
   block:
     - name: Ensure octave stuff is present
       ansible.builtin.apt:
@@ -12,8 +12,10 @@
           - octave-statistics
           - octave-symbolic
 
-    - name: Copy .octaverc config file
-      ansible.builtin.copy:
-        src: octaverc
-        dest: ~/.octaverc
-        mode: '0640'
+- name: Copy .octaverc config file
+  become: "{{ octave_become }}"
+  become_user: "{{ octave_become_user }}"
+  ansible.builtin.copy:
+    src: octaverc
+    dest: ~/.octaverc
+    mode: '0640'

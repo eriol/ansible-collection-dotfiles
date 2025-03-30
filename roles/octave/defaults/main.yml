@@ -1,3 +1,4 @@
 ---
 octave_become: true
-octave_become_user: root
+octave_become_admin_user: root
+starship_become_user: "{{ lookup('env', 'USER') }}"
