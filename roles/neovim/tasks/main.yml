@@ -8,7 +8,7 @@
       - git
     update_cache: true
     cache_valid_time: 3600
-  tags: apt
+  tags: [never, apt]
 
   become: "{{ neovim_become_admin }}"
   become_user: "{{ neovim_become_admin_user }}"
@@ -17,10 +17,10 @@
 
     - name: Install neovim from appimage
       ansible.builtin.get_url:
-        url: https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage
+        url: https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.appimage
         dest: ~/.bin
-        checksum: sha256:d1b1488ef6a970dc3a2826b788d31d81b2f308ad42ef70ed62d35d0bf6189336
-      tags: [never, appimage]
+        checksum: sha256:ca44cd43fe8d55418414496e8ec7bac83f611705ece167f4ccb93cbf46fec6c0
+      tags: appimage
 
     - name: Make nvim.appimage executable by the user
       ansible.builtin.file:
@@ -29,7 +29,7 @@
         group: "{{ neovim_become_user }}"
         state: touch
         mode: '0750'
-      tags: [never, appimage]
+      tags: appimage
 
     - name: Link nvim.appimage to nvim inside ~/.bin user's home
       ansible.builtin.file:
@@ -38,7 +38,7 @@
         owner: "{{ neovim_become_user }}"
         group: "{{ neovim_become_user }}"
         state: link
-      tags: [never, appimage]
+      tags: appimage
 
     - name: Ensure ~/.config/nvim and subfolders exist
       ansible.builtin.file:
