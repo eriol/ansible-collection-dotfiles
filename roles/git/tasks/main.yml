@@ -5,6 +5,7 @@
       - git
       - git-cola
       - git-filter-repo
+      - git-lfs
     update_cache: true
     cache_valid_time: 3600
   tags: apt
