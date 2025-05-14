@@ -67,6 +67,7 @@
         group: "{{ neovim_become_user }}"
         mode: 0640
       with_items:
+        - blink.lua
         - comment.lua
         - conform.lua
         - fugitive.lua
@@ -79,7 +80,6 @@
         - lualine.lua
         - luasnip.lua
         - nvim-autopairs.lua
-        - nvim-cmp.lua
         - nvim-surround.lua
         - nvim-tree.lua
         - nvim-treesitter.lua
