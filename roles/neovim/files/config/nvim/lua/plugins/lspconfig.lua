@@ -21,11 +21,6 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
-        -- NOTE: server setup is done in nvim-cmp config.
-        -- local lspconfig = require "lspconfig"
-        -- lspconfig.pyright.setup({})
-        -- lspconfig.rust_analyzer.setup({})
-
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
         vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
@@ -34,6 +29,17 @@ return {
         vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
         local lspconfig = require "lspconfig"
+        local opts = {
+            servers = {
+                ansiblels = {},
+                esbonio = {},
+                lua_ls = {},
+                gopls = {},
+                pyright = {},
+                rust_analyzer = {},
+                texlab = {},
+            },
+        }
         for server, config in pairs(opts.servers) do
             config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
             lspconfig[server].setup(config)
