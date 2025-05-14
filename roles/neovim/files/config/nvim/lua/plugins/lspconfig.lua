@@ -1,6 +1,17 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
+    opts = {
+        servers = {
+            ansiblels = {},
+            esbonio = {},
+            lua_ls = {},
+            gopls = {},
+            pyright = {},
+            rust_analyzer = {},
+            texlab = {},
+        },
+    },
     config = function()
         -- Redefine sign.
         local signs = { Error = "", Warn = "", Hint = "", Info = " " }
