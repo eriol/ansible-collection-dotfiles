@@ -25,21 +25,50 @@ return {
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { preset = "default" },
+        keymap = {
+            preset = "enter",
+
+            ["<Tab>"] = {
+                "select_next",
+                "snippet_forward",
+                "fallback",
+            },
+
+            ["<S-Tab>"] = {
+                "select_prev",
+                "snippet_backward",
+                "fallback",
+            },
+        },
 
         appearance = {
+            use_nvim_cmp_as_default = true,
             -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
             -- Adjusts spacing to ensure icons are aligned
             nerd_font_variant = "mono",
         },
 
-        -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = false } },
+        completion = {
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 250,
+                window = {
+                    border = "single",
+                },
+            },
+        },
+
+        signature = {
+            enabled = true,
+            window = {
+                border = "single",
+            },
+        },
 
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "snippets", "buffer", "path" },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
