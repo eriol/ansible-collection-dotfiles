@@ -1,5 +1,6 @@
 return {
     "saghen/blink.cmp",
+    event = "InsertEnter",
     -- optional: provides snippets for the snippet source
     dependencies = { "rafamadriz/friendly-snippets" },
 
@@ -49,6 +50,14 @@ return {
         },
 
         completion = {
+            list = {
+                max_items = 15,
+            },
+
+            menu = {
+                border = "single",
+            },
+
             documentation = {
                 auto_show = true,
                 auto_show_delay_ms = 250,
@@ -68,7 +77,7 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "snippets", "buffer", "path" },
+            default = { "lsp", "luasnip", "buffer", "path" },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -77,7 +86,6 @@ return {
         --
         -- See the fuzzy documentation for more information
         fuzzy = { implementation = "prefer_rust_with_warning" },
-        snippets = { preset = "luasnip" },
     },
-    opts_extend = { "sources.default" },
+    opts_extend = { "sources.completion.enabled_providers" },
 }
