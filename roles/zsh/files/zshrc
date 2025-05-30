@@ -14,7 +14,6 @@ for dir in \
     $JAVA_HOME/bin \
     ~/.nix-profile/bin/ \
     ~/.juliaup/bin/ \
-    ~/.yarn/bin \
     ~/.go/bin \
     ~/.cargo/bin \
     ~/.local/bin \
