@@ -15,6 +15,7 @@ for dir in \
     ~/.nix-profile/bin/ \
     ~/.juliaup/bin/ \
     ~/.go/bin \
+    ~/.bun/bin \
     ~/.cargo/bin \
     ~/.local/bin \
     ~/.bin \
