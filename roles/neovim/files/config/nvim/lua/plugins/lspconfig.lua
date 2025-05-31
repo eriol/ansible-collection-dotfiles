@@ -21,6 +21,8 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
+        vim.diagnostic.config({ virtual_text = true })
+
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
         vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
