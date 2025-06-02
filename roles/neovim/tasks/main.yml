@@ -76,7 +76,6 @@
         - kanagawa.lua
         - lint.lua
         - lspconfig.lua
-        - lsp_signature.lua
         - lualine.lua
         - luasnip.lua
         - nvim-autopairs.lua
