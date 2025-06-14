@@ -9,3 +9,6 @@ staged = '[✓](green)'
 
 [line_break]
 disabled = true
+
+[python]
+python_binary = ".venv/bin/python"
