@@ -1,6 +1,6 @@
 vim.api.nvim_create_user_command("DiagnosticVirtualTextToggle", function()
     local current_value = vim.diagnostic.config().virtual_text
-    vim.diagnostic.config(virtual_text = not current_value)
+    vim.diagnostic.config({ virtual_text = not current_value })
 end, {
     desc = "Toggle virtual text diagnostics",
 })
@@ -8,14 +8,13 @@ end, {
 vim.api.nvim_create_user_command("DiagnosticsToggle", function()
     local current_value = vim.diagnostic.is_disabled()
     if current_value then
-      vim.diagnostic.enable()
+        vim.diagnostic.enable()
     else
-      vim.diagnostic.disable()
+        vim.diagnostic.disable()
     end
-  end, {
-        desc = "Toggle diagnostics"
-    }
-)
+end, {
+    desc = "Toggle diagnostics",
+})
 
 return {
     "neovim/nvim-lspconfig",
