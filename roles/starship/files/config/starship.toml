@@ -11,4 +11,4 @@ staged = '[✓](green)'
 disabled = true
 
 [python]
-python_binary = ".venv/bin/python"
+python_binary = [".venv/bin/python", "python", "python3", "python2"]
