@@ -1,6 +1,9 @@
 ---
 
-- block:
+- name: Ensure Hack is installed
+  become: "{{ fonts_become }}"
+  become_user: "{{ fonts_become_user }}"
+  block:
 
     - name: ensure fonts directory exists
       ansible.builtin.file:
@@ -19,10 +22,7 @@
 
     - name: download Hack
       ansible.builtin.unarchive:
-        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.zip
         dest: "{{ lookup('env', 'HOME') }}/.fonts/h/"
         remote_src: true
       when: hack_exists is failed
-
-  become: "{{ fonts_become }}"
-  become_user: "{{ fonts_become_user }}"
