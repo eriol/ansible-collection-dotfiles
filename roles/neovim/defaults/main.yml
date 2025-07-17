@@ -3,3 +3,6 @@ neovim_become_admin: true
 neovim_become_admin_user: root
 neovim_become: true
 neovim_become_user: "{{ lookup('env', 'USER') }}"
+
+neovim_version: 0.11.3
+neovim_sha: sha256:5f377dc48c49a4170bd698a80ef461a702b8ebb8b2f7ddbb776341503d36415f

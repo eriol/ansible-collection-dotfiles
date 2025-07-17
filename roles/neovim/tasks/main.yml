@@ -17,9 +17,9 @@
 
     - name: Install neovim from appimage
       ansible.builtin.get_url:
-        url: https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.appimage
+        url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux-x86_64.appimage"
         dest: ~/.bin
-        checksum: sha256:c7c365fdf651f058b2fc153d667b406ac39ca674a54aa9f799544bc8c28dd898
+        checksum: "sha256:{{ neovim_sha256 }}"
       tags: appimage
 
     - name: Make nvim.appimage executable by the user
