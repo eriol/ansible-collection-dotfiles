@@ -10,6 +10,7 @@
     - github.com/gopasspw/gopass-jsonapi@v1.15.15
     - github.com/gopasspw/gopass@v1.15.15
     - github.com/mikefarah/yq/v4@latest
+    - github.com/sinclairtarget/git-who@latest
     - golang.org/x/tools/cmd/goimports@latest
 
   become: "{{ go_install_become }}"
