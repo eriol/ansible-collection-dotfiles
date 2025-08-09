@@ -1,0 +1,24 @@
+---
+- name: install todoman
+  ansible.builtin.apt:
+    name: todoman
+    update_cache: true
+    cache_valid_time: 3600
+  tags: apt
+
+  become: "{{ todoman_become }}"
+  become_user: "{{ todoman_become_admin_user }}"
+
+- block:
+    - name: ensure ~/.config/todoman exists
+      ansible.builtin.file:
+        path: ~/.config/todoman
+        state: directory
+
+    - name: copy todoman config file
+      ansible.builtin.copy:
+        content: "{{ todoman_config }}"
+        dest: ~/.config/todoman/config.py
+
+  become: "{{ todoman_become }}"
+  become_user: "{{ todoman_become_user }}"

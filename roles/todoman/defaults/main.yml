@@ -1,0 +1,6 @@
+---
+todoman_become: true
+todoman_become_admin_user: root
+todoman_become_user: "{{ lookup('env', 'USER') }}"
+
+todoman_config: ""
