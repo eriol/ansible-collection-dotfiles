@@ -7,6 +7,7 @@
     - code.gitea.io/tea@v0.9.2
     - git.sr.ht/~geb/dotool@latest
     - github.com/charmbracelet/glow@latest
+    - github.com/emersion/hydroxide/cmd/hydroxide@v0.2.30
     - github.com/gopasspw/gopass-jsonapi@v1.15.16
     - github.com/gopasspw/gopass@v1.15.16
     - github.com/mikefarah/yq/v4@latest
