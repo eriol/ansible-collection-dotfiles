@@ -1,8 +1,10 @@
 ---
 
-- block:
-
-    - name: ensure Debian devel stuff is present
+- name: Install and configure required packages
+  become: "{{ debian_become }}"
+  become_user: "{{ debian_become_admin_user }}"
+  block:
+    - name: Ensure Debian devel stuff is present
       ansible.builtin.apt:
         name:
           - cowbuilder
@@ -15,15 +17,21 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: Configure pbuilder
+      ansible.builtin.blockinfile:
+        path: /etc/pbuilderrc
+        prepend_newline: true
+        block: |
+          # append eatmydata to $EXTRAPACKAGES:
+          EXTRAPACKAGES="$EXTRAPACKAGES eatmydata"
+          EATMYDATA=yes
+
+- name: Configure user level stuff
   become: "{{ debian_become }}"
-  become_user: "{{ debian_become_admin_user }}"
-
-- block:
-
-    - name: copy git-buildpackage config file
+  become_user: "{{ debian_become_user }}"
+  block:
+    - name: Copy git-buildpackage config file
       ansible.builtin.copy:
         src: config/git-buildpackage/gbp.conf
         dest: ~/.gbp.conf
-
-  become: "{{ debian_become }}"
-  become_user: "{{ debian_become_user }}"
+        mode: "0644"
