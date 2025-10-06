@@ -30,7 +30,7 @@ return {
             texlab = {},
         },
     },
-    config = function()
+    config = function(_, opts)
         -- Redefine sign.
         local signs = { Error = "", Warn = "", Hint = "", Info = " " }
 
@@ -49,17 +49,6 @@ return {
         vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
         local lspconfig = require "lspconfig"
-        local opts = {
-            servers = {
-                ansiblels = {},
-                esbonio = {},
-                lua_ls = {},
-                gopls = {},
-                pyright = {},
-                rust_analyzer = {},
-                texlab = {},
-            },
-        }
         for server, config in pairs(opts.servers) do
             config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
             lspconfig[server].setup(config)
