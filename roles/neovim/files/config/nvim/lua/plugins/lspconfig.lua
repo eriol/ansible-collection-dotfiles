@@ -18,19 +18,7 @@ end, {
 
 return {
     "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
-    opts = {
-        servers = {
-            ansiblels = {},
-            esbonio = {},
-            lua_ls = {},
-            gopls = {},
-            pyright = {},
-            rust_analyzer = {},
-            texlab = {},
-        },
-    },
-    config = function(_, opts)
+    config = function()
         -- Redefine sign.
         local signs = { Error = "", Warn = "", Hint = "", Info = " " }
 
@@ -48,10 +36,18 @@ return {
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
         vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
-        local lspconfig = require "lspconfig"
-        for server, config in pairs(opts.servers) do
+        local servers = {
+            ansiblels = {},
+            esbonio = {},
+            lua_ls = {},
+            gopls = {},
+            pyright = {},
+            rust_analyzer = {},
+            texlab = {},
+        },
+        for server, config in pairs(servers) do
             config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-            lspconfig[server].setup(config)
+            vim.lsp.config(server, config)
         end
         -- Use LspAttach autocommand to only map the following keys
         -- after the language server attaches to the current buffer
