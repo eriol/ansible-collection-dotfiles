@@ -44,11 +44,13 @@ return {
             pyright = {},
             rust_analyzer = {},
             texlab = {},
-        },
+        }
+
         for server, config in pairs(servers) do
             config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
             vim.lsp.config(server, config)
         end
+
         -- Use LspAttach autocommand to only map the following keys
         -- after the language server attaches to the current buffer
         vim.api.nvim_create_autocmd("LspAttach", {
