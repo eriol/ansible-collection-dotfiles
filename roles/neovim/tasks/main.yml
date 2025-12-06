@@ -1,6 +1,6 @@
 ---
 
-- name: Install neovim
+- name: Install neovim.
   ansible.builtin.apt:
     name:
       - neovim
@@ -8,42 +8,20 @@
       - git
     update_cache: true
     cache_valid_time: 3600
-  tags: [never, apt]
+  tags: apt
 
-  become: "{{ neovim_become_admin }}"
+  become: "{{ neovim_become }}"
   become_user: "{{ neovim_become_admin_user }}"
 
-- block:
-
-    - name: Install neovim from appimage
-      ansible.builtin.get_url:
-        url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux-x86_64.appimage"
-        dest: ~/.bin
-        checksum: "sha256:{{ neovim_sha256 }}"
-      tags: appimage
-
-    - name: Make nvim.appimage executable by the user
-      ansible.builtin.file:
-        path: ~/.bin/nvim-linux-x86_64.appimage
-        owner: "{{ neovim_become_user }}"
-        group: "{{ neovim_become_user }}"
-        state: touch
-        mode: '0750'
-      tags: appimage
-
-    - name: Link nvim.appimage to nvim inside ~/.bin user's home
-      ansible.builtin.file:
-        src: ~/.bin/nvim-linux-x86_64.appimage
-        dest: ~/.bin/nvim
-        owner: "{{ neovim_become_user }}"
-        group: "{{ neovim_become_user }}"
-        state: link
-      tags: appimage
-
+- name: Configure neovim.
+  become: "{{ neovim_become }}"
+  become_user: "{{ neovim_become_user }}"
+  block:
     - name: Ensure ~/.config/nvim and subfolders exist
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
+        mode: 0640
       with_items:
         - ~/.config/nvim
         - ~/.config/nvim/lua
@@ -112,6 +90,3 @@
       with_items:
         - kivy.lua
         - rst.lua
-
-  become: "{{ neovim_become }}"
-  become_user: "{{ neovim_become_user }}"
