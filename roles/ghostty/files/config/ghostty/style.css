@@ -1,0 +1,16 @@
+headerbar {
+    min-height: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+tabbar {
+    margin-top: -8px;
+    margin-bottom: -8px;
+    min-height: 0px;
+}
+
+tabbar tab {
+    min-height: 30px;
+    padding: 0px 0px;
+}
