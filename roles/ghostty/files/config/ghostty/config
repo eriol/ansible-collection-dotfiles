@@ -1,0 +1,2 @@
+command = /usr/bin/zsh -l -i
+gtk-custom-css = ~/.config/ghostty/style.css

@@ -1,0 +1,4 @@
+---
+ghostty_become_admin_user: root
+ghostty_become: true
+ghostty_become_user: "{{ lookup('env', 'USER') }}"

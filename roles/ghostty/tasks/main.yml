@@ -1,0 +1,22 @@
+---
+- name: Configure ghostty.
+  become: "{{ ghostty_become }}"
+  become_user: "{{ ghostty_become_user }}"
+  block:
+    - name: Ensure ~/.config/ghostty exists
+      ansible.builtin.file:
+        path: ~/.config/ghostty
+        state: directory
+        mode: 0640
+
+    - name: Copy ghostty config file
+      ansible.builtin.copy:
+        src: config/ghostty/config
+        dest: ~/.config/ghostty/config
+        mode: 0640
+
+    - name: Copy ghostty style
+      ansible.builtin.copy:
+        src: config/ghostty/style.css
+        dest: ~/.config/ghostty/style.css
+        mode: 0640
