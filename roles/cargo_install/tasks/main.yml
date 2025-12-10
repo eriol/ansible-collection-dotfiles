@@ -11,6 +11,7 @@
         - cargo-audit
         - cargo-tarpaulin
         - cargo-watch
+        - dua-cli
         - git-absorb
         - git-delta
         - just
