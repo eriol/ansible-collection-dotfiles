@@ -30,6 +30,7 @@
       loop:
         - dprint
         - evcxr_repl
+        - prek
         - rbw
         - starship
         - typst-cli
