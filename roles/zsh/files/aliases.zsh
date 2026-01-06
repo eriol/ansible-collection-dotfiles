@@ -7,6 +7,8 @@ alias mutt='neomutt'
 alias piken='noglob piken'
 alias wget='wget -c'
 alias ip='ip --color=auto'
+alias download-playlist='yt-dlp -t mp3 -o "%(playlist_index)s - %(title)s.%(ext)s"'
+alias download-song='yt-dlp -t mp3'
 
 # gcc
 alias gcc99='gcc -O -Wall -Wextra -pedantic -ansi -std=c99'
@@ -18,7 +20,8 @@ alias g++11='g++ -std=c++11'
 
 alias lintian='lintian -EIL +pedantic --show-overrides --color auto --tag-display-limit 0'
 
-# ROS 1
+# Distrobox
 
 alias noetic='distrobox enter noetic'
-alias melodic='distrobox enter melodic'
+alias humble='distrobox enter humble'
+alias matlab='distrobox enter matlab'
