@@ -80,3 +80,17 @@ cmd [[ autocmd BufNewFile,BufRead [vV]agrantfile set filetype=ruby ]]
 cmd [[ autocmd BufNewFile,BufRead {*.sass} set filetype=scss ]]
 -- Set filetype yaml for .yamllint.
 cmd [[ autocmd BufNewFile,BufRead \.yamllint set filetype=yaml ]]
+
+-- Sync textwidth and colorcolumn.
+vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "textwidth",
+    callback = function()
+        local tw = vim.opt.textwidth:get()
+
+        if tw > 0 then
+            vim.opt.colorcolumn = tostring(tw)
+        else
+            vim.opt.colorcolumn = ""
+        end
+    end,
+})
