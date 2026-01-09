@@ -82,11 +82,16 @@ cmd [[ autocmd BufNewFile,BufRead {*.sass} set filetype=scss ]]
 cmd [[ autocmd BufNewFile,BufRead \.yamllint set filetype=yaml ]]
 
 -- Sync textwidth and colorcolumn.
-vim.api.nvim_create_autocmd("OptionSet", {
-    pattern = "textwidth",
-    callback = function()
-        local tw = vim.opt.textwidth:get()
+vim.api.nvim_create_autocmd({ "BufEnter", "OptionSet" }, {
+    group = vim.api.nvim_create_augroup("SyncTwAndCc", { clear = true }),
+    pattern = { "*" },
+    callback = function(args)
+        -- If the event is OptionSet, stop unless it was 'textwidth' that changed.
+        if args.event == "OptionSet" and args.match ~= "textwidth" then
+            return
+        end
 
+        local tw = vim.opt.textwidth:get()
         if tw > 0 then
             vim.opt.colorcolumn = tostring(tw)
         else
