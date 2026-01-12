@@ -22,7 +22,10 @@ table inet filter {
         # Accept IGMP
         ip protocol igmp accept
 
-        iifname virbr1 udp dport {53, 67, 68} accept
+        iifname virbr1 udp dport 53 accept
+
+        # DHCP
+        udp sport {67, 68} udp dport {67, 68} accept
 
         # Log dropped packets
         limit rate 5/minute log prefix "nftables dropped: " counter
