@@ -25,7 +25,7 @@ table inet filter {
         iifname virbr1 udp dport {53, 67, 68} accept
 
         # Log dropped packets
-        log prefix "nftables dropped: " counter
+        limit rate 5/minute log prefix "nftables dropped: " counter
     }
 
     chain forward {
