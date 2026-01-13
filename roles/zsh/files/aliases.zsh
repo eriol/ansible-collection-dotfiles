@@ -9,6 +9,8 @@ alias wget='wget -c'
 alias ip='ip --color=auto'
 alias download-playlist='yt-dlp -t mp3 -o "%(playlist_index)s - %(title)s.%(ext)s"'
 alias download-song='yt-dlp -t mp3'
+alias bt-internal-off="echo '1-5:1.0' | sudo tee /sys/bus/usb/drivers/btusb/unbind"
+alias bt-internal-on="echo '1-5:1.0' | sudo tee /sys/bus/usb/drivers/btusb/bind"
 
 # gcc
 alias gcc99='gcc -O -Wall -Wextra -pedantic -ansi -std=c99'
