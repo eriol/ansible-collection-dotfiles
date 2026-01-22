@@ -41,6 +41,7 @@ return {
             python = { "isort", "black" },
             rust = { "rustfmt", lsp_format = "fallback" },
             tex = { "latexindent" },
+            toml = { "dprint" },
             yaml = { "dprint" },
         },
         formatters = {
