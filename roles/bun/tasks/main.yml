@@ -1,0 +1,23 @@
+---
+- name: Install bun
+  become: "{{ bun_become }}"
+  become_user: "{{ bun_become_user }}"
+  block:
+    - name: Download locally bun in /tmp
+      ansible.builtin.get_url:
+        url: "{{ bun_download_url }}"
+        dest: /tmp
+        mode: "0750"
+        checksum: "sha256:{{ bun_tarball_sha256 }}"
+
+    - name: Unarchive locally bun
+      ansible.builtin.unarchive:
+        src: "/tmp/{{ bun_tarball }}"
+        dest: /tmp
+        remote_src: true
+
+    - name: Copy bun binary
+      ansible.builtin.copy:
+        src: "/tmp/{{ bun_tarball[:-4] }}/bun"
+        dest: ~/.bin
+        mode: "0750"
