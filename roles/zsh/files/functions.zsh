@@ -67,3 +67,23 @@ function delete-branches() {
       fzf --multi --preview="git log {} --" |
       xargs --no-run-if-empty git branch --delete --force
   }
+
+# Automatically enter into distrobox when DIRENV_DISTROBOX is set.
+# An example .envrc is:
+#     [ "${TERM_PROGRAM-}" = "ghostty" ] || return 0
+#     [ -n "${DISTROBOX_ENTER_PATH-}" ] && return 0
+#     export DIRENV_DISTROBOX=go2-noetic
+_autodistrobox_from_direnv() {
+    [[ -n "${DIRENV_DISTROBOX-}" ]] || return 0
+    [[ -z "${DISTROBOX_ENTER_PATH-}" ]] || return 0
+
+    command -v distrobox >/dev/null 2>&1 || return 0
+
+    local box="$DIRENV_DISTROBOX"
+
+    unset DIRENV_DISTROBOX
+
+    distrobox enter "$box"
+}
+
+precmd_functions+=(_autodistrobox_from_direnv)
