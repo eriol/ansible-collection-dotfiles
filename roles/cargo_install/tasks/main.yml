@@ -9,6 +9,7 @@
       loop:
         - bandwhich
         - cargo-audit
+        - cargo-generate
         - cargo-tarpaulin
         - cargo-watch
         - dua-cli
