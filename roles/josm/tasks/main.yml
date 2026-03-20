@@ -15,4 +15,4 @@
         path: /etc/default/josm
         insertafter: EOF
         # yamllint disable-line rule:line-length
-        line: 'JAVA_OPTS="-Dsun.java2d.uiScale=1.75 -Dawt.useSystemAAFontSettings=on ${JAVA_OPTS}"'
+        line: 'JAVA_OPTS="-Dsun.java2d.uiScale=2 -Dawt.useSystemAAFontSettings=on ${JAVA_OPTS}"'
