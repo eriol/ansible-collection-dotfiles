@@ -29,6 +29,7 @@
     unmerged = diff --name-only --diff-filter=U
     mine = !git log --author="$(git config user.email)"
     today = diff @{yesterday}.. --stat
+    countbymonth = "!git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c"
 
     serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 
