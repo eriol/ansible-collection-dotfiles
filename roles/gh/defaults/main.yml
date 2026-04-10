@@ -1,0 +1,8 @@
+---
+gh_become: true
+gh_become_user: "{{ lookup('env', 'USER') }}"
+
+gh_version: 2.89.0
+gh_tarball: gh_2.89.0_linux_amd64.tar.gz
+gh_download_url: "https://github.com/cli/cli/releases/download/v{{ gh_version }}/{{ gh_tarball }}"
+gh_tarball_sha256: d0422caade520530e76c1c558da47daebaa8e1203d6b7ff10ad7d6faba3490d8

@@ -1,0 +1,23 @@
+---
+- name: Install gh
+  become: "{{ gh_become }}"
+  become_user: "{{ gh_become_user }}"
+  block:
+    - name: Download locally gh in /tmp
+      ansible.builtin.get_url:
+        url: "{{ gh_download_url }}"
+        dest: /tmp
+        mode: "0750"
+        checksum: "sha256:{{ gh_tarball_sha256 }}"
+
+    - name: Unarchive locally gh
+      ansible.builtin.unarchive:
+        src: "/tmp/{{ gh_tarball }}"
+        dest: /tmp
+        remote_src: true
+
+    - name: Copy gh binary
+      ansible.builtin.copy:
+        src: "/tmp/gh_{{ gh_version }}_linux_amd64/bin/gh"
+        dest: ~/.bin
+        mode: "0750"
