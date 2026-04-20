@@ -1,8 +1,9 @@
 ---
-
-- block:
-
-    - name: ensure libreoffice programs are present
+- name: Install office related stuff
+  become: "{{ office_become }}"
+  become_user: "{{ office_become_user }}"
+  block:
+    - name: Ensure libreoffice programs are present
       ansible.builtin.apt:
         name:
           - hunspell-it
@@ -17,7 +18,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure PDF stuff is present
+    - name: Ensure PDF stuff is present
       ansible.builtin.apt:
         name:
           - xournalpp
@@ -27,13 +28,17 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: ensure ebook stuff is present
+    - name: Ensure document conversion tools are present
+      ansible.builtin.apt:
+        name:
+          - pandoc
+          - wkhtmltopdf
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Ensure ebook stuff is present
       ansible.builtin.apt:
         name:
           - calibre
         update_cache: true
         cache_valid_time: 3600
-
-
-  become: "{{ office_become }}"
-  become_user: "{{ office_become_user }}"
