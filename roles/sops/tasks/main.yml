@@ -1,0 +1,77 @@
+---
+- name: Install sops
+  become: "{{ sops_become }}"
+  become_user: "{{ sops_become_user }}"
+  block:
+
+    - name: Ensure sops temporary directory exists
+      ansible.builtin.file:
+        path: "/tmp/sops-v{{ sops_version }}"
+        state: directory
+        mode: "0750"
+
+    - name: Ensure cosign is available
+      ansible.builtin.command:
+        cmd: cosign version
+      changed_when: false
+
+    - name: Download sops checksums file
+      ansible.builtin.get_url:
+        url: "{{ sops_release_url }}/{{ sops_checksums }}"
+        dest: "/tmp/sops-v{{ sops_version }}/{{ sops_checksums }}"
+        mode: "0640"
+
+    - name: Download sops checksums signature bundle
+      ansible.builtin.get_url:
+        url: "{{ sops_release_url }}/{{ sops_sigstore_bundle }}"
+        dest: "/tmp/sops-v{{ sops_version }}/{{ sops_sigstore_bundle }}"
+        mode: "0640"
+
+    - name: Verify sops checksums file signature
+      ansible.builtin.command:
+        cmd: >-
+          cosign verify-blob /tmp/sops-v{{ sops_version }}/{{ sops_checksums }}
+          --bundle /tmp/sops-v{{ sops_version }}/{{ sops_sigstore_bundle }}
+          --certificate-identity-regexp=https://github.com/getsops
+          --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+      changed_when: false
+
+    - name: Read verified checksum for sops binary
+      ansible.builtin.command:
+        cmd: >-
+          awk '$2 == "{{ sops_artifact }}" { print $1 }'
+          /tmp/sops-v{{ sops_version }}/{{ sops_checksums }}
+      register: sops_checksum_result
+      changed_when: false
+
+    - name: Ensure checksum for sops binary was found
+      ansible.builtin.assert:
+        that:
+          - sops_checksum_result.stdout | length == 64
+        fail_msg: >-
+          Checksum for {{ sops_artifact }} not found in {{ sops_checksums }}
+
+    - name: Download sops binary
+      ansible.builtin.get_url:
+        url: "{{ sops_release_url }}/{{ sops_artifact }}"
+        dest: "/tmp/sops-v{{ sops_version }}/{{ sops_artifact }}"
+        mode: "0750"
+        checksum: "sha256:{{ sops_checksum_result.stdout }}"
+
+    - name: Ensure sops install directory exists
+      ansible.builtin.file:
+        path: ~/.bin
+        state: directory
+        mode: "0750"
+
+    - name: Copy sops binary
+      ansible.builtin.copy:
+        src: "/tmp/sops-v{{ sops_version }}/{{ sops_artifact }}"
+        dest: ~/.bin/sops
+        mode: "0750"
+        remote_src: true
+
+    - name: Check sops version
+      ansible.builtin.shell:
+        cmd: ~/.bin/sops --version
+      changed_when: false

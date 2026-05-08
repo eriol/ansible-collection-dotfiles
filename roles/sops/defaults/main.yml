@@ -1,0 +1,12 @@
+---
+sops_become: true
+sops_become_user: "{{ lookup('env', 'USER') }}"
+
+sops_version: 3.13.0
+sops_arch: amd64
+
+sops_artifact: "sops-v{{ sops_version }}.linux.{{ sops_arch }}"
+sops_checksums: "sops-v{{ sops_version }}.checksums.txt"
+sops_sigstore_bundle: "sops-v{{ sops_version }}.checksums.sigstore.json"
+sops_release_url: >-
+  https://github.com/getsops/sops/releases/download/v{{ sops_version }}
