@@ -81,6 +81,7 @@
       ansible.builtin.apt:
         name:
           - apache2-utils
+          - cosign
           - gnupg
           - minisign
           - pass
