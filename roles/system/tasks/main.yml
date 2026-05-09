@@ -80,6 +80,7 @@
     - name: Ensure security tools are present
       ansible.builtin.apt:
         name:
+          - age
           - apache2-utils
           - cosign
           - gnupg
