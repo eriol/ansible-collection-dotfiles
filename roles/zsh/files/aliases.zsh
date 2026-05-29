@@ -6,7 +6,7 @@ alias l='ls'
 alias mutt='neomutt'
 alias piken='noglob piken'
 alias wget='wget -c'
-alias ip='ip --color=auto'
+alias ip='ip -br -c'
 alias download-playlist='yt-dlp -t mp3 -o "%(playlist_index)s - %(title)s.%(ext)s"'
 alias download-song='yt-dlp -t mp3'
 alias bt-internal-off="echo '1-5:1.0' | sudo tee /sys/bus/usb/drivers/btusb/unbind"
