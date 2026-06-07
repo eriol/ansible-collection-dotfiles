@@ -18,15 +18,14 @@ return {
 
         ls.add_snippets(nil, {
             markdown = {
-                s({ trig = "zolan", dscr = "Create a new zola entry" }, {
-                    t({ "+++", "draft = true" }),
-                    t({ "", "date = " }),
+                s({ trig = "astronew", dscr = "Create a new astro entry" }, {
+                    t({ "---", "draft: true" }),
+                    t({ "", "date: " }),
                     f(date_rfc3339, {}, {}),
-                    t({ "", 'title = "' }),
+                    t({ "", 'title: "' }),
                     i(1),
                     t '"',
-                    t({ "", "[taxonomies]" }),
-                    t({ "", 'tags = ["' }),
+                    t({ "", 'tags: ["' }),
                     i(2),
                     t '"]',
                     t({ "", "+++", "" }),
