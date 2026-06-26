@@ -22,6 +22,10 @@ table inet filter {
         # Accept IGMP
         ip protocol igmp accept
 
+        # Gazebo Transport (Ignition Fortress / ros_gz) multicast discovery.
+        # gz-transport discovers peers over UDP multicast to 239.255.0.7.
+        ip daddr 239.255.0.7 accept
+
         iifname virbr1 udp dport 53 accept
 
         # DHCP
