@@ -1,3 +1,0 @@
----
-nftables_become: true
-nftables_become_user: root
