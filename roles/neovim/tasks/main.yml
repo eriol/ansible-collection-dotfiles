@@ -46,7 +46,6 @@
         mode: 0640
       with_items:
         - blink.lua
-        - mini-comment.lua
         - conform.lua
         - fugitive.lua
         - gitsigns.lua
@@ -56,6 +55,7 @@
         - lspconfig.lua
         - lualine.lua
         - luasnip.lua
+        - mini-comment.lua
         - nvim-autopairs.lua
         - nvim-surround.lua
         - nvim-tree.lua
