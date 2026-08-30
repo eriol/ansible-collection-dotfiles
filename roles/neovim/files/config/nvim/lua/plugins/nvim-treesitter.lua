@@ -36,7 +36,8 @@ return {
                 end
 
                 -- No-op when the parser is not installed.
-                if not pcall(vim.treesitter.language.add, lang) then
+                local ok, installed = pcall(vim.treesitter.language.add, lang)
+                if not ok or not installed then
                     return
                 end
 
