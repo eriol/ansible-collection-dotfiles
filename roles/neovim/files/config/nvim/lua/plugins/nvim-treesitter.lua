@@ -1,44 +1,48 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
-        local configs = require "nvim-treesitter.configs"
+        require("nvim-treesitter").install({
+            "bash",
+            "c",
+            "cmake",
+            "cpp",
+            "dockerfile",
+            "go",
+            "html",
+            "just",
+            "lua",
+            "markdown",
+            "markdown_inline",
+            "python",
+            "query",
+            "rust",
+            "sql",
+            "vim",
+            "vimdoc",
+        })
 
-        configs.setup({
-            ensure_installed = {
-                "bash",
-                "c",
-                "cmake",
-                "cpp",
-                "dockerfile",
-                "go",
-                "html",
-                "just",
-                "lua",
-                "markdown",
-                "markdown_inline",
-                "python",
-                "query",
-                "rust",
-                "sql",
-                "vim",
-                "vimdoc",
-            },
-            sync_install = false,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "gnn", -- set to `false` to disable one of the mappings
-                    node_incremental = "grn",
-                    scope_incremental = "grc",
-                    node_decremental = "grm",
-                },
-            },
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("nvim_treesitter_start", { clear = true }),
+            callback = function(args)
+                local buf = args.buf
+                local filetype = args.match
+
+                local lang = vim.treesitter.language.get_lang(filetype)
+                if not lang then
+                    return
+                end
+
+                -- No-op when the parser is not installed.
+                if not pcall(vim.treesitter.language.add, lang) then
+                    return
+                end
+
+                vim.treesitter.start(buf, lang)
+                vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
         })
     end,
 }
