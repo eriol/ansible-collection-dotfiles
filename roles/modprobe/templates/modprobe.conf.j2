@@ -1,0 +1,25 @@
+# {{ ansible_managed }}
+{% if item.comment is defined and item.comment %}
+#
+{% for line in item.comment.strip().split('\n') %}
+{{ ('# ' ~ line) | trim }}
+{% endfor %}
+{% endif %}
+{% if item.options is defined and item.options %}
+
+{% for module, options in item.options.items() %}
+options {{ module }} {{ options }}
+{% endfor %}
+{% endif %}
+{% if item.blacklist is defined and item.blacklist %}
+
+{% for module in item.blacklist %}
+blacklist {{ module }}
+{% endfor %}
+{% endif %}
+{% if item.install is defined and item.install %}
+
+{% for module, command in item.install.items() %}
+install {{ module }} {{ command }}
+{% endfor %}
+{% endif %}

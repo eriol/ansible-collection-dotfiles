@@ -1,0 +1,28 @@
+---
+modprobe_become: true
+modprobe_become_user: root
+
+# Each item becomes /etc/modprobe.d/<name>.conf.
+#
+#   name:       file name, without the .conf suffix
+#   comment:    optional free text rendered as a header comment
+#   options:    optional mapping of module name to its options
+#   blacklist:  optional list of module names to blacklist
+#   install:    optional mapping of module name to the command to run
+#               instead of loading it
+modprobe_configs:
+  - name: usb-storage-quirks
+    comment: |
+      UAS on the Realtek RTL9210 USB to NVMe bridge falls apart under
+      sustained large writes: the link resets, the device drops off the
+      bus and the transfer fails. Forcing the bridge back to plain
+      usb-storage (BOT) is slower but survives long writes.
+
+      The quirk matches on the USB bridge vendor:product id (0bda:9210),
+      not on the NVMe drive inside the enclosure, so it applies to any
+      drive put in one of these enclosures.
+    options:
+      usb-storage: quirks=0bda:9210:u
+
+# File names, without the .conf suffix, to remove from /etc/modprobe.d.
+modprobe_configs_absent: []

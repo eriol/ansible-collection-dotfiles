@@ -1,0 +1,25 @@
+---
+# No initramfs update is needed here: the modules configured by this role,
+# like usb_storage and uas, are loaded from the root filesystem at runtime,
+# so /etc/modprobe.d is read normally at boot.
+- name: Manage /etc/modprobe.d.
+  become: "{{ modprobe_become }}"
+  become_user: "{{ modprobe_become_user }}"
+  block:
+
+    - name: Ensure modprobe.d configuration files are present
+      ansible.builtin.template:
+        src: modprobe.conf.j2
+        dest: "/etc/modprobe.d/{{ item.name }}.conf"
+        owner: root
+        group: root
+        mode: "0644"
+      loop: "{{ modprobe_configs }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Ensure unwanted modprobe.d configuration files are absent
+      ansible.builtin.file:
+        path: "/etc/modprobe.d/{{ item }}.conf"
+        state: absent
+      loop: "{{ modprobe_configs_absent }}"
