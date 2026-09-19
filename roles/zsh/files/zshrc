@@ -6,7 +6,8 @@ export ZSH_CONFIG_DIR=~/.config/zsh
 fpath=($ZSH_CACHE_DIR/completions/ $fpath)
 autoload -Uz compinit && compinit -d $ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION
 
-typeset -U path
+# Prevent duplicate entries.
+typeset -U path PATH
 # Prepend directories: last one will be the first.
 for dir in \
     /opt/aseprite \
