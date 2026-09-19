@@ -66,7 +66,41 @@ function delete-branches() {
       cut -c 3- |
       fzf --multi --preview="git log {} --" |
       xargs --no-run-if-empty git branch --delete --force
-  }
+}
+
+# Add current directory into PATH.
+addpath() {
+  local dir=${1:-$PWD}
+  dir=${dir:A} # make absolute, resolve symlinks
+  if [[ ! -d $dir ]]; then
+    print -u2 "addpath: no such directory: $dir"
+    return 1
+  fi
+  path=("$dir" $path)
+}
+
+# Remove current directory from PATH.
+rmpath() {
+  local dir=${${1:-$PWD}:A}
+  path=("${(@)path:#$dir}")
+}
+
+# List directores in PATH.
+lspath() {
+  local i=1 dir
+  for dir in $path; do
+    if [[ -d $dir ]]; then
+      printf '%2d  %s\n' $i $dir
+    else
+      printf '%2d  %s  (missing)\n' $i $dir
+    fi
+    ((i++))
+  done
+}
+# An alternative can be:
+# lspath() {
+#   print -l $path
+# }
 
 # Automatically enter into distrobox when DIRENV_DISTROBOX is set.
 # An example .envrc is:
