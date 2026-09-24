@@ -1,0 +1,19 @@
+---
+ssh_become: true
+ssh_become_user: "{{ lookup('env', 'USER') }}"
+
+# Each item becomes ~/.ssh/config.d/<name>, included by ~/.ssh/config.
+#
+#   name:     file name inside ~/.ssh/config.d
+#   content:  the ssh_config(5) stanzas to write into the file
+ssh_configs: []
+#  - name: example
+#    content: |
+#      Host example
+#          HostName example.org
+#          User eriol
+#          IdentityFile ~/.ssh/example
+#          PubkeyAuthentication yes
+
+# File names to remove from ~/.ssh/config.d.
+ssh_configs_absent: []

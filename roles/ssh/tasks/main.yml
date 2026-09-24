@@ -1,0 +1,35 @@
+---
+- name: Manage ~/.ssh configuration
+  become: "{{ ssh_become }}"
+  become_user: "{{ ssh_become_user }}"
+  block:
+
+    - name: Ensure ~/.ssh and ~/.ssh/config.d exist
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0700"
+      loop:
+        - ~/.ssh
+        - ~/.ssh/config.d
+
+    - name: Copy user ~/.ssh/config
+      ansible.builtin.copy:
+        src: config
+        dest: ~/.ssh/config
+        mode: "0600"
+
+    - name: Ensure ~/.ssh/config.d configuration files are present
+      ansible.builtin.copy:
+        content: "{{ item.content }}"
+        dest: "~/.ssh/config.d/{{ item.name }}"
+        mode: "0600"
+      loop: "{{ ssh_configs }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Ensure unwanted ~/.ssh/config.d configuration files are absent
+      ansible.builtin.file:
+        path: "~/.ssh/config.d/{{ item }}"
+        state: absent
+      loop: "{{ ssh_configs_absent }}"

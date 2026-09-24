@@ -1,0 +1,16 @@
+# vim: ft=sshconfig
+
+Include config.d/*
+
+Host localhost
+    PubkeyAuthentication yes
+    IdentitiesOnly yes
+
+Host 127.0.0.1
+    PubkeyAuthentication yes
+    IdentitiesOnly yes
+
+Host *
+    PubkeyAuthentication no
+    IdentitiesOnly yes
+    # StrictHostKeyChecking yes
