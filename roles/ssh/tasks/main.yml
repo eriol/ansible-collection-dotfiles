@@ -33,3 +33,15 @@
         path: "~/.ssh/config.d/{{ item }}"
         state: absent
       loop: "{{ ssh_configs_absent }}"
+
+    - name: Ensure ~/.bin exists
+      ansible.builtin.file:
+        path: ~/.bin
+        state: directory
+        mode: "0750"
+
+    - name: Ensure the ssh key loading script is present
+      ansible.builtin.template:
+        src: ssh-load-keys.j2
+        dest: "{{ ssh_load_keys_script }}"
+        mode: "0750"

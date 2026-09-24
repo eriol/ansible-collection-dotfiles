@@ -17,3 +17,19 @@ ssh_configs: []
 
 # File names to remove from ~/.ssh/config.d.
 ssh_configs_absent: []
+
+# A script that loads the keys into the ssh agent.
+ssh_load_keys_script: ~/.bin/ssh-load-keys
+
+# Program ssh-add uses to ask for passphrases. When it is not installed the
+# script falls back to asking on the terminal.
+ssh_askpass: /usr/bin/ksshaskpass
+
+# Key files to load, as paths relative to ~/.ssh or absolute.
+ssh_keys: []
+#  - id_ed25519
+#  - forges/codeberg/id_ed25519_eriol
+
+# PKCS#11 provider to load with `ssh-add -s`, e.g. for a Yubikey.
+# Set to an empty string to skip it.
+ssh_pkcs11_provider: /usr/lib/x86_64-linux-gnu/libykcs11.so

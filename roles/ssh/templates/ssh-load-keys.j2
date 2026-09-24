@@ -1,0 +1,65 @@
+#!/bin/sh
+# {{ ansible_managed }}
+#
+# Load the SSH keys listed below into the running agent. Keys already in the
+# agent are skipped, so running this again only asks for what is still
+# missing. It stops at the first key that fails to load, for example when the
+# passphrase prompt is cancelled.
+#
+# Passphrases are asked through {{ ssh_askpass }} when it is installed, and on
+# the terminal otherwise.
+
+set -u
+
+if [ -x "{{ ssh_askpass }}" ]; then
+    export SSH_ASKPASS={{ ssh_askpass }}
+    export SSH_ASKPASS_REQUIRE=prefer
+fi
+
+loaded=$(ssh-add -l 2>/dev/null)
+if [ $? -eq 2 ]; then
+    echo "cannot connect to the ssh agent, is SSH_AUTH_SOCK set?" >&2
+    exit 2
+fi
+
+# load_key PATH
+#
+# Add PATH to the agent unless a key with the same fingerprint is already
+# there. Missing files are reported and skipped.
+load_key() {
+    key=$1
+
+    if [ ! -f "$key" ]; then
+        echo "skipping $key: no such file" >&2
+        return 0
+    fi
+
+    if [ -f "$key.pub" ]; then
+        fingerprint=$(ssh-keygen -lf "$key.pub" 2>/dev/null | cut -d ' ' -f 2)
+    else
+        fingerprint=$(ssh-keygen -lf "$key" 2>/dev/null | cut -d ' ' -f 2)
+    fi
+
+    if [ -n "$fingerprint" ] && printf '%s\n' "$loaded" | grep -qF "$fingerprint"; then
+        return 0
+    fi
+
+    ssh-add "$key"
+}
+
+{% for key in ssh_keys %}
+load_key "{{ key if key.startswith('/') else '$HOME/.ssh/' ~ key }}" || exit
+{% endfor %}
+{% if ssh_pkcs11_provider %}
+
+# Keys on a PKCS#11 token, like a Yubikey. The agent lists them with the
+# resolved provider path as comment, which tells whether the token is
+# already loaded.
+provider=$(readlink -f "{{ ssh_pkcs11_provider }}")
+
+if [ ! -f "$provider" ]; then
+    echo "skipping {{ ssh_pkcs11_provider }}: no such file" >&2
+elif ! printf '%s\n' "$loaded" | grep -qF "$provider"; then
+    ssh-add -s "$provider"
+fi
+{% endif %}
