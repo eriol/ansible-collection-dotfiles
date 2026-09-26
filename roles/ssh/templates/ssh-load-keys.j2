@@ -6,15 +6,21 @@
 # missing. It stops at the first key that fails to load, for example when the
 # passphrase prompt is cancelled.
 #
+{% if ssh_askpass %}
 # Passphrases are asked through {{ ssh_askpass }} when it is installed, and on
 # the terminal otherwise.
+{% else %}
+# Passphrases are asked on the terminal.
+{% endif %}
 
 set -u
+{% if ssh_askpass %}
 
 if [ -x "{{ ssh_askpass }}" ]; then
     export SSH_ASKPASS={{ ssh_askpass }}
     export SSH_ASKPASS_REQUIRE=prefer
 fi
+{% endif %}
 
 loaded=$(ssh-add -l 2>/dev/null)
 if [ $? -eq 2 ]; then
@@ -44,7 +50,7 @@ load_key() {
         return 0
     fi
 
-    ssh-add "$key"
+    ssh-add{% for option in ssh_add_options %} {{ option }}{% endfor %} "$key"
 }
 
 {% for key in ssh_keys %}

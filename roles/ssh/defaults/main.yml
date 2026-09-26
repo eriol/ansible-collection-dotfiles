@@ -21,9 +21,13 @@ ssh_configs_absent: []
 # A script that loads the keys into the ssh agent.
 ssh_load_keys_script: ~/.bin/ssh-load-keys
 
-# Program ssh-add uses to ask for passphrases. When it is not installed the
-# script falls back to asking on the terminal.
-ssh_askpass: /usr/bin/ksshaskpass
+# Support Linux or Darwin.
+ssh_darwin: "{{ ansible_system | default('Linux') == 'Darwin' }}"
+
+ssh_askpass: "{{ '' if ssh_darwin else '/usr/bin/ksshaskpass' }}"
+
+# Extra options passed to ssh-add for every key.
+ssh_add_options: "{{ ['--apple-use-keychain'] if ssh_darwin else [] }}"
 
 # Key files to load, as paths relative to ~/.ssh or absolute.
 ssh_keys: []
@@ -32,4 +36,6 @@ ssh_keys: []
 
 # PKCS#11 provider to load with `ssh-add -s`, e.g. for a Yubikey.
 # Set to an empty string to skip it.
-ssh_pkcs11_provider: /usr/lib/x86_64-linux-gnu/libykcs11.so
+ssh_pkcs11_provider: >-
+  {{ '/usr/local/lib/libykcs11.dylib' if ssh_darwin
+     else '/usr/lib/x86_64-linux-gnu/libykcs11.so' }}
