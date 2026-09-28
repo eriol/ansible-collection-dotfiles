@@ -22,12 +22,12 @@ ssh_configs_absent: []
 ssh_load_keys_script: ~/.bin/ssh-load-keys
 
 # Support Linux or Darwin.
-ssh_darwin: "{{ ansible_system | default('Linux') == 'Darwin' }}"
+ssh_is_darwin: "{{ ansible_system | default('Linux') == 'Darwin' }}"
 
-ssh_askpass: "{{ '' if ssh_darwin else '/usr/bin/ksshaskpass' }}"
+ssh_askpass: "{{ '' if ssh_is_darwin else '/usr/bin/ksshaskpass' }}"
 
 # Extra options passed to ssh-add for every key.
-ssh_add_options: "{{ ['--apple-use-keychain'] if ssh_darwin else [] }}"
+ssh_add_options: "{{ ['--apple-use-keychain'] if ssh_is_darwin else [] }}"
 
 # Key files to load, as paths relative to ~/.ssh or absolute.
 ssh_keys: []
@@ -37,5 +37,5 @@ ssh_keys: []
 # PKCS#11 provider to load with `ssh-add -s`, e.g. for a Yubikey.
 # Set to an empty string to skip it.
 ssh_pkcs11_provider: >-
-  {{ '/usr/local/lib/libykcs11.dylib' if ssh_darwin
+  {{ '/usr/local/lib/libykcs11.dylib' if ssh_is_darwin
      else '/usr/lib/x86_64-linux-gnu/libykcs11.so' }}
