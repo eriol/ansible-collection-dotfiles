@@ -6,6 +6,8 @@ readme: README.md
 authors:
   - Daniele Tricoli <eriol@mornie.org>
 description: Ansible collection that for my dotfiles.
+dependencies:
+  community.general: ">=8.0.0"
 license:
   - BSD-3-Clause
 tags:
