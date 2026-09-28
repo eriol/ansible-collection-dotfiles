@@ -36,6 +36,10 @@ ssh_keys: []
 
 # PKCS#11 provider to load with `ssh-add -s`, e.g. for a Yubikey.
 # Set to an empty string to skip it.
+#
+# On Darwin the ssh-agent shipped by Apple does not load third party
+# libraries: SSH_AUTH_SOCK must point to the OpenSSH agent from Homebrew,
+# started with `-P '/opt/homebrew/*'` so that it accepts the library below.
 ssh_pkcs11_provider: >-
-  {{ '/usr/local/lib/libykcs11.dylib' if ssh_is_darwin
+  {{ '/opt/homebrew/lib/libykcs11.dylib' if ssh_is_darwin
      else '/usr/lib/x86_64-linux-gnu/libykcs11.so' }}
