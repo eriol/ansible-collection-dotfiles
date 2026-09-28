@@ -1,37 +1,40 @@
 ---
-- name: install git
+- name: Install git with apt
   ansible.builtin.apt:
-    name:
-      - git
-      - git-cola
-      - git-filter-repo
-      - git-lfs
+    name: "{{ git_packages_apt }}"
     update_cache: true
     cache_valid_time: 3600
+  when: not git_is_darwin
   tags: apt
 
   become: "{{ git_become_admin }}"
   become_user: "{{ git_become_admin_user }}"
 
-- block:
+- name: Install git with Homebrew
+  community.general.homebrew:
+    name: "{{ git_packages_homebrew }}"
+    state: present
+  when: git_is_darwin
+  tags: homebrew
 
-    - name: copy user .gitconfig
+- name: Manage user git configuration
+  become: "{{ git_become }}"
+  become_user: "{{ git_become_user }}"
+  block:
+    - name: Copy user .gitconfig
       ansible.builtin.copy:
         src: gitconfig
         dest: ~/.gitconfig
-        mode: 0640
+        mode: "0640"
 
-    - name: copy user .gitignore
+    - name: Copy user .gitignore
       ansible.builtin.copy:
         src: gitignore
         dest: ~/.gitignore
-        mode: 0640
+        mode: "0640"
 
-    - name: set .gitconfig.local
+    - name: Set .gitconfig.local
       ansible.builtin.copy:
         content: "{{ git_config_local }}"
         dest: ~/.gitconfig.local
-        mode: 0640
-
-  become: "{{ git_become }}"
-  become_user: "{{ git_become_user }}"
+        mode: "0640"

@@ -5,3 +5,18 @@ git_become: true
 git_become_user: "{{ lookup('env', 'USER') }}"
 
 git_config_local: ""
+
+# Detect if we are using Darwin.
+git_is_darwin: "{{ ansible_system | default('Linux') == 'Darwin' }}"
+
+git_packages_apt:
+  - git
+  - git-cola
+  - git-filter-repo
+  - git-lfs
+
+git_packages_homebrew:
+  - git
+  - git-cola
+  - git-filter-repo
+  - git-lfs
