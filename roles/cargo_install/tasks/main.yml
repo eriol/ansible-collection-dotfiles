@@ -29,6 +29,7 @@
       ansible.builtin.command:
         cmd: "{{ cargo_install_cargo_binary }} install --locked {{ item }}"
       loop:
+        - berg
         - dprint
         - evcxr_repl
         - iamb
