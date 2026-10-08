@@ -4,9 +4,10 @@
   become_user: "{{ kvm_become_user }}"
   block:
 
-    - name: Ensure KVM and libvirt related stuff are present
+    - name: Ensure KVM, libvirt and Incus related stuff are present
       ansible.builtin.apt:
         name:
+          - incus
           - libvirt-daemon-system
           - qemu-system
           - vagrant
@@ -21,3 +22,9 @@
         path: /etc/libvirt/network.conf
         regexp: "^#?firewall_backend"
         line: 'firewall_backend = "nftables"'
+
+    - name: Add to incus-admin group {{ kvm_user }}
+      ansible.builtin.user:
+        name: "{{ kvm_user }}"
+        groups: incus-admin
+        append: true

@@ -1,3 +1,4 @@
 ---
 kvm_become: true
 kvm_become_user: root
+kvm_user: "{{ lookup('env', 'USER') }}"
