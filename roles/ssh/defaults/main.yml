@@ -27,7 +27,7 @@ ssh_is_darwin: "{{ ansible_system | default('Linux') == 'Darwin' }}"
 ssh_askpass: "{{ '' if ssh_is_darwin else '/usr/bin/ksshaskpass' }}"
 
 # Extra options passed to ssh-add for every key.
-ssh_add_options: "{{ ['--apple-use-keychain'] if ssh_is_darwin else [] }}"
+ssh_add_options: []
 
 # Key files to load, as paths relative to ~/.ssh or absolute.
 ssh_keys: []
