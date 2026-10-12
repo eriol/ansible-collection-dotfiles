@@ -63,4 +63,3 @@ antidote load
 
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
-eval $(ssh-agent) > /dev/null
