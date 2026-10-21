@@ -25,7 +25,7 @@
     graph = log --graph -10 --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
     flog = log --name-status
     glog = log --graph --decorate --abbrev-commit
-    contributors = shortlog -sn
+    contributors = shortlog -sne
     unmerged = diff --name-only --diff-filter=U
     mine = !git log --author="$(git config user.email)"
     today = diff @{yesterday}.. --stat
