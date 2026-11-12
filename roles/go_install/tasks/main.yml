@@ -5,6 +5,7 @@
     cmd: "go install {{ item }}"
   loop:
     - git.sr.ht/~geb/dotool@latest
+    - github.com/boostsecurityio/bagel/cmd/bagel@latest
     - github.com/charmbracelet/glow@latest
     - github.com/emersion/hydroxide/cmd/hydroxide@v0.2.30
     - github.com/gopasspw/gopass-jsonapi@v1.17.4
